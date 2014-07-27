@@ -11,7 +11,7 @@ get_header(); ?>
 			while ( have_posts() ) : the_post(); 
 		?>
 
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				
 			
 					<header class="entry-header">
 						<h1 class="entry-title">
@@ -21,7 +21,7 @@ get_header(); ?>
 
 					<div class="entry-content">
 						<div class="one-third">
-						<?php echo sp_single_team_meta( 'large' ); ?>
+						<a href="<?php echo sp_post_thumbnail( 'large' ); ?>"><img class="attachment-medium wp-post-image" src="<?php echo sp_post_thumbnail( 'large' ); ?>"></a>
 						</div>
 						
 						<div class="two-third last">
@@ -32,9 +32,9 @@ get_header(); ?>
 						<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>
 					</div><!-- .entry-content -->
 
-				</article><!-- #post -->
-
-				<?php if ( ot_get_option( 'related-posts' ) != '1' ) { get_template_part('library/contents/related-team'); } ?>
+				<?php if ( ot_get_option( 'related-posts' ) != '1' ) { 
+					echo sp_get_related_posts( get_the_ID(), array('posts_per_page' => 3) ); 
+				} ?>
 
 		<?php		
 				// If comments are open or we have at least one comment, load up the comment template.

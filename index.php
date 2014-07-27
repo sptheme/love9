@@ -7,7 +7,6 @@ global $wp_query;
 get_header(); ?>
 	<?php do_action( 'sp_start_content_wrap_html' ); ?>
     <div id="main" class="main">
-    
 	<?php if ( have_posts() ) : ?>
         
             <?php /* Start the Loop */ ?>

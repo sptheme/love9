@@ -112,23 +112,6 @@ if ( !function_exists('sp_facebook_thumb') ) {
 	add_action('wp_head', 'sp_facebook_thumb');
 }
 
-
-/* ---------------------------------------------------------------------- */               							
-/*  Retrieve the terms list and return array
-/* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_terms_list') ) {
-
-	function sp_get_terms_list($taxonomy){
-		$args = array(
-				'hide_empty'	=> 0
-			);
-		$taxonomies = get_terms($taxonomy, $args);
-		return $taxonomies;
-	}
-
-}
-
-
 /* ---------------------------------------------------------------------- */               							
 /*  Get related post by Taxonomy
 /* ---------------------------------------------------------------------- */
@@ -160,6 +143,21 @@ if ( !function_exists('sp_get_posts_related_by_taxonomy') ) {
 		$query = new WP_Query($args);
 		}
 		return $query;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Retrieve the terms list and return array
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_terms_list') ) {
+
+	function sp_get_terms_list($taxonomy){
+		$args = array(
+				'hide_empty'	=> 0
+			);
+		$taxonomies = get_terms($taxonomy, $args);
+		return $taxonomies;
 	}
 
 }
@@ -719,62 +717,7 @@ if ( ! function_exists( 'sp_get_video_village' ) ) {
 
 		return $out;
 	}
-}
-
-/* ---------------------------------------------------------------------- */
-/*	Team Member
-/* ---------------------------------------------------------------------- */
-
-/* Single Team */ 
-if ( ! function_exists( 'sp_single_team_meta' ) ) {
-	function sp_single_team_meta( $size = 'thumbnail', $style = 'default' ){
-		global $post;
-
-		$out = '';
-		$out .= '<div class="sp-team ' . $style . '">';
-		if ( is_singular('team') ) {
-			$out .= '<a href="'.sp_post_thumbnail( 'large' ).'"><img src="' . sp_post_thumbnail( $size ) . '" /></a>';
-		} else { 
-			$out .= '<a href="'.get_permalink().'"><img src="' . sp_post_thumbnail( $size ) . '" /></a>';
-			$out .= '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-		}	
-	    $out .= '<h5>' . get_post_meta( get_the_ID(), 'sp_team_position', true) . '</h5>';
-	    $out .= '<a class="team-email" href="mailto:' . antispambot(get_post_meta( get_the_ID(), 'sp_team_email', true)) . '">' . antispambot(get_post_meta( get_the_ID(), 'sp_team_email', true)) . '</a>';
-	    $out .= '</div>';
-
-		return $out;	
-	}
-}
-
-/* Get Presenter  */ 
-if ( ! function_exists( 'sp_get_presenter' ) ) {
-	function sp_get_presenter( $postnum = '10' ){
-		global $post;
-
-		$out = '';
-
-		$args = array(
-			'post_type' => 'presenter',
-			'post_status' => 'publish',
-			'posts_per_page' => $postnum
-			);
-		$custom_query = new WP_Query( $args );
-
-		while ( $custom_query->have_posts() ) : $custom_query->the_post();
-
-			$team_position = get_post_meta($post->ID, 'sp_team_position', true);
-        	$team_email = get_post_meta($post->ID, 'sp_team_email', true);
-
-        	$out .= '<figure class="sp-team ' . $post->ID . '">';
-			$out .= sp_single_team_meta( 'large' );
-			$out .= '</figure>';
-		
-		endwhile;
-		wp_reset_postdata();
-
-		return $out;	
-	}
-}
+}	
 
 /* ---------------------------------------------------------------------- */
 /*	Social icons - Widget
@@ -806,6 +749,125 @@ if ( ! function_exists( 'sp_show_social_icons' ) ) {
 
 		return $out;
 
+	}
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Get post type and return array
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_posts_type') ) {
+	function sp_get_posts_type( $post_type = 'post', $args=array() ) {
+
+		$defaults = array(
+				'post_type' => $post_type, 
+				'posts_per_page' => -1
+			);
+		$args = wp_parse_args( $args, $defaults );
+		extract( $args );
+
+		$custom_query = new WP_Query($args);
+
+		if ( $custom_query->have_posts() ):
+			$out = '<div class="sp-post-' . $post_type . '">';
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
+				switch ( $post_type) {
+					case 'presenter':
+						$out .= sp_render_team_post(get_the_ID());
+						break;
+
+					case 'actor':
+						$out .= sp_render_team_post(get_the_ID());
+						break;	
+
+					case 'behind_scene':
+						$out .= sp_render_blog_post(get_the_ID());
+						break;
+
+					case 'gallery':
+						$out .= sp_render_photogallery_post(get_the_ID());
+						break;			
+					
+					default:
+						$out .= '';
+						break;
+				}
+			endwhile;
+			wp_reset_postdata();
+			$out .= '</div>';
+		endif;
+
+		return $out;
+	}	
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Get post related by post type and return array
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_related_posts') ) {
+	function sp_get_related_posts( $post_id, $args=array() ) {
+
+		$post = get_post($post_id);
+		$defaults = array(
+				'post_type' => $post->post_type, 
+				'post__not_in' => array($post_id),
+				'orderby' => 'rand',
+				'posts_per_page' => 6
+			);
+		$args = wp_parse_args( $args, $defaults );
+		extract( $args );
+
+		$custom_query = new WP_Query($args);
+
+		if ( $custom_query->have_posts() ):
+			$out = '<section class="related-posts sp-post-' . $post_type . '">';
+			$out .= '<h4 class="heading">' . __('Related post...', SP_TEXT_DOMAIN) . '</h4>';
+			$out .= '<ul class="clearfix">';
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
+				$out .= '<li class="related">';
+				$out .= sp_render_team_post( get_the_ID(), 'large' );
+				$out .= '</li>';
+			endwhile;
+			$out .= '</ul>';
+			$out .= '</section>';
+			wp_reset_query();
+		endif; 
+
+		return $out;
+	}	
+}
+
+/* ---------------------------------------------------------------------- */               							
+/* Render HTML Team (Presneter or Actor)
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_render_team_post') ) {
+	function sp_render_team_post($post_id, $size = 'thumbnail') {
+
+		$team_position = get_post_meta($post_id, 'sp_team_position', true);
+    	$team_email = get_post_meta($post_id, 'sp_team_email', true);
+
+    	$out = '<article id="post-' . $post_id . '">';
+		$out .= '<a href="'.get_permalink().'"><img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" /></a>';
+		$out .= '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+	    $out .= '<h5>' . get_post_meta( get_the_ID(), 'sp_team_position', true) . '</h5>';
+	    $out .= '<a class="team-email" href="mailto:' . antispambot(get_post_meta( get_the_ID(), 'sp_team_email', true)) . '">' . antispambot(get_post_meta( get_the_ID(), 'sp_team_email', true)) . '</a>';
+	    $out .= '</article>';
+
+		return $out;
+	}
+}
+
+/* ---------------------------------------------------------------------- */               							
+/* Render HTML Photogallery
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_render_photogallery_post') ) {
+	function sp_render_photogallery_post($post_id, $size = 'thumbnail') {
+
+    	$out = '<article id="post-' . $post_id . '">';
+		$out .= '<a href="'.get_permalink().'"><img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" /></a>';
+		$out .= '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+	    $out .= '</article>';
+
+		return $out;
 	}
 }
 
