@@ -138,8 +138,19 @@
 *****************************************************
 */
 function sp_custom_admin_post_thumbnail_html( $content ) {
-	$post =  $post = get_post($_GET['post']);
-	if ( $post->post_type == 'gallery' ) :
+	
+	if (isset($_GET['post'])) {
+		$post = get_post($_GET['post']);
+		if ($post)
+            $post_type = $post->post_type;
+	} elseif ( !isset($_GET['post_type']) )
+        $post_type = 'post';
+    elseif ( in_array( $_GET['post_type'], get_post_types( array('show_ui' => true ) ) ) )
+        $post_type = $_GET['post_type'];
+    else
+        return;
+    
+	if ( $post_type == 'gallery' ) :
     	return $content = str_replace( __( 'Set featured image' ), __( 'Set Cover album' ), $content);
     else :
     	return $content;

@@ -26,7 +26,16 @@ function sp_shortcodes_register_mce_button( $buttons ) {
 // Register TinyMCE Plugin
 function sp_shortcodes_add_tinymce_plugin($plugin_array) {
 	
-	$post =  $post = get_post($_GET['post']);
+	if (isset($_GET['post'])) {
+		$post = get_post($_GET['post']);
+		if ($post)
+            $post_type = $post->post_type;
+	} elseif ( !isset($_GET['post_type']) )
+        $post_type = 'post';
+    elseif ( in_array( $_GET['post_type'], get_post_types( array('show_ui' => true ) ) ) )
+        $post_type = $_GET['post_type'];
+    else
+        return;
 	
 	$plugin_array['col'] 			= ED_JS_URL . 'ed-columns.js';
 	$plugin_array['horz_rule']		= ED_JS_URL . 'ed-hr.js';
@@ -34,7 +43,7 @@ function sp_shortcodes_add_tinymce_plugin($plugin_array) {
 	$plugin_array['accordion']		= ED_JS_URL . 'ed-accordion.js';
 	$plugin_array['toggle']			= ED_JS_URL . 'ed-toggle.js';
 	$plugin_array['tab']			= ED_JS_URL . 'ed-tab.js';
-	if ( $post->post_type != 'presenter' )
+	if ( $post_type != 'presenter' )
 		$plugin_array['presenter']		= ED_JS_URL . 'ed-presenter.js';
 	/*$plugin_array['actor']			= ED_JS_URL . 'ed-actor.js';
 	$plugin_array['behind_scene']	= ED_JS_URL . 'ed-behind-scene.js';
