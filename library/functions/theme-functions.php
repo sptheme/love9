@@ -770,27 +770,7 @@ if ( !function_exists('sp_get_posts_type') ) {
 		if ( $custom_query->have_posts() ):
 			$out = '<div class="sp-post-' . $post_type . '">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
-				switch ( $post_type) {
-					case 'presenter':
-						$out .= sp_render_team_post(get_the_ID());
-						break;
-
-					case 'actor':
-						$out .= sp_render_team_post(get_the_ID());
-						break;	
-
-					case 'behind_scene':
-						$out .= sp_render_blog_post(get_the_ID());
-						break;
-
-					case 'gallery':
-						$out .= sp_render_photogallery_post(get_the_ID());
-						break;			
-					
-					default:
-						$out .= '';
-						break;
-				}
+				$out .= sp_switch_posttype_content( $post_type );
 			endwhile;
 			wp_reset_postdata();
 			$out .= '</div>';
@@ -807,8 +787,10 @@ if ( !function_exists('sp_get_related_posts') ) {
 	function sp_get_related_posts( $post_id, $args=array() ) {
 
 		$post = get_post($post_id);
+		$post_type = $post->post_type;
+
 		$defaults = array(
-				'post_type' => $post->post_type, 
+				'post_type' => $post_type, 
 				'post__not_in' => array($post_id),
 				'orderby' => 'rand',
 				'posts_per_page' => 6
@@ -824,16 +806,60 @@ if ( !function_exists('sp_get_related_posts') ) {
 			$out .= '<ul class="clearfix">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				$out .= '<li class="related">';
-				$out .= sp_render_team_post( get_the_ID(), 'large' );
+				$out .= sp_switch_posttype_content( $post_type );
 				$out .= '</li>';
 			endwhile;
 			$out .= '</ul>';
 			$out .= '</section>';
 			wp_reset_query();
+		else :
+			$out = 'There is no related post.';
 		endif; 
 
 		return $out;
 	}	
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Switch post type content
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_switch_posttype_content') ) {
+	function sp_switch_posttype_content( $post_type ) {
+		
+		if ( $post_type == 'presenter' || $post_type == 'actor' ) {
+			$out = sp_render_team_post(get_the_ID(), 'large');
+		} elseif ( $post_type == 'behind_scene' ) {
+			$out = sp_render_blog_post(get_the_ID(), 'large');
+		} elseif ( $post_type == 'gallery' ) {
+			$out = sp_render_photogallery_post(get_the_ID());
+		} else { // for blog 
+			$out = sp_render_video_post(get_the_ID(), 'large');
+		}
+		return $out;
+		
+	}
+}
+
+/* ---------------------------------------------------------------------- */               							
+/* Render HTML Video
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_render_video_post') ) {
+	function sp_render_video_post($post_id, $size = 'thumbnail') {
+
+		$video_url = get_post_meta($post_id, 'sp_video_url', true);
+		$video_cover = sp_get_video_img( $video_url );
+
+    	$out = '<article id="post-' . $post_id . '">';
+    	if ( has_post_thumbnail() ) :
+			$out .= '<a href="'.get_permalink().'"><img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" /></a>';
+		else :
+			$out .= '<a href="'.get_permalink().'"><img class="attachment-medium wp-post-image" src="' . $video_cover . '" /></a>';
+		endif; 
+		$out .= '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+	    $out .= '</article>';
+
+		return $out;
+	}
 }
 
 /* ---------------------------------------------------------------------- */               							

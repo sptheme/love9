@@ -8,9 +8,10 @@ load_template( SP_BASE_DIR . 'library/custom-posts/cp-gallery.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-video-gallery.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-announcement.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-document.php' );
+load_template( SP_BASE_DIR . 'library/custom-posts/cp-tv.php' );
 
 //Taxonomies
-//load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-presenter.php' );
+load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-tv.php' );
 	
 /*==========================================================================*/
 

@@ -165,9 +165,9 @@ $post_type_gallery = array(
 /* ---------------------------------------------------------------------- */
 $post_format_video = array(
 	'id'          => 'format-video',
-	'title'       => 'Format: Video',
+	'title'       => 'Video meta',
 	'desc'        => 'These settings enable you to embed videos into your posts.',
-	'pages'       => array( 'post', 'video_gallery' ),
+	'pages'       => array( 'post', 'video_gallery', 'tv' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(

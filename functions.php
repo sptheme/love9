@@ -19,7 +19,7 @@ $themeName = str_replace( ' ', '', $themeName );
 //Basic constants	
 define( 'SP_THEME_NAME', strtoupper($themeName) );
 define( 'SP_TEXT_DOMAIN', strtolower($themeName) );
-define( 'SP_SCRIPTS_VERSION', '20140610' ); // yyyymmdd
+define( 'SP_SCRIPTS_VERSION', '20140701' ); // yyyymmdd
 
 define( 'SP_BASE_DIR',   get_template_directory() . '/' );
 define( 'SP_BASE_URL',     get_template_directory_uri() . '/' );
@@ -36,6 +36,7 @@ if ( ! isset( $cp_menu_position ) )
 			'menu_video'			=> 45,
 			'menu_announcement'		=> 48,
 			'menu_document'			=> 48,
+			'menu_tv'				=> 2,
 		);
 
 
