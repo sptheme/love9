@@ -287,7 +287,5 @@ $post_format_quote = array(
 	ot_register_meta_box( $post_format_video );
 	// ot_register_meta_box( $post_options );
 	ot_register_meta_box( $post_type_team );
-	ot_register_meta_box( $post_type_testimonial );
 	ot_register_meta_box( $post_type_gallery );
-	ot_register_meta_box( $post_type_slider );
 }
