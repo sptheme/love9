@@ -48,7 +48,7 @@
 				'name'               => __( 'TVs', 'sptheme_admin' ),
 				'singular_name'      => __( 'TV', 'sptheme_admin' ),
 				'add_new'            => __( 'Add New', 'sptheme_admin' ),
-				'all_items'          => __( 'TVs', 'sptheme_admin' ),
+				'all_items'          => __( 'All Videos', 'sptheme_admin' ),
 				'add_new_item'       => __( 'Add New TV', 'sptheme_admin' ),
 				'new_item'           => __( 'Add New TV', 'sptheme_admin' ),
 				'edit_item'          => __( 'Edit TV', 'sptheme_admin' ),

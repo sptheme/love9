@@ -12,6 +12,7 @@ load_template( SP_BASE_DIR . 'library/custom-posts/cp-tv.php' );
 
 //Taxonomies
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-tv.php' );
+load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-episode.php' );
 	
 /*==========================================================================*/
 

@@ -8,8 +8,8 @@ function sp_tax_tv_category_init() {
 		array(
 			'hierarchical' => true,
 			'labels' => array(
-				'name' => __( 'TV Categories', 'sptheme_admin' ),
-				'singular_name' => __( 'TV Category', 'sptheme_admin' )
+				'name' => __( 'TV Sections', 'sptheme_admin' ),
+				'singular_name' => __( 'TV Section', 'sptheme_admin' )
 			),
 			'sort' => true,
 			'rewrite' => array( 'slug' => 'tv-category' ),
