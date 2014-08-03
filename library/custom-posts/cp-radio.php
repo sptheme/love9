@@ -1,7 +1,7 @@
 <?php
 /*
 *****************************************************
-* TV custom post
+* Radio custom post
 *
 * CONTENT:
 * - 1) Actions and filters
@@ -21,13 +21,13 @@
 */
 	//ACTIONS
 		//Registering CP
-		add_action( 'init', 'sp_tv_cp_init' );
+		add_action( 'init', 'sp_radio_cp_init' );
 		//CP list table columns
-		add_action( 'manage_posts_custom_column', 'sp_tv_cp_custom_column' );
+		add_action( 'manage_posts_custom_column', 'sp_radio_cp_custom_column' );
 
 	//FILTERS
 		//CP list table columns
-		add_filter( 'manage_edit-tv_columns', 'sp_tv_cp_columns' );
+		add_filter( 'manage_edit-radio_columns', 'sp_radio_cp_columns' );
 
 
 
@@ -40,34 +40,34 @@
 	/*
 	* Custom post registration
 	*/
-	if ( ! function_exists( 'sp_tv_cp_init' ) ) {
-		function sp_tv_cp_init() {
+	if ( ! function_exists( 'sp_radio_cp_init' ) ) {
+		function sp_radio_cp_init() {
 			global $cp_menu_position;
 
 			$labels = array(
-				'name'               => __( 'TV', 'sptheme_admin' ),
-				'singular_name'      => __( 'TV', 'sptheme_admin' ),
+				'name'               => __( 'Radio', 'sptheme_admin' ),
+				'singular_name'      => __( 'Radio', 'sptheme_admin' ),
 				'add_new'            => __( 'Add New', 'sptheme_admin' ),
-				'all_items'          => __( 'All Videos', 'sptheme_admin' ),
-				'add_new_item'       => __( 'Add New TV', 'sptheme_admin' ),
-				'new_item'           => __( 'Add New TV', 'sptheme_admin' ),
-				'edit_item'          => __( 'Edit TV', 'sptheme_admin' ),
-				'view_item'          => __( 'View TV', 'sptheme_admin' ),
-				'search_items'       => __( 'Search TV', 'sptheme_admin' ),
-				'not_found'          => __( 'No TV found', 'sptheme_admin' ),
-				'not_found_in_trash' => __( 'No TV found in trash', 'sptheme_admin' ),
-				'parent_item_colon'  => __( 'Parent TV', 'sptheme_admin' ),
+				'all_items'          => __( 'All Sounds', 'sptheme_admin' ),
+				'add_new_item'       => __( 'Add New Radio', 'sptheme_admin' ),
+				'new_item'           => __( 'Add New Radio', 'sptheme_admin' ),
+				'edit_item'          => __( 'Edit Radio', 'sptheme_admin' ),
+				'view_item'          => __( 'View Radio', 'sptheme_admin' ),
+				'search_items'       => __( 'Search Radio', 'sptheme_admin' ),
+				'not_found'          => __( 'No Radio found', 'sptheme_admin' ),
+				'not_found_in_trash' => __( 'No Radio found in trash', 'sptheme_admin' ),
+				'parent_item_colon'  => __( 'Parent Radio', 'sptheme_admin' ),
 			);	
 
 			$role     = 'post'; // page
-			$slug     = 'tv';
+			$slug     = 'radio';
 			$supports = array('title', 'editor', 'thumbnail'); // 'title', 'editor', 'thumbnail'
 
 			$args = array(
 				'labels' 				=> $labels,
 				'rewrite'               => array( 'slug' => $slug ),
-				'menu_position'         => $cp_menu_position['menu_tv'],
-				'menu_icon'           	=> 'dashicons-format-video',
+				'menu_position'         => $cp_menu_position['menu_radio'],
+				'menu_icon'           	=> 'dashicons-megaphone',
 				'supports'              => $supports,
 				'capability_type'     	=> $role,
 				'query_var'           	=> true,
@@ -80,7 +80,7 @@
 				'has_archive'			=> true,
 				'can_export'			=> true
 			);
-			register_post_type( 'tv' , $args );
+			register_post_type( 'radio' , $args );
 		}
 	} 
 
@@ -95,16 +95,15 @@
 	*
 	* $Cols = ARRAY [array of columns]
 	*/
-	if ( ! function_exists( 'sp_tv_cp_columns' ) ) {
-		function sp_tv_cp_columns( $columns ) {
+	if ( ! function_exists( 'sp_radio_cp_columns' ) ) {
+		function sp_radio_cp_columns( $columns ) {
 			
 			$columns = array(
 				'cb'                   	=> '<input type="checkbox" />',
-				'tv_thumbnail'			=> __( 'Thumbnail', 'sptheme_admin' ),
 				'title'                	=> __( 'Title', 'sptheme_admin' ),
-				'tv_season'           	=> __( 'Season', 'sptheme_admin' ),
-				'tv_category'           => __( 'TV Sections', 'sptheme_admin' ),
-				'tv_episode'        	=> __( 'Episode', 'sptheme_admin' ),
+				'radio_season'          => __( 'Season', 'sptheme_admin' ),
+				'radio_category'        => __( 'Radio Sections', 'sptheme_admin' ),
+				'radio_episode'        	=> __( 'Episode', 'sptheme_admin' ),
 				'date'		 			=> __( 'Date', 'sptheme_admin' )
 			);
 
@@ -117,24 +116,13 @@
 	*
 	* $Col = TEXT [column id for switch]
 	*/
-	if ( ! function_exists( 'sp_tv_cp_custom_column' ) ) {
-		function sp_tv_cp_custom_column( $column ) {
+	if ( ! function_exists( 'sp_radio_cp_custom_column' ) ) {
+		function sp_radio_cp_custom_column( $column ) {
 			global $post;
 			
 			switch ( $column ) {
 				
-				case "tv_thumbnail":
-					$custom_cover = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'medium' );
-					$video_cover = sp_get_video_img( get_post_meta( get_the_ID(), 'sp_video_url', true ) );
-
-					if ( has_post_thumbnail( $post->ID ) ) {
-						echo '<img src="' . $custom_cover[0] . '" width="90" height="68">';
-					} else {
-						echo '<img src="' . $video_cover . '" width="90" height="68">';
-					}
-				break;
-
-				case "tv_season":
+				case "radio_season":
 					$terms = get_the_terms( $post->ID, 'season' );
 
 					if ( empty( $terms ) )
@@ -154,8 +142,8 @@
 					echo join( ', ', $output );
 				break;
 
-				case "tv_category":
-					$terms = get_the_terms( $post->ID, 'tv-section' );
+				case "radio_category":
+					$terms = get_the_terms( $post->ID, 'radio-section' );
 
 					if ( empty( $terms ) )
 					break;
@@ -165,8 +153,8 @@
 					foreach ( $terms as $term ) {
 						
 						$output[] = sprintf( '<a href="%s">%s</a>',
-							esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'tv-section' => $term->slug ), 'edit.php' ) ),
-							esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'tv-section', 'display' ) )
+							esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'radio-section' => $term->slug ), 'edit.php' ) ),
+							esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'radio-section', 'display' ) )
 						);
 	
 					}
@@ -174,7 +162,7 @@
 					echo join( ', ', $output );
 				break;
 
-				case "tv_episode":
+				case "radio_episode":
 					$terms = get_the_terms( $post->ID, 'episode' );
 
 					if ( empty( $terms ) )
@@ -198,7 +186,7 @@
 				break;
 			}
 		}
-	} // /sp_tv_cp_custom_column
+	} // /sp_radio_cp_custom_column
 
 	
 	

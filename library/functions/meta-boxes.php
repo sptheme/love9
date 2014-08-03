@@ -167,7 +167,7 @@ $post_format_video = array(
 	'id'          => 'format-video',
 	'title'       => 'Video meta',
 	'desc'        => 'These settings enable you to embed videos into your posts.',
-	'pages'       => array( 'post', 'video_gallery', 'tv' ),
+	'pages'       => array( 'post', 'video_gallery', 'document', 'tv' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(
@@ -185,23 +185,17 @@ $post_format_video = array(
 /* ---------------------------------------------------------------------- */
 $post_format_audio = array(
 	'id'          => 'format-audio',
-	'title'       => 'Format: Audio',
+	'title'       => 'Audio meta',
 	'desc'        => 'These settings enable you to embed audio into your posts. You must provide both .mp3 and .ogg/.oga file formats in order for self hosted audio to function accross all browsers.',
-	'pages'       => array( 'post' ),
+	'pages'       => array( 'post', 'document', 'radio' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(
 		array(
-			'label'		=> 'MP3 File URL',
-			'id'		=> $prefix . 'audio_mp3_url',
-			'type'		=> 'upload',
-			'desc'		=> 'The URL to the .mp3 or .m4a audio file'
-		),
-		array(
-			'label'		=> 'OGA File URL',
-			'id'		=> $prefix . 'audio_ogg_url',
-			'type'		=> 'upload',
-			'desc'		=> 'The URL to the .oga, .ogg audio file'
+			'label'		=> 'Soundcloud URL',
+			'id'		=> $prefix . 'soundcloud_url',
+			'type'		=> 'text',
+			'desc'		=> 'Enter share URL of sound from Soundcloud'
 		)
 	)
 );

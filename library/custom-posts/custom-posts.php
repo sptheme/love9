@@ -9,9 +9,12 @@ load_template( SP_BASE_DIR . 'library/custom-posts/cp-video-gallery.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-announcement.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-document.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-tv.php' );
+load_template( SP_BASE_DIR . 'library/custom-posts/cp-radio.php' );
 
 //Taxonomies
+load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-season.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-tv.php' );
+load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-radio.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-episode.php' );
 	
 /*==========================================================================*/

@@ -4,7 +4,7 @@ add_action('init', 'sp_tax_episode_category_init', 0);
 function sp_tax_episode_category_init() {
 	register_taxonomy(
 		'episode',
-		array( 'tv' ),
+		array( 'tv', 'radio' ),
 		array(
 			'hierarchical' => true,
 			'labels' => array(
