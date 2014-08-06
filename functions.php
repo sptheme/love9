@@ -38,6 +38,7 @@ if ( ! isset( $cp_menu_position ) )
 			'menu_document'			=> 48,
 			'menu_tv'				=> 5,
 			'menu_radio'			=> 5,
+			'menu_topic'			=> 5,
 		);
 
 
