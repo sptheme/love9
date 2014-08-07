@@ -64,18 +64,12 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_style('flexslider-custom', SP_ASSETS_THEME . 'css/flexslider-custom.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('magnific-popup', SP_ASSETS_THEME . 'css/magnific-popup.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, SP_SCRIPTS_VERSION);
-		if ( ot_get_option('responsive') != 'off' ) {
-			wp_enqueue_style('menu-mobile', SP_ASSETS_THEME . 'css/menu-mobile.css', false, SP_SCRIPTS_VERSION);
-			wp_enqueue_style('responsive', SP_ASSETS_THEME . 'css/responsive.css', false, SP_SCRIPTS_VERSION);
-			wp_enqueue_script('mobile-menu', SP_ASSETS_THEME . 'js/mobile-menu.js', array('jquery'), SP_SCRIPTS_VERSION, true);
-		}
-
+		
 		//Register scripts
 		wp_enqueue_script('modernizr', SP_ASSETS_THEME . 'js/modernizr.js', array('jquery'), SP_SCRIPTS_VERSION, false);
 		wp_enqueue_script('flexslider', SP_ASSETS_THEME . 'js/jquery.flexslider.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('fitvideos', SP_ASSETS_THEME . 'js/jquery.fitvids.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('magnific-popup', SP_ASSETS_THEME . 'js/jquery.magnific-popup.min.js', array('jquery'), SP_SCRIPTS_VERSION, false);
-		wp_enqueue_script('hammer', SP_ASSETS_THEME . 'js/hammer.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('custom', SP_ASSETS_THEME . 'js/custom.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 
 		if ( is_singular() ) { wp_enqueue_script('sharrre', SP_ASSETS_THEME . 'js/jquery.sharrre.min.js', array('jquery'), SP_SCRIPTS_VERSION, true); }
@@ -506,22 +500,20 @@ function sp_adminfavicon() {
 add_filter( 'wp_head', 'sp_head_meta', 0 );
 function sp_head_meta() { ?>
 	
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<?php if ( ot_get_option('responsive') ) { ?><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-	<?php } ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<?php if (ot_get_option('custom-ios-title') != "") { ?><meta name="apple-mobile-web-app-title" content="<?php echo __(ot_get_option('custom-ios-title'), SP_TEXT_DOMAIN); ?>"><?php } ?>
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php if ( ot_get_option('favicon') ) { ?><link rel="shortcut icon" href="<?php echo ot_get_option('favicon'); ?>" /><?php } ?>
 
-	<?php if ( ot_get_option('custom-ios-icon144') ) { ?><link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo ot_get_option('custom-ios-icon144'); ?>" />
+	<?php if ( ot_get_option('custom-ios-icon144') ) { ?><link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo ot_get_option('custom-ios-icon144'); ?>">
 	<?php } ?>
-	<?php if ( ot_get_option('custom-ios-icon114') ) { ?><link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo ot_get_option('custom-ios-icon114'); ?>" />
+	<?php if ( ot_get_option('custom-ios-icon114') ) { ?><link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo ot_get_option('custom-ios-icon114'); ?>">
 	<?php } ?>
-	<?php if ( ot_get_option('custom-ios-icon72') ) { ?><link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo ot_get_option('custom-ios-icon72'); ?>" />
+	<?php if ( ot_get_option('custom-ios-icon72') ) { ?><link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo ot_get_option('custom-ios-icon72'); ?>">
 	<?php } ?>
-	<?php if ( ot_get_option('custom-ios-icon57') ) { ?><link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo ot_get_option('custom-ios-icon57'); ?>" />
+	<?php if ( ot_get_option('custom-ios-icon57') ) { ?><link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo ot_get_option('custom-ios-icon57'); ?>">
 	<?php } ?>
 
 

@@ -44,20 +44,16 @@ function custom_theme_options() {
 /* ------------------------------------ */	
 	'sections'        => array(
 		array(
-			'id'		=> 'general',
-			'title'		=> 'General'
-		),
-		array(
-			'id'		=> 'blog',
-			'title'		=> 'Blog'
-		),
-		array(
 			'id'		=> 'header',
 			'title'		=> 'Header'
 		),
 		array(
 			'id'		=> 'footer',
 			'title'		=> 'Footer'
+		),
+		array(
+			'id'		=> 'blog',
+			'title'		=> 'Blog'
 		),
 		array(
 			'id'		=> 'layout',
@@ -81,143 +77,6 @@ function custom_theme_options() {
 /* ------------------------------------ */
 	'settings'        => array(
 		
-		// General: Responsive Layout
-		array(
-			'id'		=> 'responsive',
-			'label'		=> 'Responsive Layout',
-			'desc'		=> 'Mobile and tablet optimizations [ <strong>responsive.css</strong> ]',
-			'std'		=> 'on',
-			'type'		=> 'on-off',
-			'section'	=> 'general'
-		),
-		
-		// Blog: Excerpt Length
-		array(
-			'id'			=> 'excerpt-length',
-			'label'			=> 'Excerpt Length',
-			'desc'			=> 'Max number of words',
-			'std'			=> '34',
-			'type'			=> 'numeric-slider',
-			'section'		=> 'blog',
-			'min_max_step'	=> '0,100,1'
-		),
-		// Blog: Featured Posts
-		array(
-			'id'		=> 'featured-posts-include',
-			'label'		=> 'Featured Posts',
-			'desc'		=> 'To show featured posts in the slider AND the content below<br /><i>Usually not recommended</i>',
-			'type'		=> 'checkbox',
-			'section'	=> 'blog',
-			'choices'	=> array(
-				array( 
-					'value' => '1',
-					'label' => 'Include featured posts in content area'
-				)
-			)
-		),
-		// Blog: Featured Category
-		array(
-			'id'		=> 'featured-category',
-			'label'		=> 'Featured Category',
-			'desc'		=> 'By not selecting a category, it will show your latest post(s) from all categories',
-			'type'		=> 'category-select',
-			'section'	=> 'blog'
-		),
-		// Blog: Featured Category Count
-		array(
-			'id'			=> 'featured-posts-count',
-			'label'			=> 'Featured Post Count',
-			'desc'			=> 'Max number of featured posts to display. <br /><i>Set to 1 and it will show it without any slider script</i><br /><i>Set it to 0 to disable</i>',
-			'std'			=> '1',
-			'type'			=> 'numeric-slider',
-			'section'		=> 'blog',
-			'min_max_step'	=> '0,10,1'
-		),
-		// Blog: Thumbnail Placeholder
-		array(
-			'id'		=> 'placeholder',
-			'label'		=> 'Thumbnail Placeholder',
-			'desc'		=> 'Show featured image placeholders if no featured image is set',
-			'std'		=> 'on',
-			'type'		=> 'on-off',
-			'section'	=> 'blog'
-		),
-		// Blog: Single - Social Share
-		array(
-			'id'		=> 'social_share',
-			'label'		=> 'Single &mdash; Share Bar',
-			'desc'		=> 'Social sharing buttons for each article',
-			'std'		=> 'on',
-			'type'		=> 'on-off',
-			'section'	=> 'blog'
-		),
-		// Blog: Twitter Username
-		array(
-			'id'		=> 'twitter-username',
-			'label'		=> 'Twitter Username',
-			'desc'		=> 'Your @username will be added to share-tweets of your posts (optional)',
-			'type'		=> 'text',
-			'section'	=> 'blog'
-		),
-		// Blog: Single - Authorbox
-		array(
-			'id'		=> 'author-bio',
-			'label'		=> 'Single &mdash; Author Bio',
-			'desc'		=> 'Shows post author description, if it exists',
-			'std'		=> 'on',
-			'type'		=> 'on-off',
-			'section'	=> 'blog'
-		),
-		// Blog: Single - Related Posts
-		array(
-			'id'		=> 'related-posts',
-			'label'		=> 'Single &mdash; Related Posts',
-			'desc'		=> 'Shows randomized related articles below the post',
-			'std'		=> 'categories',
-			'type'		=> 'radio',
-			'section'	=> 'blog',
-			'choices'	=> array(
-				array( 
-					'value' => '1',
-					'label' => 'Disable'
-				),
-				array( 
-					'value' => 'categories',
-					'label' => 'Related by categories'
-				),
-				array( 
-					'value' => 'tags',
-					'label' => 'Related by tags'
-				)
-			)
-		),
-		// Blog: Single - Post Navigation Location
-		array(
-			'id'		=> 'post-nav',
-			'label'		=> 'Single &mdash; Post Navigation',
-			'desc'		=> 'Shows links to the next and previous article',
-			'std'		=> 's1',
-			'type'		=> 'radio',
-			'section'	=> 'blog',
-			'choices'	=> array(
-				array( 
-					'value' => '1',
-					'label' => 'Disable'
-				),
-				array( 
-					'value' => 's1',
-					'label' => 'Sidebar Primary'
-				),
-				array( 
-					'value' => 's2',
-					'label' => 'Sidebar Secondary'
-				),
-				array( 
-					'value' => 'content',
-					'label' => 'Below content'
-				)
-			)
-		),
 		// Header: Custom Logo
 		array(
 			'id'		=> 'custom-logo',
@@ -367,6 +226,133 @@ function custom_theme_options() {
 			'type'		=> 'text',
 			'section'	=> 'footer',
 			'condition' => 'credit:is(on)'
+		),
+		// Blog: Excerpt Length
+		array(
+			'id'			=> 'excerpt-length',
+			'label'			=> 'Excerpt Length',
+			'desc'			=> 'Max number of words',
+			'std'			=> '34',
+			'type'			=> 'numeric-slider',
+			'section'		=> 'blog',
+			'min_max_step'	=> '0,100,1'
+		),
+		// Blog: Featured Posts
+		array(
+			'id'		=> 'featured-posts-include',
+			'label'		=> 'Featured Posts',
+			'desc'		=> 'To show featured posts in the slider AND the content below<br /><i>Usually not recommended</i>',
+			'type'		=> 'checkbox',
+			'section'	=> 'blog',
+			'choices'	=> array(
+				array( 
+					'value' => '1',
+					'label' => 'Include featured posts in content area'
+				)
+			)
+		),
+		// Blog: Featured Category
+		array(
+			'id'		=> 'featured-category',
+			'label'		=> 'Featured Category',
+			'desc'		=> 'By not selecting a category, it will show your latest post(s) from all categories',
+			'type'		=> 'category-select',
+			'section'	=> 'blog'
+		),
+		// Blog: Featured Category Count
+		array(
+			'id'			=> 'featured-posts-count',
+			'label'			=> 'Featured Post Count',
+			'desc'			=> 'Max number of featured posts to display. <br /><i>Set to 1 and it will show it without any slider script</i><br /><i>Set it to 0 to disable</i>',
+			'std'			=> '1',
+			'type'			=> 'numeric-slider',
+			'section'		=> 'blog',
+			'min_max_step'	=> '0,10,1'
+		),
+		// Blog: Thumbnail Placeholder
+		array(
+			'id'		=> 'placeholder',
+			'label'		=> 'Thumbnail Placeholder',
+			'desc'		=> 'Show featured image placeholders if no featured image is set',
+			'std'		=> 'on',
+			'type'		=> 'on-off',
+			'section'	=> 'blog'
+		),
+		// Blog: Single - Social Share
+		array(
+			'id'		=> 'social_share',
+			'label'		=> 'Single &mdash; Share Bar',
+			'desc'		=> 'Social sharing buttons for each article',
+			'std'		=> 'on',
+			'type'		=> 'on-off',
+			'section'	=> 'blog'
+		),
+		// Blog: Twitter Username
+		array(
+			'id'		=> 'twitter-username',
+			'label'		=> 'Twitter Username',
+			'desc'		=> 'Your @username will be added to share-tweets of your posts (optional)',
+			'type'		=> 'text',
+			'section'	=> 'blog'
+		),
+		// Blog: Single - Authorbox
+		array(
+			'id'		=> 'author-bio',
+			'label'		=> 'Single &mdash; Author Bio',
+			'desc'		=> 'Shows post author description, if it exists',
+			'std'		=> 'on',
+			'type'		=> 'on-off',
+			'section'	=> 'blog'
+		),
+		// Blog: Single - Related Posts
+		array(
+			'id'		=> 'related-posts',
+			'label'		=> 'Single &mdash; Related Posts',
+			'desc'		=> 'Shows randomized related articles below the post',
+			'std'		=> 'categories',
+			'type'		=> 'radio',
+			'section'	=> 'blog',
+			'choices'	=> array(
+				array( 
+					'value' => '1',
+					'label' => 'Disable'
+				),
+				array( 
+					'value' => 'categories',
+					'label' => 'Related by categories'
+				),
+				array( 
+					'value' => 'tags',
+					'label' => 'Related by tags'
+				)
+			)
+		),
+		// Blog: Single - Post Navigation Location
+		array(
+			'id'		=> 'post-nav',
+			'label'		=> 'Single &mdash; Post Navigation',
+			'desc'		=> 'Shows links to the next and previous article',
+			'std'		=> 's1',
+			'type'		=> 'radio',
+			'section'	=> 'blog',
+			'choices'	=> array(
+				array( 
+					'value' => '1',
+					'label' => 'Disable'
+				),
+				array( 
+					'value' => 's1',
+					'label' => 'Sidebar Primary'
+				),
+				array( 
+					'value' => 's2',
+					'label' => 'Sidebar Secondary'
+				),
+				array( 
+					'value' => 'content',
+					'label' => 'Below content'
+				)
+			)
 		),
 		// Layout : Global
 		array(
