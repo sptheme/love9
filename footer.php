@@ -50,8 +50,7 @@
             
         </div><!-- .container .clearfix -->
     </footer><!-- #footer -->
-
-    </div> <!-- #content-container -->
+    
 </div> <!-- #wrapper -->
 
 <?php wp_footer(); ?>
