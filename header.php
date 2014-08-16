@@ -41,13 +41,7 @@
             <?php echo sp_main_navigation(); ?>
         </nav><!-- .primary-nav .wrap -->
         
-        <div class="language">
-            <ul>
-                <li><?php _e('Select language:', SP_TEXT_DOMAIN); ?></li>
-                <li class="en"><img src="<?php echo SP_BASE_URL; ?>assets/images/demo/en-flag.png"></li>
-                <li class="kh"><img src="<?php echo SP_BASE_URL; ?>assets/images/demo/kh-flag.png"></li>
-            </ul>
-        </div> <!-- .language -->
+        <?php echo languages_list_header(); ?>
         
 	</div><!-- end .container .clearfix -->
     </header><!-- end #header -->

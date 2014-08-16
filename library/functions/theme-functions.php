@@ -10,7 +10,7 @@ if( !function_exists('languages_list_header')) {
 		$languages = icl_get_languages('skip_missing=0&orderby=code');
 		if(!empty($languages)){
 			echo '<div class="language"><ul>';
-			echo '<li>' . __('Language: ', 'sptheme') . '</li>';
+			echo '<li>' . __('Language: ', SP_TEXT_DOMAIN) . '</li>';
 			foreach($languages as $l){
 				echo '<li class="'.$l['language_code'].'">';
 
