@@ -683,30 +683,20 @@ function custom_theme_options() {
 		),
 		// Social Links : List
 		array(
-			'id'		=> 'social-links',
-			'label'		=> 'Social Links',
-			'desc'		=> 'Create and organize your social links',
-			'type'		=> 'list-item',
-			'section'	=> 'social-links',
-			'choices'	=> array(),
-			'settings'	=> array(
-				array(
-					'id'		=> 'social-icon',
-					'label'		=> 'Icon Name',
-					'desc'		=> 'Font Awesome icon names [<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><strong>View all</strong>]</a>  ',
-					'std'		=> 'fa-',
-					'type'		=> 'text',
-					'choices'	=> array()
-				),
-				array(
-					'id'		=> 'social-link',
-					'label'		=> 'Link',
-					'desc'		=> 'Enter the full url for your icon button',
-					'std'		=> 'http://',
-					'type'		=> 'text',
-					'choices'	=> array()
-				)
-			)
+			'id'		=> 'facebook-url',
+			'label'		=> 'Facebook URL',
+			'desc'		=> 'Enter facebook URL or Link',
+			'type'		=> 'text',
+			'std'		=> '#',
+			'section'	=> 'social-links'
+		),
+		array(
+			'id'		=> 'youtube-url',
+			'label'		=> 'Youtube Channel',
+			'desc'		=> 'Enter Youtube channel',
+			'type'		=> 'text',
+			'std'		=> '#',
+			'section'	=> 'social-links'
 		),
 		// Styling: Enable
 		array(

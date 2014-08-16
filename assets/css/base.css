@@ -1,14 +1,24 @@
+/* Color range
+	Blue #3b5998
+	Medium Blue #6d84b4
+	Lighter Blue #afbdd4
+	Lightest Blue #d8dfea
+
+	Body text #44444 #5b6064 #6B6B6B;
+	Sub title light gray #acacac
+	Light Gray #f0f0f0;
+*/
+
 /* only in content editor page */
 html .mceContentBody {
 	max-width: 640px;
-	font-size: 75%; /* Browser default = 16px, Hence, 16*75/100 = 12px (base font size) */
 }
 /* end only in content editor page */
 
 body {
-	font: 1em;
+	font-size: 1em;
 	line-height: 1.5;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Arial, sans-serif;
 	color: #6B6B6B;
 	background: #ffffff;
 }
@@ -16,29 +26,32 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin: 0;
-  color:#3B3B3B;
+  /*color:#3B3B3B;*/
 }
 h1 {
   font-size:32px;
   line-height:36px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 h2 {
   font-size:28px;
   line-height:31px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 h3 {
   font-size:22px;
   line-height:25px;
+  margin-bottom: 5px;
 }
 h4 {
   font-size:18px;
   line-height:22px;
+  margin-bottom: 5px;
 }
 h5 {
   font-size:16px;
   line-height:21px;
+  margin-bottom: 3px;
 }
 h6 {
   font-size:13px;
@@ -47,7 +60,7 @@ h6 {
 
 /* Link */
 a, a > * {
-	color: #6B6B6B; /* #4d90fe; */
+	color: #3b5998; /* #4d90fe; */
 	text-decoration: none;
 	-webkit-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
 	   -moz-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
@@ -56,7 +69,7 @@ a, a > * {
 	        transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
 }
 
-a:hover { text-decoration: none; color: #FD4326; }
+a:hover { text-decoration: underline; color: #3b5998; }
 a:hover, a:active { outline: 0 }
 
 /* Text elements */

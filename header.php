@@ -21,9 +21,9 @@
     <header id="header">
     <div class="container clearfix">
         
-        <div id="menu-trigger" class="mobile-menu-trigger left icon-menu"></div>
+        <!-- <div id="menu-trigger" class="mobile-menu-trigger left icon-menu"></div> -->
 
-        <div class="brand" role="banner">
+        <div id="brand" role="banner">
             <?php if( !is_singular() ) echo '<h1>'; else echo '<h2>'; ?>
             
             <a  href="<?php echo home_url() ?>/"  title="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>">
@@ -40,6 +40,14 @@
         <nav id="primary-menu" class="clearfix">
             <?php echo sp_main_navigation(); ?>
         </nav><!-- .primary-nav .wrap -->
+        
+        <div class="language">
+            <ul>
+                <li><?php _e('Select language:', SP_TEXT_DOMAIN); ?></li>
+                <li class="en"><img src="<?php echo SP_BASE_URL; ?>assets/images/demo/en-flag.png"></li>
+                <li class="kh"><img src="<?php echo SP_BASE_URL; ?>assets/images/demo/kh-flag.png"></li>
+            </ul>
+        </div> <!-- .language -->
         
 	</div><!-- end .container .clearfix -->
     </header><!-- end #header -->

@@ -282,6 +282,161 @@ $post_format_quote = array(
 	)
 );
 
+/* ---------------------------------------------------------------------- */
+/*	Home template
+/* ---------------------------------------------------------------------- */
+$page_template_home = array(
+	'id'          => 'home-settings',
+	'title'       => 'Home settings',
+	'desc'        => 'Option setting for homepage',
+	'pages'       => array( 'page' ),
+	'context'     => 'normal',
+	'priority'    => 'high',
+	'fields'      => array(
+		array(
+			'label'		=> 'Welcome',
+			'id'		=> $prefix . 'intro_options',
+			'type'		=> 'tab'
+		),
+		array(
+			'label'		=> 'Intro title',
+			'id'		=> $prefix . 'intro_title',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'TV',
+			'id'		=> $prefix . 'tv_options',
+			'type'		=> 'tab'
+		),
+		array(
+			'label'		=> 'TV title',
+			'id'		=> $prefix . 'tv_title',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'TV Drama',
+			'id'		=> $prefix . 'tv_drama',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'TV Magazine',
+			'id'		=> $prefix . 'tv_magazine',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Radio',
+			'id'		=> $prefix . 'radio_options',
+			'type'		=> 'tab'
+		),
+		array(
+			'label'		=> 'Radio title',
+			'id'		=> $prefix . 'radio_title',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Radio actor',
+			'id'		=> $prefix . 'radio_actor',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Radio Drama',
+			'id'		=> $prefix . 'radio_drama',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Listen to podcast',
+			'id'		=> $prefix . 'listen_podcast',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Love9 Village',
+			'id'		=> $prefix . 'village_options',
+			'type'		=> 'tab'
+		),
+		array(
+			'label'		=> 'Love9 Village title',
+			'id'		=> $prefix . 'village_title',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Presenter title',
+			'id'		=> $prefix . 'presenter',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Actor title',
+			'id'		=> $prefix . 'actor',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Photo Gallery',
+			'id'		=> $prefix . 'photo_gallery',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Behind the sences',
+			'id'		=> $prefix . 'behind_sence',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Videos Gallery',
+			'id'		=> $prefix . 'video_gallery',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Announcement',
+			'id'		=> $prefix . 'announcement',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Blog',
+			'id'		=> $prefix . 'blog',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Documents',
+			'id'		=> $prefix . 'document',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'About',
+			'id'		=> $prefix . 'about_options',
+			'type'		=> 'tab'
+		),
+		array(
+			'label'		=> 'About title',
+			'id'		=> $prefix . 'about_title',
+			'type'		=> 'upload',
+		)
+	)
+);
+
+function rw_maybe_include() {
+	// Include in back-end only
+	if ( ! defined( 'WP_ADMIN' ) || ! WP_ADMIN ) {
+		return false;
+	}
+	// Always include for ajax
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return true;
+	}
+	if ( isset( $_GET['post'] ) ) {
+		$post_id = $_GET['post'];
+	}
+	elseif ( isset( $_POST['post_ID'] ) ) {
+		$post_id = $_POST['post_ID'];
+	}
+	else {
+		$post_id = false;
+	}
+
+	$post_id = (int) $post_id;
+	$post = get_post( $post_id );
+	$template = get_post_meta( $post_id, '_wp_page_template', true );
+	
+	return $template;
+}
+
 /*  Register meta boxes
 /* ------------------------------------ */
 	ot_register_meta_box( $page_options );
@@ -294,4 +449,9 @@ $post_format_quote = array(
 	// ot_register_meta_box( $post_options );
 	ot_register_meta_box( $post_type_team );
 	ot_register_meta_box( $post_type_gallery );
+	
+	$template_file = rw_maybe_include();
+	if ( $template_file == 'template-onepage.php' ) {
+		ot_register_meta_box( $page_template_home );
+	}
 }

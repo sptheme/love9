@@ -1,55 +1,35 @@
  
-    <aside class="footer-widgets">
+    <section id="about-sponsors">
         <div class="container clearfix">
-            <?php if ( is_active_sidebar('footer-sidebar-1') ) :   
-            dynamic_sidebar('footer-sidebar-1');
-                else:?> 
-                    <div class="non-widget widget">
-                     <h4><?php _e('Footer Sidebar 1', SP_TEXT_DOMAIN); ?></h4>
-                    <p class="noside"><?php _e('To edit this sidebar, go to admin backend\'s <strong><em>Appearance -&gt; Widgets</em></strong> and place widgets into the <strong><em> Footer sidebar 1 </em></strong> Area', SP_TEXT_DOMAIN); ?></p>
-                    </div>
-            <?php endif; ?>
-
-            <?php if ( is_active_sidebar('footer-sidebar-2') ) :   
-            dynamic_sidebar('footer-sidebar-2');
-                else:?> 
-                    <div class="non-widget widget">
-                     <h4><?php _e('Footer Sidebar 2', SP_TEXT_DOMAIN); ?></h4>
-                    <p class="noside"><?php _e('To edit this sidebar, go to admin backend\'s <strong><em>Appearance -&gt; Widgets</em></strong> and place widgets into the <strong><em> Footer sidebar 2 </em></strong> Area', SP_TEXT_DOMAIN); ?></p>
-                    </div>
-            <?php endif; ?>
-
-            <?php if ( is_active_sidebar('footer-sidebar-3') ) :   
-            dynamic_sidebar('footer-sidebar-3');
-                else:?> 
-                    <div class="non-widget widget">
-                     <h4><?php _e('Footer Sidebar 3', SP_TEXT_DOMAIN); ?></h4>
-                    <p class="noside"><?php _e('To edit this sidebar, go to admin backend\'s <strong><em>Appearance -&gt; Widgets</em></strong> and place widgets into the <strong><em> Footer sidebar 3 </em></strong> Area', SP_TEXT_DOMAIN); ?></p>
-                    </div>
-            <?php endif; ?>
-
-        </div> <!-- .container .clearfix -->
-    </aside>
+            <section class="clearfix">
+                <div class="block-title"><h4>Some words about us<div class="shadow-left"></div><div class="shadow-right"></div></h4></div>
+                <h4>Love9 is the brand new project from <a href="#">BBC Media Action</a> on TV, on Radio and online. It’s all about you, our youth audiences. And of course, it’s about LOVE a subject we know is very important to you all!</h4>
+                <p>The programmes and discussions will be made and hosted by our own youth teams, speaking with you as peers about your lives and the situations you face every day, with a particular focus on sexual and reproductive health and rights.</p>
+                <a class="learn-more" href="#contact-dialog"><?php _e('Learn more', SP_TEXT_DOMAIN); ?></a>
+                
+                <section id="sponsors">
+                    <h6>Funded by:</h6>
+                    <img src="<?php echo SP_BASE_URL; ?>assets/images/unfpa.jpg">
+                    <img src="<?php echo SP_BASE_URL; ?>assets/images/usaid-cambodia.jpg">
+                </section>
+            </section> <!-- #about-sponsors -->
+        </div>
+    </section>
     
-    <footer id="footer" role="contentinfo">
-        <div class="container clearfix">
-        	<nav id="footer-nav" class="clearfix">
-	        	<?php echo sp_footer_navigation(); ?>
-        	</nav>
-            <div class="copyright">
-                <?php if ( ot_get_option( 'copyright' ) ): ?>
-                    <p><?php echo ot_get_option( 'copyright' ); ?></p>
-                <?php else: ?>
-                    <p><?php bloginfo(); ?> &copy; <?php echo date( 'Y' ); ?>. <?php _e( 'All Rights Reserved.', SP_TEXT_DOMAIN ); ?></p>
-                <?php endif; ?>
-            </div><!--/#copyright-->
-            
-            <?php if ( ot_get_option( 'credit' ) != 'off' ): ?>
-            <p class="credit"><?php echo ot_get_option( 'credit-text' ); ?></p><!--/#credit-->
-            <?php endif; ?><!--/#credit-->
-            
-        </div><!-- .container .clearfix -->
-    </footer><!-- #footer -->
+    <footer class="clearfix">
+        <nav id="footer-nav">
+            <?php echo sp_footer_navigation(); ?>
+        </nav>
+        <p class="copyright">
+        <?php 
+        if ( ot_get_option( 'copyright' ) ): 
+            echo ot_get_option( 'copyright' ); 
+        else:
+            echo get_bloginfo() . '&copy;' . date( 'Y' ) .'. ' . __( 'Copyright© 2014 Love9. All right reserved.', SP_TEXT_DOMAIN );
+        endif; ?>
+    </footer>
+
+    
     
 </div> <!-- #wrapper -->
 

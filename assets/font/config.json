@@ -25,6 +25,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "872d9516df93eb6b776cc4d94bd97dac",
+      "css": "video-1",
+      "code": 59411,
+      "src": "fontawesome"
+    },
+    {
       "uid": "12f4ece88e46abd864e40b35e05b11cd",
       "css": "ok",
       "code": 10003,
@@ -157,6 +163,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "5408be43f7c42bccee419c6be53fdef5",
+      "css": "doc-text",
+      "code": 59414,
+      "src": "fontawesome"
+    },
+    {
       "uid": "9f7e588c66cfd6891f6f507cf6f6596b",
       "css": "phone",
       "code": 62686,
@@ -196,6 +208,12 @@
       "uid": "0d20938846444af8deb1920dc85a29fb",
       "css": "logout",
       "code": 59201,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "19c50c52858a81de58f9db488aba77bc",
+      "css": "mic-1",
+      "code": 59412,
       "src": "fontawesome"
     },
     {
@@ -448,6 +466,12 @@
       "uid": "890bcc8897cce868f6ee65cadadde036",
       "css": "beer",
       "code": 61692,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "47a1f80457068fbeab69fdb83d7d0817",
+      "css": "youtube-play",
+      "code": 59416,
       "src": "fontawesome"
     },
     {
