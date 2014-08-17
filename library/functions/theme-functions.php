@@ -524,49 +524,6 @@ function sp_soundcloud($url , $autoplay = 'false' ) {
 	return '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url='.$url.'&amp;auto_play='.$autoplay.'&amp;show_artwork=true"></iframe>';
 }
 
-function sp_portfolio_grid( $col = 'list', $posts_per_page = 5 ) {
-	
-	$temp ='';
-	$output = '';
-	
-	$args = array(
-			'posts_per_page' => (int) $posts_per_page,
-			'post_type' => 'portfolio',
-			);
-			
-	$post_list = new WP_Query($args);
-		
-	ob_start();
-	if ($post_list && $post_list->have_posts()) {
-		
-		$output .= '<ul class="portfolio ' . $col . '">';
-		
-		while ($post_list->have_posts()) : $post_list->the_post();
-		
-		$output .= '<li>';
-		$output .= '<div class="two-fourth"><div class="post-thumbnail">';
-		$output .= '<a href="'.get_permalink().'"><img src="' . sp_post_thumbnail('portfolio-2col') . '" /></a>';
-		$output .= '</div></div>';
-		
-		$output .= '<div class="two-fourth last">';
-		$output .= '<a href="'.get_permalink().'" class="port-'. $col .'-title">' . get_the_title() .'</a>';
-		$output .= '</div>';	
-		
-		$output .= '</li>';	
-		endwhile;
-		
-		$output .= '</ul>';
-		
-	}
-	$temp = ob_get_clean();
-	$output .= $temp;
-	
-	wp_reset_postdata();
-	
-	return $output;
-	
-}
-
 /* ---------------------------------------------------------------------- */
 /*	Get Most Racent posts from Category
 /* ---------------------------------------------------------------------- */

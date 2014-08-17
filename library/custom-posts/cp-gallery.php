@@ -77,7 +77,7 @@
 				'public'                => true,
 				'show_ui'               => true,
 				'show_in_nav_menus'	    => false,
-				'show_in_menu'			=> 'edit.php',
+				//'show_in_menu'			=> 'edit.php',
 				'publicly_queryable'	=> true,
 				'exclude_from_search'   => false,
 				'has_archive'			=> false,

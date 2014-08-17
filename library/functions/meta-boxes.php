@@ -118,12 +118,6 @@ $post_type_team = array(
 			'id'		=> $prefix . 'team_position',
 			'type'		=> 'text',
 			'desc'		=> 'Enter the team member\'s position within the team.'
-		),
-		array(
-			'label'		=> 'Email address',
-			'id'		=> $prefix . 'team_email',
-			'type'		=> 'text',
-			'desc'		=> 'Enter the team member\'s email address.'
 		)
 	)
 );
@@ -139,12 +133,6 @@ $post_type_gallery = array(
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(
-		array(
-			'label'		=> 'Date',
-			'id'		=> $prefix . 'album_date',
-			'type'		=> 'date-picker',
-			'desc'		=> 'Date for album that was created or take photo'
-		),
 		array(
 			'label'		=> 'Location',
 			'id'		=> $prefix . 'album_location',
@@ -206,12 +194,18 @@ $post_format_audio = array(
 $post_format_gallery = array(
 	'id'          => 'format-gallery',
 	'title'       => 'Format: Gallery',
-	'desc'        => '<a title="Add Media" data-editor="content" class="button insert-media add_media" id="insert-media-button" href="#">Add Media</a> <br /><br />
-						To create a gallery, upload your images and then select "<strong>Uploaded to this post</strong>" from the dropdown (in the media popup) to see images attached to this post. You can drag to re-order or delete them there. <br /><br /><i>Note: Do not click the "Insert into post" button. Only use the "Insert Media" section of the upload popup, not "Create Gallery" which is for standard post galleries.</i>',
+	'desc'        => 'These settings enable you to present photos as slideshow in post',
 	'pages'       => array( 'post' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
-	'fields'      => array()
+	'fields'      => array(
+		array(
+			'label'		=> 'Upload photo',
+			'id'		=> $prefix . 'gallery',
+			'type'		=> 'gallery',
+			'desc'		=> 'Upload photos'
+		)
+	)
 );
 
 /* ---------------------------------------------------------------------- */
@@ -441,12 +435,12 @@ function rw_maybe_include() {
 /* ------------------------------------ */
 	ot_register_meta_box( $page_options );
 	ot_register_meta_box( $post_format_audio );
-	ot_register_meta_box( $post_format_chat );
 	ot_register_meta_box( $post_format_gallery );
-	ot_register_meta_box( $post_format_link );
-	ot_register_meta_box( $post_format_quote );
 	ot_register_meta_box( $post_format_video );
-	// ot_register_meta_box( $post_options );
+	/*ot_register_meta_box( $post_options );
+	ot_register_meta_box( $post_format_chat );
+	ot_register_meta_box( $post_format_link );
+	ot_register_meta_box( $post_format_quote );*/
 	ot_register_meta_box( $post_type_team );
 	ot_register_meta_box( $post_type_gallery );
 	

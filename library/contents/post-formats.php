@@ -97,28 +97,3 @@
 	</div>
 	
 <?php endif; ?>
-
-<?php if ( has_post_format( 'chat' ) ): // Chat ?>
-
-	<div class="post-format">
-		<div class="format-container">
-			<blockquote>
-				<?php echo (isset($meta['sp_chat'][0])?wpautop($meta['sp_chat'][0]):''); ?>
-			</blockquote>
-		</div>
-	</div>
-	
-<?php endif; ?>
-
-<?php if ( has_post_format( 'link' ) ): // Link ?>
-
-	<div class="post-format">
-		<div class="format-container">
-			<p><a href="<?php echo (isset($meta['sp_link_url'][0])?$meta['sp_link_url'][0]:'#'); ?>">
-				<i class="fa fa-link"></i>
-				<?php echo (isset($meta['sp_link_title'][0])?$meta['sp_link_title'][0]:get_the_title()); ?> &rarr;
-			</a></p>
-		</div>
-	</div>
-	
-<?php endif; ?>

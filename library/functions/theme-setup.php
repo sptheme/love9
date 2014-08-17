@@ -25,7 +25,7 @@ if( !function_exists('sp_theme_setup') )
 		add_theme_support( 'automatic-feed-links' );
 
 		// Add post formats
-		add_theme_support( 'post-formats', array( 'audio', 'gallery', 'video', 'behind the scene' ) );
+		add_theme_support( 'post-formats', array( 'audio', 'gallery', 'video', 'aside' ) );
 	
 		// Add suport for post thumbnails and set default sizes
 		add_theme_support( 'post-thumbnails' );
@@ -42,6 +42,20 @@ if( !function_exists('sp_theme_setup') )
 	}
 
 }
+
+/* ---------------------------------------------------------------------- */
+/*	Quickly Rename a WordPress Post Format
+/* ---------------------------------------------------------------------- */
+if( !function_exists('rename_post_formats') ) {
+	function rename_post_formats( $safe_text ) {
+	    if ( $safe_text == 'Aside' )
+	        return 'Document';
+
+	    return $safe_text;
+	}
+	add_filter( 'esc_html', 'rename_post_formats' );
+}
+
 
 /* ---------------------------------------------------------------------- */
 /*	Register and add styles and scripts for fontend

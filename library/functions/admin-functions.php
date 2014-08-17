@@ -17,7 +17,7 @@ load_template( SP_BASE_DIR . 'library/widgets/widgets.php');
 /* ---------------------------------------------------------------------- */
 if ( ! function_exists( 'sp_change_post_label' ) ) {
 
-	add_action( 'admin_menu', 'sp_change_post_label' );
+	//add_action( 'admin_menu', 'sp_change_post_label' );
 	function sp_change_post_label() {
 		global $menu;
 	    global $submenu;

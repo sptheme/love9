@@ -100,8 +100,8 @@
 			
 			$columns = array(
 				'cb'                   	=> '<input type="checkbox" />',
+				'radio_thumbnail'		=> __( 'Thumbnail', 'sptheme_admin' ),
 				'title'                	=> __( 'Title', 'sptheme_admin' ),
-				'radio_season'          => __( 'Season', 'sptheme_admin' ),
 				'radio_category'        => __( 'Radio Sections', 'sptheme_admin' ),
 				'radio_episode'        	=> __( 'Episode', 'sptheme_admin' ),
 				'date'		 			=> __( 'Date', 'sptheme_admin' )
@@ -122,24 +122,15 @@
 			
 			switch ( $column ) {
 				
-				case "radio_season":
-					$terms = get_the_terms( $post->ID, 'season' );
 
-					if ( empty( $terms ) )
-					break;
-	
-					$output = array();
-	
-					foreach ( $terms as $term ) {
-						
-						$output[] = sprintf( '<a href="%s">%s</a>',
-							esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'season' => $term->slug ), 'edit.php' ) ),
-							esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'season', 'display' ) )
-						);
-	
+				case "radio_thumbnail":
+					$custom_cover = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'medium' );
+					
+					if ( has_post_thumbnail( $post->ID ) ) {
+						echo '<img src="' . $custom_cover[0] . '" width="90" height="68">';
+					} else {
+						echo 'No feature image';
 					}
-	
-					echo join( ', ', $output );
 				break;
 
 				case "radio_category":
