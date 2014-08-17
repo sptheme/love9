@@ -12,7 +12,9 @@ get_header(); ?>
 		?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			
+				
+					<?php get_template_part('library/contents/post-formats'); ?>
+					
 					<header class="entry-header">
 						<h1 class="entry-title">
 						<?php if ( is_singular() ) : ?>
@@ -23,8 +25,6 @@ get_header(); ?>
 						</h1>
 						<div class="entry-meta"><?php sp_post_meta(); ?></div>
 					</header>
-
-					<?php get_template_part('library/contents/post-formats'); ?>			
 
 					<div class="entry-content">
 						<?php the_content(); ?>

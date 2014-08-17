@@ -17,7 +17,7 @@ function sp_widgets_init() {
 	) );
 
 	// Footer Sidebar
-	register_sidebar( array(
+	/*register_sidebar( array(
 		'name' 			=> __( 'Footer Sidebar', 'sptheme_admin' ),
 		'id' 			=> 'footer-sidebar',
 		'description' 	=> __( 'Drag widgets into this sidebar', 'sptheme_admin' ),
@@ -25,7 +25,7 @@ function sp_widgets_init() {
 		'after_widget' 	=> "</div>",
 		'before_title' 	=> '<div class="widget-title"><h4>',
 		'after_title' 	=> '</h4></div>',
-	) );
+	) );*/
 
 }
 add_action('widgets_init', 'sp_widgets_init');

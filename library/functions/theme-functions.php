@@ -418,13 +418,9 @@ function ajaxify_comments($comment_ID, $comment_status){
 /* ---------------------------------------------------------------------- */
 if ( ! function_exists( 'sp_post_meta' ) ) {
 	function sp_post_meta() {
-		printf( __( '<i class="icon icon-calendar-1"></i><a href="%1$s" title="%2$s"><time class="entry-date" datetime="%3$s"> %4$s</time></a><span class="by-author"> by </span><span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span><span class="posted-in"> in </span><i class="icon icon-tag"> </i> %8$s ', SP_TEXT_DOMAIN ),
-			esc_url( get_permalink() ),
-			esc_attr( get_the_time() ),
+		printf( __( '<i class="icon icon-calendar-1"></i><time class="entry-date" datetime="%1$s"> %2$s</time><span class="by-author"> by </span><span class="author vcard">%3$s</span><span class="posted-in"> in </span><i class="icon icon-tag"> </i> %4$s ', SP_TEXT_DOMAIN ),
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),
-			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-			esc_attr( sprintf( __( 'View all posts by %s', SP_TEXT_DOMAIN ), get_the_author() ) ),
 			get_the_author(),
 			get_the_category_list( ', ' )
 		);
