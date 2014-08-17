@@ -63,7 +63,7 @@
 
 			$role     = 'post'; // page
 			$slug     = 'gallery';
-			$supports = array('title', 'thumbnail'); // 'title', 'editor', 'thumbnail'
+			$supports = array('title', 'editor', 'thumbnail'); // 'title', 'editor', 'thumbnail'
 
 			$args = array(
 				'labels' 				=> $labels,

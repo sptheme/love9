@@ -353,12 +353,12 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Presenter title',
+			'label'		=> 'Presenter',
 			'id'		=> $prefix . 'presenter',
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Actor title',
+			'label'		=> 'Actor',
 			'id'		=> $prefix . 'actor',
 			'type'		=> 'upload',
 		),

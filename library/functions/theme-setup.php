@@ -70,7 +70,7 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		
 		//Register CSS style
 		wp_enqueue_style('gfont-opensans', 'http://fonts.googleapis.com/css?family=Oswald', false, SP_SCRIPTS_VERSION);
-		wp_enqueue_style('gfont-opensans', 'http://fonts.googleapis.com/css?family=Roboto:400italic,400', false, SP_SCRIPTS_VERSION);
+		//wp_enqueue_style('gfont-opensans', 'http://fonts.googleapis.com/css?family=Roboto:400italic,400', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('theme-info', SP_BASE_URL . 'style.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('fontello', SP_ASSETS_THEME . 'css/fontello.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('normalize', SP_ASSETS_THEME . 'css/normalize.css', false, SP_SCRIPTS_VERSION);
@@ -80,6 +80,10 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_style('magnific-popup', SP_ASSETS_THEME . 'css/magnific-popup.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('magnific-custom', SP_ASSETS_THEME . 'css/magnific-custom.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, SP_SCRIPTS_VERSION);
+		if ( ICL_LANGUAGE_CODE == 'kh') {
+			wp_enqueue_style('khmer-gfont', 'http://fonts.googleapis.com/css?family=Khmer', false, SP_SCRIPTS_VERSION);
+			wp_enqueue_style('kh', SP_ASSETS_THEME . 'css/kh.css', false, SP_SCRIPTS_VERSION);
+		}
 
 		//Register scripts
 		wp_enqueue_script('modernizr', SP_ASSETS_THEME . 'js/modernizr.js', array('jquery'), SP_SCRIPTS_VERSION, false);
@@ -233,6 +237,11 @@ if ( !function_exists('sp_browser_body_class') ) {
 	           } elseif ( stristr( $_SERVER['HTTP_USER_AGENT'],"windows") ) {
 	                 $classes[] = 'windows';
 	           }
+
+	        if(ICL_LANGUAGE_CODE == 'kh'){
+			    $classes[] = 'kh';
+			  }
+
 	        return $classes;
 	}
 	add_filter('body_class','sp_browser_body_class');
@@ -340,7 +349,7 @@ if (!function_exists('sp_footer_nav_fallback')) {
 	
 	function sp_footer_nav_fallback() {
     	
-		$menu_html = '<ul class="nav-footer-menu clear">';
+		$menu_html = '<ul class="footer-nav">';
 		$menu_html .= '<li><a href="'.admin_url('nav-menus.php').'">'.esc_html__('Add footer menu', SP_TEXT_DOMAIN).'</a></li>';
 		$menu_html .= '</ul>';
 		echo $menu_html;

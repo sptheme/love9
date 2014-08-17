@@ -209,23 +209,19 @@ function custom_theme_options() {
 			'type'		=> 'text',
 			'section'	=> 'footer'
 		),
-		// Footer: Credit
 		array(
-			'id'		=> 'credit',
-			'label'		=> 'Footer Credit',
-			'desc'		=> 'Footer credit text',
-			'std'		=> 'on',
-			'type'		=> 'on-off',
+			'id'		=> 'about-footer-text',
+			'label'		=> 'Text Highlight of About page',
+			'desc'		=> 'Select highlight about page to show in footer',
+			'type'		=> 'page_select',
 			'section'	=> 'footer'
 		),
 		array(
-			'id'		=> 'credit-text',
-			'label'		=> 'Credit by',
-			'desc'		=> 'Replace the credit text',
-			'std'		=> 'Powered by <a rel="nofollow" href="http://wordpress.org">WordPress</a>. Theme by <a rel="nofollow" href="http://www.novacambodia.com">Nova Cambodia</a>.',
-			'type'		=> 'text',
-			'section'	=> 'footer',
-			'condition' => 'credit:is(on)'
+			'id'		=> 'sponsor-footer-text',
+			'label'		=> 'Sponsor page',
+			'desc'		=> 'Select sponsor page to show in footer',
+			'type'		=> 'page_select',
+			'section'	=> 'footer'
 		),
 		// Blog: Excerpt Length
 		array(
