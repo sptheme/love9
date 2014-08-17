@@ -101,6 +101,7 @@
 			$columns = array(
 				'cb'                   	=> '<input type="checkbox" />',
 				'title'                	=> __( 'Title', 'sptheme_admin' ),
+				'radio_season'          => __( 'Season', 'sptheme_admin' ),
 				'radio_category'        => __( 'Radio Sections', 'sptheme_admin' ),
 				'radio_episode'        	=> __( 'Episode', 'sptheme_admin' ),
 				'date'		 			=> __( 'Date', 'sptheme_admin' )
@@ -121,6 +122,26 @@
 			
 			switch ( $column ) {
 				
+				case "radio_season":
+					$terms = get_the_terms( $post->ID, 'season' );
+
+					if ( empty( $terms ) )
+					break;
+	
+					$output = array();
+	
+					foreach ( $terms as $term ) {
+						
+						$output[] = sprintf( '<a href="%s">%s</a>',
+							esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'season' => $term->slug ), 'edit.php' ) ),
+							esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'season', 'display' ) )
+						);
+	
+					}
+	
+					echo join( ', ', $output );
+				break;
+
 				case "radio_category":
 					$terms = get_the_terms( $post->ID, 'radio-section' );
 
