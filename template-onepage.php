@@ -134,7 +134,7 @@ get_header(); ?>
 				<img class="behind-sence wow swing" src="<?php echo $home_meta['sp_behind_sence'][0]; ?>">
 				<img class="video wow swing" src="<?php echo $home_meta['sp_video_gallery'][0]; ?>">
 				<div class="love9 actor-village">
-				<img class="wow zoomIn" data-wow-duration="0.4s" data-wow-delay="1s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/title-village-en.png">
+				<img class="wow zoomIn" data-wow-duration="0.4s" data-wow-delay="1s" src="<?php echo $home_meta['sp_village_title'][0]; ?>">
 				<nav class="next-prev wow fadeInDown" data-wow-duration="0.2s" data-wow-delay="1.2s">
 					<a data-scroll href="#radio" class="prev"></a>
 					<a data-scroll href="#about" class="next"></a>

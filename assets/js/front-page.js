@@ -63,15 +63,26 @@
 	/*--------------------------------------------------------------------------------------*/
 	/* 	Primary and sub navigation section
 	/*--------------------------------------------------------------------------------------*/
-	$('.primary-nav li ul').remove();
-	$('.primary-nav li a').each(function(index) {
-		var $anchor = $primary_nav[index];
-		//$(this).attr({'data-scroll': $anchor, 'href': $anchor});
-		$(this).attr('href', '#');
+	$('.primary-nav > li').each(function(index) {
+		$anchor = $primary_nav[index];
+		$(this).children('a').attr('href', $anchor);
+		$(this).children('ul').remove();
+		/*$nav_a = $(this).html().replace('<a href="#">', '<a data-scroll href="'+ $anchor +'">');
+		$(this).html($nav_a);*/
 	});
-	$('.primary-nav li a').click(function(event) {
-		event.preventDefault();
-	});
+
+	$('.primary-nav li a[href*=#]:not([href=#])').click(function() {
+	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	      var target = $(this.hash);
+	      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	      if (target.length) {
+	        $('html,body').animate({
+	          scrollTop: target.offset().top - 80
+	        }, 1000);
+	        return false;
+	      }
+	    }
+	  });
 	/*$('.next-prev a').click(function(event) {
 		$sub_nav = $(this).attr('href');
 		$('#primary a[href="'+ $sub_nav +'"]').parent().addClass('current').siblings().removeClass('current');
