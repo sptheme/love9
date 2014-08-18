@@ -318,6 +318,16 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'TV Board',
+			'id'		=> $prefix . 'tv_board',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'TV Time',
+			'id'		=> $prefix . 'tv_time',
+			'type'		=> 'upload',
+		),
+		array(
 			'label'		=> 'Radio',
 			'id'		=> $prefix . 'radio_options',
 			'type'		=> 'tab'

@@ -42,11 +42,11 @@ get_header(); ?>
     	<img class="carrot wow fadeInUp" data-wow-delay="1s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/carrot.png">
     	<!-- TV Sence -->
     	<img class="tv-stage wow fadeIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/tv-stage.jpg">
-    	<img class="tv-board wow zoomIn" data-wow-duration="0.3s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/tv-board.png">
+    	<img class="tv-board wow zoomIn" data-wow-duration="0.3s" src="<?php echo $home_meta['sp_tv_board'][0]; ?>">
     	<img class="tv-stikcy-photo wow fadeInRight" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/photo-sticky-tv.png">
-    	<img class="lamp-left wow fadeInDown" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/lamp-left.png">
-    	<img class="lamp-right wow fadeInDown" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/lamp-right.png">
-    	<img class="tv-time wow swing" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/tv-time.png">
+    	<img class="lamp-left wow fadeInDown" data-wow-delay="1s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/lamp-left.png">
+    	<img class="lamp-right wow fadeInDown" data-wow-delay="0.9s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/lamp-right.png">
+    	<img class="tv-time wow swing" src="<?php echo $home_meta['sp_tv_time'][0]; ?>">
     	<a class="popup-video" href="http://www.youtube.com/watch?v=WG8ofL5NWBs">
     		<img class="tv-drama wow fadeInLeft" src="<?php echo $home_meta['sp_tv_drama'][0]; ?>">
     	</a>
