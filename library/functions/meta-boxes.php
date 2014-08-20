@@ -313,9 +313,19 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Video Drama URL/Link ',
+			'id'		=> $prefix . 'video_drama',
+			'type'		=> 'text',
+		),
+		array(
 			'label'		=> 'TV Magazine',
 			'id'		=> $prefix . 'tv_magazine',
 			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Video Magazine URL/Link ',
+			'id'		=> $prefix . 'video_magazine',
+			'type'		=> 'text',
 		),
 		array(
 			'label'		=> 'TV Board',
@@ -348,9 +358,19 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Radio Drama track ID',
+			'id'		=> $prefix . 'track_drama_id',
+			'type'		=> 'text',
+		),
+		array(
 			'label'		=> 'Listen to podcast',
 			'id'		=> $prefix . 'listen_podcast',
 			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Listen to podcast track ID',
+			'id'		=> $prefix . 'track_weekly_id',
+			'type'		=> 'text',
 		),
 		array(
 			'label'		=> 'Love9 Village',

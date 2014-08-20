@@ -223,6 +223,13 @@ function custom_theme_options() {
 			'type'		=> 'page_select',
 			'section'	=> 'footer'
 		),
+		array(
+			'id'		=> 'quick-contact',
+			'label'		=> 'Contact page',
+			'desc'		=> 'Select Contact or Get in touch page',
+			'type'		=> 'page_select',
+			'section'	=> 'footer'
+		),
 		// Blog: Excerpt Length
 		array(
 			'id'			=> 'excerpt-length',

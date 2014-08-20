@@ -517,7 +517,7 @@ function sp_add_video ($url, $width = 620, $height = 349) {
 /* ---------------------------------------------------------------------- */
 
 function sp_soundcloud($url , $autoplay = 'false' ) {
-	return '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url='.$url.'&amp;auto_play='.$autoplay.'&amp;show_artwork=true"></iframe>';
+	return '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url='.$url.'&amp;auto_play='.$autoplay.'&amp;show_artwork=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false""></iframe>';
 }
 
 /* ---------------------------------------------------------------------- */
@@ -706,7 +706,7 @@ if ( ! function_exists( 'sp_show_social_icons' ) ) {
 }
 
 /* ---------------------------------------------------------------------- */               							
-/*  Get post type and return array
+/*  Get post type and render content style
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_posts_type') ) {
 	function sp_get_posts_type( $post_type = 'post', $args=array() ) {

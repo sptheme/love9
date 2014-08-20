@@ -21,7 +21,7 @@ get_header(); ?>
 							<?php 
 								$sound_url = get_post_meta($post->ID, 'sp_soundcloud_url', true);
 								if ( isset($sound_url) && !empty($sound_url) ) {
-									echo sp_soundcloud( $sound_url );	
+									echo sp_soundcloud( $sound_url, true );	
 								} 
 							?>	
 						</div>

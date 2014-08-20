@@ -44,24 +44,15 @@ get_header(); ?>
     	<img class="tv-stage wow fadeIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/tv-stage.jpg">
     	<img class="tv-board wow zoomIn" data-wow-duration="0.3s" src="<?php echo $home_meta['sp_tv_board'][0]; ?>">
     	<img class="tv-stikcy-photo wow fadeInRight" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/photo-sticky-tv.png">
-    	<img class="lamp-left wow fadeInDown" data-wow-delay="1s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/lamp-left.png">
-    	<img class="lamp-right wow fadeInDown" data-wow-delay="0.9s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/lamp-right.png">
+    	<img class="lamp-left wow bounceInDown" data-wow-delay="1s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/lamp-left.png">
+    	<img class="lamp-right wow bounceInDown" data-wow-delay="0.9s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/lamp-right.png">
     	<img class="tv-time wow swing" src="<?php echo $home_meta['sp_tv_time'][0]; ?>">
-    	<a class="popup-video" href="http://www.youtube.com/watch?v=WG8ofL5NWBs">
-    		<img class="tv-drama wow fadeInLeft" src="<?php echo $home_meta['sp_tv_drama'][0]; ?>">
-    	</a>
-    	<a class="popup-video" href="http://www.youtube.com/watch?v=zSwDxF9wRJk">
-    		<img class="tv-magazine wow fadeInRight" src="<?php echo $home_meta['sp_tv_magazine'][0]; ?>">
-    	</a>
     	<img class="tv-camera wow fadeInUp" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/tv-camera.png">
     	<!-- Radio Sence -->
 	    <img class="radio-stage wow fadeInUp" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-stage.jpg">
 	    <img class="symbol-radio wow fadeInUp" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/symbol-radio.png">
 	    <img class="radio-sticky-photo wow swing" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/photo-sticky-radio.png">
 	    <img class="radio-board wow zoomIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-board.png">
-    	<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/141289700&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
-    	<img class="radio-drama wow zoomIn" src="<?php echo $home_meta['sp_radio_drama'][0]; ?>">
-    	</a>
     	<!-- Village Sence -->
     	<img class="cow" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/cow.png">
     	<img class="grass" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/grass.png">
@@ -97,6 +88,12 @@ get_header(); ?>
 		</section> <!-- #intro -->
 		<section id="tv" class="tv bg-sections">
 			<div class="container clearfix">
+				<a class="popup-video" href="<?php echo $home_meta['sp_video_drama'][0]; ?>">
+		    		<img class="tv-drama wow fadeInLeft" src="<?php echo $home_meta['sp_tv_drama'][0]; ?>">
+		    	</a>
+		    	<a class="popup-video" href="<?php echo $home_meta['sp_video_magazine'][0]; ?>">
+		    		<img class="tv-magazine wow fadeInRight" src="<?php echo $home_meta['sp_tv_magazine'][0]; ?>">
+		    	</a>
 				<div class="love9 actor-tv">
 				<img class="wow zoomIn" data-wow-duration="0.4s" data-wow-delay="1s" src="<?php echo $home_meta['sp_tv_title'][0]; ?>">
 				<nav class="next-prev wow fadeInDown" data-wow-duration="0.2s" data-wow-delay="1.2s">
@@ -110,8 +107,11 @@ get_header(); ?>
 		<section id="radio" class="radio bg-sections">
 			<div class="container clearfix">
 				<img class="radio-clock wow fadeInDown" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-clock.png">
+				<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<?php echo $home_meta['sp_track_drama_id'][0]; ?>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
+		    	<img class="radio-drama wow zoomIn" src="<?php echo $home_meta['sp_radio_drama'][0]; ?>">
+		    	</a>
 		    	<img class="fm-102 wow flash" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/fm-102.png">
-		    	<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/141289700&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
+		    	<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<?php echo $home_meta['sp_track_weekly_id'][0]; ?>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
 		    		<img class="listen-podcast wow swing" src="<?php echo $home_meta['sp_listen_podcast'][0]; ?>">
 		    	</a>
 		    	<img class="speaker wow zoomIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/speaker.png">
@@ -169,9 +169,18 @@ get_header(); ?>
 	</div> <!-- #content -->
 
 	<div id="contact-dialog" class="zoom-anim-dialog mfp-hide">
-		<h4><?php _e('Get in Touch!', SP_TEXT_DOMAIN); ?></h4>
-		<p><?php printf( __( 'Let\'s be friends! Connect with us through email, follow us on <a href="%1$s">Youtube</a>, and like us on <a href="%2$s">Facebook</a>.', 'my-text-domain' ), ot_get_option('youtube-url'), ot_get_option('facebook-url') ); ?></p>
-		<div id="result"></div>
+		<?php
+            if(function_exists('icl_object_id')) {
+                $page_contact = get_post(icl_object_id(ot_get_option('quick-contact'), 'page'));
+            } else {
+                $page_contact = get_post(ot_get_option('quick-contact'));
+            } 
+                $content_contact = apply_filters('the_content', $page_contact->post_content);
+
+        ?>
+		<h4><?php echo $page_contact->post_title; ?></h4>
+		<?php  echo $content_contact; ?>
+		<!-- <div id="result"></div>
 		<form class="send-inquiry" action="" method="post">	
 			<div class="two-fourth">
 				<label for="name"><?php _e('Name', SP_TEXT_DOMAIN); ?>:</label>
@@ -185,7 +194,7 @@ get_header(); ?>
 			<label for="message"></label>
 			<textarea rows="5" name="message" id="message"></textarea>
 			<p><input type="submit" value="Send" /></p>
-		</form>
+		</form> -->
 	</div>
 
 	<script type="text/javascript">
