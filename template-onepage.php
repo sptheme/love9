@@ -106,6 +106,18 @@ get_header(); ?>
 		</section> <!-- #tv -->
 		<section id="radio" class="radio bg-sections">
 			<div class="container clearfix">
+				<div class="weekly-topic">
+					<h4>
+					<?php _e('Topic for ', SP_TEXT_DOMAIN); ?>
+					<?php 
+					if(ICL_LANGUAGE_CODE == 'KH') :
+						echo sp_month_kh(date('M'));
+					else :
+						echo date('F');
+					endif; ?>
+					</h4>
+				<?php echo sp_weekly_topic($home_meta['sp_weekly_topic'][0]); ?>
+				</div>
 				<img class="radio-clock wow fadeInDown" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-clock.png">
 				<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<?php echo $home_meta['sp_track_drama_id'][0]; ?>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
 		    	<img class="radio-drama wow zoomIn" src="<?php echo $home_meta['sp_radio_drama'][0]; ?>">

@@ -521,6 +521,103 @@ function sp_soundcloud($url , $autoplay = 'false' ) {
 }
 
 /* ---------------------------------------------------------------------- */
+/*	Weekly topic of Radio
+/* ---------------------------------------------------------------------- */
+if ( ! function_exists( 'sp_weekly_topic' ) ) {
+	function sp_weekly_topic($term_id) {
+		$today = getdate();
+		$args = array(
+			'post_type'	=> 'radio',
+			'date_query' => array(
+				array(
+					'year'  => $today['year'],
+					'month' => $today['mon'],
+				),
+			),
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'radio-section',
+					'field'    => 'id',
+					'terms'    => $term_id,
+					),
+			),
+			'post_status' => array('future','publish')
+		);
+		$custom_query = new WP_Query( $args );
+		if( $custom_query->have_posts() ) :
+			$out = '<ol>';
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
+				$out .= '<li>' . get_the_title() . ' <small>' . esc_html( get_the_date() ) . '</small></li>';
+			endwhile; wp_reset_postdata();
+			$out .= '</ol>';
+		else : 
+			$out = __('New topics are coming soon!', SP_TEXT_DOMAIN);	
+		endif;
+
+		return $out;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */
+/* Show Month of Event into string translation
+/* ---------------------------------------------------------------------- */
+if( !function_exists('sp_month_kh')) {
+	function sp_month_kh($month) {
+		switch ($month) {
+		case 'Jan':
+			$output = __( 'January', SP_TEXT_DOMAIN );	
+			break;
+
+		case 'Feb':	
+			$output = __( 'February', SP_TEXT_DOMAIN );
+			break;
+
+		case 'Mar':	
+			$output = __( 'Mar', SP_TEXT_DOMAIN );
+			break;
+
+		case 'Apr':	
+			$output = __( 'April', SP_TEXT_DOMAIN );
+			break;
+
+		case 'May':
+			$output = __( 'May', SP_TEXT_DOMAIN );	
+			break;
+
+		case 'Jun':	
+			$output = __( 'June', SP_TEXT_DOMAIN );
+			break;
+
+		case 'Jul':	
+			$output = __( 'July', SP_TEXT_DOMAIN );
+			break;
+
+		case 'Aug':	
+			$output = __( 'August', SP_TEXT_DOMAIN );
+			break;
+
+		case 'Sep':
+			$output = __( 'September', SP_TEXT_DOMAIN );	
+			break;
+
+		case 'Oct':	
+			$output = __( 'October', SP_TEXT_DOMAIN );
+			break;
+
+		case 'Nov':	
+			$output = __( 'November', SP_TEXT_DOMAIN );
+			break;
+
+		case 'Dec':	
+			$output = __( 'December', SP_TEXT_DOMAIN );
+			break;	
+		}
+		return $output;
+	}
+}
+
+/* ---------------------------------------------------------------------- */
 /*	Get Most Racent posts from Category
 /* ---------------------------------------------------------------------- */
 if ( ! function_exists( 'sp_last_posts_cat' ) ) {

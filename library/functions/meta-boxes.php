@@ -348,6 +348,13 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Weekly Topic',
+			'id'		=> $prefix . 'weekly_topic',
+			'type'		=> 'taxonomy-select',
+			'post_type' => 'radio',
+        	'taxonomy'  => 'radio-section',
+		),
+		array(
 			'label'		=> 'Radio actor',
 			'id'		=> $prefix . 'radio_actor',
 			'type'		=> 'upload',
