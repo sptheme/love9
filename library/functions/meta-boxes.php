@@ -353,6 +353,11 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'FM 102 and Time',
+			'id'		=> $prefix . 'radio_fm102',
+			'type'		=> 'upload',
+		),
+		array(
 			'label'		=> 'Radio Drama',
 			'id'		=> $prefix . 'radio_drama',
 			'type'		=> 'upload',

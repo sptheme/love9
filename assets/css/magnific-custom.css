@@ -2,9 +2,27 @@
   background: white;
   padding: 20px 30px;
   text-align: left;
-  max-width: 400px;
+  max-width: 420px;
   margin: 40px auto;
   position: relative;
+}
+#contact-dialog input[type="text"],
+#contact-dialog input[type="email"],
+#contact-dialog textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  border:none;
+  background: none;
+  border-bottom: 1px solid #d4d3e5;
+}
+#contact-dialog textarea { 
+  background: url(../images/front-page/bg-paper-line.gif) left 30px;
+  line-height: 32px; 
+  border-bottom: none;
+}
+#contact-dialog {
+  background: #ffffff url(../images/front-page/bg-envelop.png) repeat-x;
+  padding-top: 30px;
 }
 /**
  * Fade-zoom animation for first dialog

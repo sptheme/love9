@@ -110,7 +110,7 @@ get_header(); ?>
 				<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<?php echo $home_meta['sp_track_drama_id'][0]; ?>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
 		    	<img class="radio-drama wow zoomIn" src="<?php echo $home_meta['sp_radio_drama'][0]; ?>">
 		    	</a>
-		    	<img class="fm-102 wow flash" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/fm-102.png">
+		    	<img class="fm-102 wow flash" src="<?php echo $home_meta['sp_radio_fm102'][0]; ?>">
 		    	<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<?php echo $home_meta['sp_track_weekly_id'][0]; ?>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
 		    		<img class="listen-podcast wow swing" src="<?php echo $home_meta['sp_listen_podcast'][0]; ?>">
 		    	</a>
