@@ -37,7 +37,7 @@
             <?php if( !is_singular() ) echo '</h1>'; else echo '</h2>'; ?>
         </div><!-- end .brand -->
 
-        <nav id="primary-menu" class="clearfix">
+        <nav id="primary-menu-container" class="clearfix">
             <?php echo sp_main_navigation(); ?>
         </nav><!-- .primary-nav .wrap -->
         

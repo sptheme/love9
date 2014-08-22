@@ -89,9 +89,17 @@ function custom_theme_options() {
 		// Header: Favicon
 		array(
 			'id'		=> 'favicon',
-			'label'		=> 'Favicon',
-			'desc'		=> 'Upload a 16x16px Png/Gif image that will be your favicon',
+			'label'		=> 'Browser favicon',
+			'desc'		=> 'Upload a 16px x 16px Png image',
 			'std'		=> SP_BASE_URL . 'favicon.ico',
+			'type'		=> 'upload',
+			'section'	=> 'header'
+		),
+		array(
+			'id'		=> 'custom-android-icon128',
+			'label'		=> 'Add to homescreen for Chrome on Android',
+			'desc'		=> 'Upload a 128px x 128px Png image',
+			'std'		=> SP_ASSETS_THEME . 'images/touch/icon-128x128.png',
 			'type'		=> 'upload',
 			'section'	=> 'header'
 		),
@@ -104,42 +112,27 @@ function custom_theme_options() {
 			'section'	=> 'header'
 		),
 		array(
-			'id'		=> 'custom-ios-icon57',
-			'label'		=> 'Custom iOS 57x57',
-			'desc'		=> 'Upload a 57px x 57px Png image that will be your website bookmark on non-retina iOS devices.',
-			'std'		=> SP_ASSETS_THEME . 'images/logo-ios-57.png',
+			'id'		=> 'custom-ios-icon152',
+			'label'		=> 'Add to homescreen for Safari on iOS',
+			'desc'		=> 'Upload a 152px x 152px Png image',
+			'std'		=> SP_ASSETS_THEME . 'images/touch/apple-touch-icon-precomposed.png',
 			'type'		=> 'upload',
 			'section'	=> 'header'
 		),
 		array(
-			'id'		=> 'custom-ios-icon72',
-			'label'		=> 'Custom iOS 72x72',
-			'desc'		=> 'Upload a 72px x 72px Png image that will be your website bookmark on non-retina iOS devices.',
-			'std'		=> SP_ASSETS_THEME . 'images/logo-ios-72.png',
+			'id'		=> 'custom-win8-tile-icon144',
+			'label'		=> 'Tile icon for Win8',
+			'desc'		=> 'Upload a 144px x 144px Png image',
+			'std'		=> SP_ASSETS_THEME . 'images/touch/ms-touch-icon-144x144-precomposed.png',
 			'type'		=> 'upload',
 			'section'	=> 'header'
 		),
+		// Header: Header background image
 		array(
-			'id'		=> 'custom-ios-icon114',
-			'label'		=> 'Custom iOS 114x114',
-			'desc'		=> 'Upload a 114px x 114px Png image that will be your website bookmark on non-retina iOS devices.',
-			'std'		=> SP_ASSETS_THEME . 'images/logo-ios-114.png',
-			'type'		=> 'upload',
-			'section'	=> 'header'
-		),
-		array(
-			'id'		=> 'custom-ios-icon144',
-			'label'		=> 'Custom iOS 144x144',
-			'desc'		=> 'Upload a 144px x 144px Png image that will be your website bookmark on non-retina iOS devices.',
-			'std'		=> SP_ASSETS_THEME . 'images/logo-ios-144.png',
-			'type'		=> 'upload',
-			'section'	=> 'header'
-		),
-		// Header: Header Image
-		array(
-			'id'		=> 'header-image',
-			'label'		=> 'Header Image',
-			'desc'		=> 'Upload a header image. This will disable header title/logo and description.',
+			'id'		=> 'header-bg',
+			'label'		=> 'Header Background Image',
+			'desc'		=> 'Upload a background partern png image for header. Size 960px x 100px.',
+			'std'		=> SP_ASSETS_THEME . 'images/topbar.png',
 			'type'		=> 'upload',
 			'section'	=> 'header'
 		),

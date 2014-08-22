@@ -493,7 +493,7 @@ function sp_add_video ($url, $width = 620, $height = 349) {
 	if ( $video_url['host'] == 'www.youtube.com' || $video_url['host']  == 'youtube.com' ) {
 		parse_str( @parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
 		$video =  $my_array_of_vars['v'] ;
-		$output .='<iframe width="'.$width.'" height="'.$height.'" src="http://www.youtube.com/embed/'.$video.'?rel=0" frameborder="0" allowfullscreen></iframe>';
+		$output .='<iframe width="'.$width.'" height="'.$height.'" src="http://www.youtube.com/embed/'.$video.'?autoplay=1&rel=0" frameborder="0" allowfullscreen></iframe>';
 	}
 	elseif( $video_url['host'] == 'www.youtu.be' || $video_url['host']  == 'youtu.be' ){
 		$video = substr(@parse_url($url, PHP_URL_PATH), 1);

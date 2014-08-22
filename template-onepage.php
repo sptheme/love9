@@ -227,7 +227,7 @@ get_header(); ?>
 			mainClass: 'sp-mfp-zoom-in'
 		});
 
-		$('.popup-video, .popup-soundcloud').magnificPopup({
+		$('.popup-soundcloud').magnificPopup({
 			disableOn: 700,
 			type: 'iframe',
 			mainClass: 'sp-mfp-zoom-in',
@@ -239,6 +239,38 @@ get_header(); ?>
 
 			overflowY: 'auto',
 		});
+
+		$('.popup-video').magnificPopup({
+			disableOn: 700,
+			type: 'iframe',
+			mainClass: 'sp-mfp-zoom-in',
+			removalDelay: 300,
+			preloader: false,
+
+			fixedBgPos: true,
+			fixedContentPos: false,
+
+			overflowY: 'auto',
+			iframe: {
+			  patterns: {
+			    youtube: {
+			      index: 'youtube.com/', // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
+
+			      id: 'v=', // String that splits URL in a two parts, second part should be %id%
+			      // Or null - full URL will be returned
+			      // Or a function that should return %id%, for example:
+			      // id: function(url) { return 'parsed id'; } 
+
+			      src: '//www.youtube.com/embed/%id%?autoplay=1&rel=0' // URL that will be set as a source for iframe. 
+			    }
+
+			  },
+
+			  srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
+			}
+
+		});
+
 	}(jQuery));
 	</script>
 	

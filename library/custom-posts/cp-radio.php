@@ -97,15 +97,13 @@
 	*/
 	if ( ! function_exists( 'sp_radio_cp_columns' ) ) {
 		function sp_radio_cp_columns( $columns ) {
-			
-			$columns = array(
-				'cb'                   	=> '<input type="checkbox" />',
-				'radio_thumbnail'		=> __( 'Thumbnail', 'sptheme_admin' ),
-				'title'                	=> __( 'Title', 'sptheme_admin' ),
-				'radio_category'        => __( 'Radio Sections', 'sptheme_admin' ),
-				'radio_episode'        	=> __( 'Episode', 'sptheme_admin' ),
-				'date'		 			=> __( 'Date', 'sptheme_admin' )
-			);
+					
+			$columns['cb']                  = '<input type="checkbox" />';
+			$columns['radio_thumbnail']		= __( 'Thumbnail', 'sptheme_admin' );
+			$columns['title']              	= __( 'Title', 'sptheme_admin' );
+			$columns['radio_category']      = __( 'Radio Sections', 'sptheme_admin' );
+			$columns['radio_episode']       = __( 'Episode', 'sptheme_admin' );
+			$columns['date']		 		= __( 'Date', 'sptheme_admin' );
 
 			return $columns;
 		}

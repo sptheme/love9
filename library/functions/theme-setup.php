@@ -142,7 +142,7 @@ if ( !function_exists('sp_print_custom_css_script') ){
 	function sp_print_custom_css_script(){
 ?>
 	<style type="text/css">
-		/* custom style */
+		#header { background: url(<?php echo ot_get_option('header-bg'); ?>) center top repeat-x; }
 	</style>
 
 	<?php if ( is_page() || is_singular() ) : ?>
@@ -535,24 +535,33 @@ function sp_adminfavicon() {
 add_filter( 'wp_head', 'sp_head_meta', 0 );
 function sp_head_meta() { ?>
 	
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<?php if (ot_get_option('custom-ios-title') != "") { ?><meta name="apple-mobile-web-app-title" content="<?php echo __(ot_get_option('custom-ios-title'), SP_TEXT_DOMAIN); ?>"><?php } ?>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<?php if ( ot_get_option('favicon') ) { ?><link rel="shortcut icon" href="<?php echo ot_get_option('favicon'); ?>" /><?php } ?>
+	<!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <?php if ( ot_get_option('custom-android-icon128') ) { ?><link rel="shortcut icon" href="<?php echo ot_get_option('custom-android-icon128'); ?>">
+    <?php } ?>
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo ot_get_option('favicon'); ?>" />
 
-	<?php if ( ot_get_option('custom-ios-icon144') ) { ?><link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo ot_get_option('custom-ios-icon144'); ?>">
-	<?php } ?>
-	<?php if ( ot_get_option('custom-ios-icon114') ) { ?><link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo ot_get_option('custom-ios-icon114'); ?>">
-	<?php } ?>
-	<?php if ( ot_get_option('custom-ios-icon72') ) { ?><link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo ot_get_option('custom-ios-icon72'); ?>">
-	<?php } ?>
-	<?php if ( ot_get_option('custom-ios-icon57') ) { ?><link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo ot_get_option('custom-ios-icon57'); ?>">
-	<?php } ?>
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <?php if (ot_get_option('custom-ios-title') != "") { ?><meta name="apple-mobile-web-app-title" content="<?php echo __(ot_get_option('custom-ios-title'), SP_TEXT_DOMAIN); ?>">
+    <?php } ?>
+    <?php if ( ot_get_option('custom-ios-icon152') ) { ?>
+    <link rel="apple-touch-icon-precomposed" href="<?php echo ot_get_option('custom-ios-icon152'); ?>">
+    <?php } ?>
 
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <?php if ( ot_get_option('custom-win8-tile-icon144') ) { ?>
+    <meta name="msapplication-TileImage" content="<?php echo ot_get_option('custom-win8-tile-icon144'); ?>">
+    <?php } ?>
+    <meta name="msapplication-TileColor" content="#3372DF">
 
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 <?php	
 }

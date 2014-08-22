@@ -21,9 +21,7 @@ get_header(); ?>
 							<?php 
 								$video_url = get_post_meta($post->ID, 'sp_video_url', true);
 								if ( isset($video_url) && !empty($video_url) ) {
-									global $wp_embed;
-									$video = $wp_embed->run_shortcode('[embed]'.$video_url.'[/embed]');
-									echo $video;
+									echo sp_add_video( $video_url );
 								} 
 							?>	
 						</div>

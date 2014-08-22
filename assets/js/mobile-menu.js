@@ -37,10 +37,19 @@ jQuery(document).ready(function($) {
       $this.toggleClass('active');
       ul.toggleClass('active');
       ul.height(ulChildrenHeight + 'px');
+      if ( $this.next('ul').children().children('ul').hasClass('active') ) {
+        $this.next('ul').height( $this.next('ul').children().children('ul').height() + (ul.children().length * 46) );
+      }
+      if ( $this.parent().parent('ul').hasClass('active')) {
+        $this.parent().parent('ul').height( $this.parent().parent('ul').height() + (ul.children().length * 46) );
+      } 
     }else{
       $this.toggleClass('active');
       ul.toggleClass('active');
       ul.height(0);
+      if ( $this.parent().parent('ul').hasClass('active')) {
+        $this.parent().parent('ul').height( $this.parent().parent('ul.active').children().length * 46 );
+      }
     }
   });
 
@@ -72,7 +81,7 @@ jQuery(document).ready(function($) {
   });
 
   // Swipe menu support 
-  $('.touch-gesture #content').hammer().on('swiperight', function(event) {
+  /*$('.touch-gesture #content').hammer().on('swiperight', function(event) {
     $('#content-container').addClass('active');
     $('#sidemenu').addClass('active');
     if(opened){
@@ -98,7 +107,7 @@ jQuery(document).ready(function($) {
       $('#sidemenu-container').addClass('active');
       opened = true;
     }
-  });
+  });*/
 
   // Check if the child menu has an active item. If yes, then it will expand the menu by default. 
   var $navItems = $('.mobile-nav ul li');
