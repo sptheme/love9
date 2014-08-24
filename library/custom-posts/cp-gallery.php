@@ -105,6 +105,7 @@
 				'cb'                   	=> '<input type="checkbox" />',
 				'gallery_thumbnail'	   	=> __( 'Thumbnail', 'sptheme_admin' ),
 				'title'                	=> __( 'Album Name', 'sptheme_admin' ),
+				'gallery_category'      => __( 'Album Category', 'sptheme_admin' ),
 				'date'		 			=> __( 'Date', 'sptheme_admin' )
 			);
 
@@ -124,6 +125,26 @@
 			switch ( $column ) {
 				case "gallery_thumbnail":
 					echo get_the_post_thumbnail( $post->ID, array(50, 50) );
+				break;
+
+				case "gallery_category":
+					$terms = get_the_terms( $post->ID, 'gallery-category' );
+
+					if ( empty( $terms ) )
+					break;
+	
+					$output = array();
+	
+					foreach ( $terms as $term ) {
+						
+						$output[] = sprintf( '<a href="%s">%s</a>',
+							esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'gallery-category' => $term->slug ), 'edit.php' ) ),
+							esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'gallery-category', 'display' ) )
+						);
+	
+					}
+	
+					echo join( ', ', $output );
 				break;
 				
 				default:

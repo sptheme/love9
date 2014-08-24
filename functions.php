@@ -29,17 +29,10 @@ define( 'SP_ASSETS_ADMIN', get_template_directory_uri() . '/library/assets/' );
 //Custom post WordPress admin menu position - 30, 33, 39, 42, 45, 48
 if ( ! isset( $cp_menu_position ) )
 	$cp_menu_position = array(
-			'menu_presenter'		=> 30,
-			'menu_actor'			=> 33,
-			'menu_behind_scenes'	=> 39,
-			'menu_team'				=> 5,
-			'menu_gallery'			=> 5,
-			'menu_video'			=> 45,
-			'menu_announcement'		=> 48,
-			'menu_document'			=> 48,
 			'menu_tv'				=> 5,
 			'menu_radio'			=> 5,
-			'menu_topic'			=> 5,
+			'menu_team'				=> 5,
+			'menu_gallery'			=> 5,
 		);
 
 

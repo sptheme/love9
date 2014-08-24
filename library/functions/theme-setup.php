@@ -30,7 +30,7 @@ if( !function_exists('sp_theme_setup') )
 		// Add suport for post thumbnails and set default sizes
 		add_theme_support( 'post-thumbnails' );
 		add_image_size('post-slider', 720, 432, true ); // base size 1280x768
-		add_image_size('thumb-medium', 200, 120, true ); // base size 1240x768
+		add_image_size('thumb-medium', 320, 240, true ); // base size 1024x768
 
 		// Add navigation menus
 		register_nav_menus( array(
@@ -80,7 +80,7 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_style('magnific-popup', SP_ASSETS_THEME . 'css/magnific-popup.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('magnific-custom', SP_ASSETS_THEME . 'css/magnific-custom.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, SP_SCRIPTS_VERSION);
-		if ( ICL_LANGUAGE_CODE == 'KH') {
+		if ( strtolower(ICL_LANGUAGE_CODE) == 'kh') {
 			wp_enqueue_style('khmer-gfont', 'http://fonts.googleapis.com/css?family=Khmer', false, SP_SCRIPTS_VERSION);
 			wp_enqueue_style('kh', SP_ASSETS_THEME . 'css/kh.css', false, SP_SCRIPTS_VERSION);
 		}
@@ -238,7 +238,7 @@ if ( !function_exists('sp_browser_body_class') ) {
 	                 $classes[] = 'windows';
 	           }
 
-	        if(ICL_LANGUAGE_CODE == 'KH'){
+	        if(strtolower(ICL_LANGUAGE_CODE) == 'kh'){
 			    $classes[] = 'kh';
 			  }
 

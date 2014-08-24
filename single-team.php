@@ -10,35 +10,28 @@ get_header(); ?>
 			// Start the Loop.
 			while ( have_posts() ) : the_post(); 
 		?>
+				<?php if ( has_post_thumbnail() ) : ?>
+				<div class="post-format">
+					<img class="attachment-medium wp-post-image" src="<?php echo sp_post_thumbnail( $size ); ?>" />
+				</div>	
+				<?php endif; ?>
 
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			
-					<header class="entry-header">
-						<h1 class="entry-title">
-							<?php the_title(); ?>
-						</h1>
-					</header>
+				<header class="entry-header">
+					<h1 class="entry-title">
+						<?php the_title(); ?>
+					</h1>
+					<div class="entry-meta">
+						<strong><?php echo get_post_meta($post->ID, 'sp_team_position', true); ?></strong>
+					</div>
+				</header>
 
-					<div class="entry-content">
-						<?php the_content(); ?>
-
-						 <?php 
-						 	$post = get_post( get_the_ID() );
-						 	$post_type = $post->post_type;
-						 	$taxonomies = get_object_taxonomies( $post_type, 'objects' );
-						 	echo $taxonomies[0]->term_id;
-						 	foreach ( $taxonomies as $taxonomy_slug => $taxonomy ){
-							    echo $taxonomy->name;
-							}
-						 ?> 
-						
-						<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>
-					</div><!-- .entry-content -->
-
-				</article><!-- #post -->
+				<div class="entry-content">
+					<?php the_content(); ?>
+				</div><!-- .entry-content -->
+				<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>
 
 				<?php if ( ot_get_option( 'related-posts' ) != '1' ) { 
-					echo sp_get_related_posts( get_the_ID(), array('posts_per_page' => 3) ); 
+					echo sp_get_related_posts( $post->ID, array('posts_per_page' => 3) ); 
 				} ?>
 
 		<?php		

@@ -17,7 +17,10 @@ get_header(); ?>
 						<h1 class="entry-title">
 							<?php the_title(); ?>
 						</h1>
-						<div class="entry-meta"><?php the_time('j M, Y'); ?></div>
+						<div class="entry-meta">
+							<strong><?php echo get_post_meta($post->ID, 'sp_album_location', true); ?></strong>
+							<?php echo get_the_date(); ?>
+						</div>
 					</header>
 
 					<div class="entry-content">
@@ -27,7 +30,9 @@ get_header(); ?>
 
 				</article><!-- #post -->
 
-				<?php //if ( ot_get_option( 'related-posts' ) != '1' ) { get_template_part('library/contents/related-posts'); } ?>
+				<?php if ( ot_get_option( 'related-posts' ) != '1' ) { 
+					echo sp_get_related_posts( $post->ID, array('posts_per_page' => 3) ); 
+				} ?>
 
 		<?php		
 				// If comments are open or we have at least one comment, load up the comment template.

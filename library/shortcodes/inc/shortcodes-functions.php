@@ -34,9 +34,11 @@ function sp_add_shortcodes() {
 	add_shortcode( 'toggle_section', 'sp_toggle_section_shortcode' );	
 	add_shortcode( 'tabgroup', 'sp_tabgroup_shortcode' );
 	add_shortcode( 'tab', 'sp_tab_shortcode' );
-	add_shortcode( 'sc_photogallery', 'sp_photogallery_sc' );
-	add_shortcode( 'video_gallery', 'sp_video_gallery_sc' );
 	add_shortcode( 'presenter', 'sp_presenter_sc' );
+	add_shortcode( 'tv', 'sp_tv_sc' );
+	add_shortcode( 'radio', 'sp_radio_sc' );
+	add_shortcode( 'team', 'sp_team_sc' );
+	add_shortcode( 'sc_photogallery', 'sp_photogallery_sc' );
 	
 }
 add_action( 'init', 'sp_add_shortcodes' );
@@ -229,6 +231,90 @@ function sp_presenter_sc( $atts, $content = null ){
 }
 
 /*--------------------------------------------------------------------------------------*/
+/* TV Shortcode
+/*--------------------------------------------------------------------------------------*/
+function sp_tv_sc( $atts, $content = null ){
+
+	global $post;
+
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_num' => null,
+	), $atts ) );
+
+	$args = array (
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'tv-section',
+						'field'    => 'id',
+						'terms'    => $term_id,
+					)
+				),
+				'posts_per_page' => $postnum
+			);
+	$out = sp_get_posts_type( 'tv', $args );
+
+	return $out;
+
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* Radio Shortcode
+/*--------------------------------------------------------------------------------------*/
+function sp_radio_sc( $atts, $content = null ){
+
+	global $post;
+
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_num' => null,
+	), $atts ) );
+
+	$args = array (
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'radio-section',
+						'field'    => 'id',
+						'terms'    => $term_id,
+					)
+				),
+				'posts_per_page' => $postnum
+			);
+	$out = sp_get_posts_type( 'radio', $args );
+
+	return $out;
+
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* Team Shortcode
+/*--------------------------------------------------------------------------------------*/
+function sp_team_sc( $atts, $content = null ){
+
+	global $post;
+
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_num' => null,
+	), $atts ) );
+
+	$args = array (
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'team-section',
+						'field'    => 'id',
+						'terms'    => $term_id,
+					)
+				),
+				'posts_per_page' => $postnum
+			);
+	$out = sp_get_posts_type( 'team', $args );
+
+	return $out;
+
+}
+
+/*--------------------------------------------------------------------------------------*/
 /* Photogallery
 /*--------------------------------------------------------------------------------------*/
 function sp_photogallery_sc( $atts, $content = null ){
@@ -237,7 +323,7 @@ function sp_photogallery_sc( $atts, $content = null ){
 
 	extract( shortcode_atts( array(
 		'album_id' => null,
-		'postnum' => null,
+		'post_num' => null,
 	), $atts ) );
 
 	$out = '';
@@ -251,24 +337,6 @@ function sp_photogallery_sc( $atts, $content = null ){
 	return $out;
 
 }
-
-/*--------------------------------------------------------------------------------------*/
-/* Video Gallery
-/*--------------------------------------------------------------------------------------*/
-function sp_video_gallery_sc( $atts, $content = null ){
-
-	global $post;
-
-	extract( shortcode_atts( array(
-		'postnum' => null,
-	), $atts ) );
-
-	$out = sp_get_video_village( $postnum );
-
-	return $out;
-
-}
-
 
 
 

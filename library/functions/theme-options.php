@@ -355,7 +355,7 @@ function custom_theme_options() {
 			'id'		=> 'layout-global',
 			'label'		=> 'Global Layout',
 			'desc'		=> 'Other layouts will override this option if they are set',
-			'std'		=> 'col-2cr',
+			'std'		=> 'col-1c',
 			'type'		=> 'radio-image',
 			'section'	=> 'layout',
 			'choices'	=> array(
@@ -365,15 +365,10 @@ function custom_theme_options() {
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
-				)
 				/*array(
 					'value'		=> 'col-3cm',
 					'label'		=> '3 Column Middle',
@@ -411,14 +406,9 @@ function custom_theme_options() {
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				)
 			)
 		),
@@ -442,14 +432,9 @@ function custom_theme_options() {
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				)
 			)
 		),
@@ -473,14 +458,9 @@ function custom_theme_options() {
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				)
 			)
 		),
@@ -504,14 +484,9 @@ function custom_theme_options() {
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				)
 			)
 		),
@@ -535,14 +510,9 @@ function custom_theme_options() {
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				)
 			)
 		),
@@ -566,14 +536,9 @@ function custom_theme_options() {
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				)
 			)
 		),
@@ -597,14 +562,9 @@ function custom_theme_options() {
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				)
 			)
 		),

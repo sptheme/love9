@@ -42,14 +42,9 @@ $page_options = array(
 					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
 				),
 				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
+					'value'		=> 'col-cell-2',
+					'label'		=> '1 Column with Bottom sidebar',
+					'src'		=> SP_ASSETS_ADMIN . 'images/col-cell-2.png'
 				)
 			)
 		)

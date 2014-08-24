@@ -7,8 +7,14 @@ get_header(); ?>
 			// Start the Loop.
 			while ( have_posts() ) : the_post(); 
 		?>
-
-				
+					<div class="post-format">
+						<?php 
+							$sound_url = get_post_meta($post->ID, 'sp_soundcloud_url', true);
+							if ( isset($sound_url) && !empty($sound_url) ) {
+								echo sp_soundcloud( $sound_url, true );	
+							} 
+						?>	
+					</div>
 			
 					<header class="entry-header">
 						<h1 class="entry-title">
@@ -17,20 +23,12 @@ get_header(); ?>
 					</header>
 
 					<div class="entry-content">
-						<div class="post-format">
-							<?php 
-								$sound_url = get_post_meta($post->ID, 'sp_soundcloud_url', true);
-								if ( isset($sound_url) && !empty($sound_url) ) {
-									echo sp_soundcloud( $sound_url, true );	
-								} 
-							?>	
-						</div>
 						<?php the_content(); ?>
 					</div><!-- .entry-content -->
 					<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>
 
 				<?php if ( ot_get_option( 'related-posts' ) != '1' ) { 
-					echo sp_get_related_posts( get_the_ID(), array('posts_per_page' => 3) ); 
+					echo sp_get_related_posts( $post->ID, array('posts_per_page' => 3) ); 
 				} ?>
 
 		<?php		
