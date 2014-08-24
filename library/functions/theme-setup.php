@@ -148,19 +148,21 @@ if ( !function_exists('sp_print_custom_css_script') ){
 	<?php if ( is_page() || is_singular() ) : ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
-	    $('a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]').each(function(){
-	        if ($(this).parents('.gallery').length == 0) {
-	            $(this).magnificPopup({
-	                type:'image',
-	                closeOnContentClick: true
-	                });
-	            }
+		    $('a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]').each(function(){
+		        if ($(this).parents('.gallery').length == 0) {
+		            $(this).magnificPopup({
+		                type:'image',
+		                closeOnContentClick: true
+		            });
+		        }
 	        });
-	    $('.entry-content .gallery').each(function() {
-	        $(this).magnificPopup({
-	            delegate: 'a',
-	            type: 'image',
-	            gallery: {enabled: true}
+		    $('.entry-content .gallery').each(function() {
+		        $(this).magnificPopup({
+		            delegate: 'a',
+		            type: 'image',
+		            gallery: {enabled: true},
+		            removalDelay: 300,
+					mainClass: 'sp-mfp-zoom-in'
 	            });
 	        });
 	    });

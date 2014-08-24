@@ -106,11 +106,11 @@ get_header(); ?>
 		</section> <!-- #tv -->
 		<section id="radio" class="radio bg-sections">
 			<div class="container clearfix">
-				<div class="weekly-topic">
+				<div class="weekly-topic wow fadeInUp" data-wow-delay="0.7s">
 					<h4>
 					<?php _e('Topic for ', SP_TEXT_DOMAIN); ?>
 					<?php 
-					if(ICL_LANGUAGE_CODE == 'KH') :
+					if(strtolower(ICL_LANGUAGE_CODE) == 'kh') :
 						echo sp_month_kh(date('M'));
 					else :
 						echo date('F');
@@ -192,86 +192,6 @@ get_header(); ?>
         ?>
 		<h4><?php echo $page_contact->post_title; ?></h4>
 		<?php  echo $content_contact; ?>
-		<!-- <div id="result"></div>
-		<form class="send-inquiry" action="" method="post">	
-			<div class="two-fourth">
-				<label for="name"><?php _e('Name', SP_TEXT_DOMAIN); ?>:</label>
-				<input type="text" id="name" name="name" />
-			</div>
-			<div class="two-fourth last">
-				<label for="name"><?php _e('E-mail', SP_TEXT_DOMAIN); ?>:</label>
-				<input type="text" id="email" name="email" />
-			</div>
-			<div class="clear"></div>
-			<label for="message"></label>
-			<textarea rows="5" name="message" id="message"></textarea>
-			<p><input type="submit" value="Send" /></p>
-		</form> -->
 	</div>
-
-	<script type="text/javascript">
-	(function($){
-		$('.popup-with-zoom-anim').magnificPopup({
-			type: 'inline',
-
-			fixedContentPos: false,
-			fixedBgPos: true,
-
-			overflowY: 'auto',
-
-			closeBtnInside: true,
-			preloader: false,
-			
-			midClick: true,
-			removalDelay: 300,
-			mainClass: 'sp-mfp-zoom-in'
-		});
-
-		$('.popup-soundcloud').magnificPopup({
-			disableOn: 700,
-			type: 'iframe',
-			mainClass: 'sp-mfp-zoom-in',
-			removalDelay: 300,
-			preloader: false,
-
-			fixedBgPos: true,
-			fixedContentPos: false,
-
-			overflowY: 'auto',
-		});
-
-		$('.popup-video').magnificPopup({
-			disableOn: 700,
-			type: 'iframe',
-			mainClass: 'sp-mfp-zoom-in',
-			removalDelay: 300,
-			preloader: false,
-
-			fixedBgPos: true,
-			fixedContentPos: false,
-
-			overflowY: 'auto',
-			iframe: {
-			  patterns: {
-			    youtube: {
-			      index: 'youtube.com/', // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
-
-			      id: 'v=', // String that splits URL in a two parts, second part should be %id%
-			      // Or null - full URL will be returned
-			      // Or a function that should return %id%, for example:
-			      // id: function(url) { return 'parsed id'; } 
-
-			      src: '//www.youtube.com/embed/%id%?autoplay=1&rel=0' // URL that will be set as a source for iframe. 
-			    }
-
-			  },
-
-			  srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
-			}
-
-		});
-
-	}(jQuery));
-	</script>
 	
 <?php get_footer(); ?>
