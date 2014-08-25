@@ -741,8 +741,8 @@ if ( !function_exists('sp_get_related_posts') ) {
 		$post_type = $post->post_type;
 
 		$taxonomy = get_object_taxonomies( $post_type );
-		$terms = wp_get_object_terms($post_id, $taxonomy);
-
+		$terms = wp_get_post_terms($post_id, $taxonomy[0], array("fields" => "ids"));
+		
 		$defaults = array(
 				'post_type' => $post_type, 
 				'post__not_in' => array($post_id),
@@ -752,7 +752,7 @@ if ( !function_exists('sp_get_related_posts') ) {
 		  			array(
 						'taxonomy' => $taxonomy[0],
 						'field' => 'term_id',
-		  				'terms' => $terms[0]->term_id
+		  				'terms' => $terms
 					))
 			);
 		$args = wp_parse_args( $args, $defaults );
