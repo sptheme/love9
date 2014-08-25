@@ -46,7 +46,7 @@ get_header(); ?>
                                 <div class="entry-meta"><?php sp_post_meta(); ?></div>
                             </header>
 
-                            <?php get_template_part('library/contents/post-formats'); ?>            
+                            <?php //get_template_part('library/contents/post-formats'); ?>            
 
                             
                             <?php if (ot_get_option('excerpt-length') != '0'): ?>

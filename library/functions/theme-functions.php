@@ -418,11 +418,21 @@ function ajaxify_comments($comment_ID, $comment_status){
 /* ---------------------------------------------------------------------- */
 if ( ! function_exists( 'sp_post_meta' ) ) {
 	function sp_post_meta() {
+		
+		$post = get_post($post->ID);
+		$post_type = $post->post_type;
+		$taxonomy = get_object_taxonomies( $post_type );
+		if ( $post_type == 'post') {
+			$post_meta = get_the_category_list( ', ' );
+		} else {
+			$post_meta = get_the_term_list( $post->ID, $taxonomy[0], '', ', ' );
+		}
+
 		printf( __( '<i class="icon icon-calendar-1"></i><time class="entry-date" datetime="%1$s"> %2$s</time><span class="by-author"> by </span><span class="author vcard">%3$s</span><span class="posted-in"> in </span><i class="icon icon-tag"> </i> %4$s ', SP_TEXT_DOMAIN ),
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),
 			get_the_author(),
-			get_the_category_list( ', ' )
+			$post_meta
 		);
 		if ( comments_open() ) : ?>
 				<span class="with-comments"><?php _e( ' with ', SP_TEXT_DOMAIN ); ?></span>
@@ -437,7 +447,7 @@ if ( ! function_exists( 'sp_post_meta' ) ) {
 /* ---------------------------------------------------------------------- */
 if ( ! function_exists( 'sp_meta_mini' ) ) :
 	function sp_meta_mini() {
-		printf( __( '<a href="%1$s" title="%2$s"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="sep"> |  </span>', SP_TEXT_DOMAIN ),
+		printf( __( '<a href="%1$s" title="%2$s"><time class="entry-date" datetime="%3$s">%4$s</time></a>', SP_TEXT_DOMAIN ),
 			esc_url( get_permalink() ),
 			esc_attr( get_the_time() ),
 			esc_attr( get_the_date( 'c' ) ),

@@ -24,6 +24,7 @@ get_header(); ?>
 					</header>
 
 					<div class="entry-content">
+						<?php the_content(); ?>
 						<?php echo sp_get_album_gallery( $post->ID, '', 'post-slider' ); ?>
 					</div><!-- .entry-content -->
 					<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>

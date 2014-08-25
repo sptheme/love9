@@ -21,6 +21,7 @@ get_header(); ?>
 						<h1 class="entry-title">
 							<?php the_title(); ?>
 						</h1>
+						<div class="entry-meta"><?php sp_post_meta(); ?></div>
 					</header>
 
 					<div class="entry-content">

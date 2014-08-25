@@ -9,7 +9,6 @@ load_template( SP_BASE_DIR . 'library/custom-posts/cp-gallery.php' );
 //Taxonomies
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-tv.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-radio.php' );
-load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-episode.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-team.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-gallery.php' );
 	
