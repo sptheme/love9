@@ -39,6 +39,7 @@ function sp_add_shortcodes() {
 	add_shortcode( 'radio', 'sp_radio_sc' );
 	add_shortcode( 'team', 'sp_team_sc' );
 	add_shortcode( 'sc_photogallery', 'sp_photogallery_sc' );
+	add_shortcode( 'post', 'sp_post_sc' );
 	
 }
 add_action( 'init', 'sp_add_shortcodes' );
@@ -333,6 +334,34 @@ function sp_photogallery_sc( $atts, $content = null ){
 	} else { // show individual album
 		$out .= sp_get_album_gallery( $album_id, $postnum, 'thumb-medium' );
 	}
+
+	return $out;
+
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* Posts
+/*--------------------------------------------------------------------------------------*/
+function sp_post_sc( $atts, $content = null ){
+
+	global $post;
+
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_num' => null,
+	), $atts ) );
+
+	$args = array (
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'category',
+						'field'    => 'id',
+						'terms'    => $term_id,
+					)
+				),
+				'posts_per_page' => $postnum
+			);
+	$out = sp_get_posts_type( 'post', $args );
 
 	return $out;
 

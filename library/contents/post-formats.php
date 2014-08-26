@@ -14,9 +14,9 @@
 <?php if ( has_post_format( 'gallery' ) ): // Gallery ?>
 	
 	<div class="post-format">
-		<?php $images = sp_post_images(); if ( !empty($images) ): ?>
+		<?php $photos = explode( ',', get_post_meta( $post->ID, 'sp_gallery', true ) );  ?>
 		<script type="text/javascript">
-			jQuery(document).ready(function(){
+			jQuery(document).ready(function($){
 			 	/* Single Post slider */
 				$('#post-slider-<?php echo the_ID(); ?>').flexslider({
 					animation: "slide",
@@ -37,9 +37,9 @@
 		<div class="flex-container">
 			<div class="flexslider" id="post-slider-<?php the_ID(); ?>">
 				<ul class="slides">
-					<?php foreach ( $images as $image ): ?>
+					<?php foreach ( $photos as $image ): ?>
 						<li>
-							<?php $imageid = wp_get_attachment_image_src($image->ID,'post-slider'); ?>
+							<?php $imageid = wp_get_attachment_image_src($image,'post-slider'); ?>
 							<img src="<?php echo $imageid[0]; ?>" alt="<?php echo $image->post_title; ?>">
 							
 							<?php if ( $image->post_excerpt ): ?>
@@ -50,7 +50,6 @@
 				</ul>
 			</div>
 		</div>
-		<?php endif; ?>
 	</div>
 	
 <?php endif; ?>

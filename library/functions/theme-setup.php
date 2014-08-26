@@ -25,7 +25,7 @@ if( !function_exists('sp_theme_setup') )
 		add_theme_support( 'automatic-feed-links' );
 
 		// Add post formats
-		add_theme_support( 'post-formats', array( 'audio', 'gallery', 'video', 'aside' ) );
+		add_theme_support( 'post-formats', array( 'audio', 'gallery', 'video' ) );
 	
 		// Add suport for post thumbnails and set default sizes
 		add_theme_support( 'post-thumbnails' );
@@ -78,8 +78,8 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_style('flexslider', SP_ASSETS_THEME . 'css/flexslider.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('flexslider-custom', SP_ASSETS_THEME . 'css/flexslider-custom.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('magnific-popup', SP_ASSETS_THEME . 'css/magnific-popup.css', false, SP_SCRIPTS_VERSION);
-		wp_enqueue_style('magnific-custom', SP_ASSETS_THEME . 'css/magnific-custom.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, SP_SCRIPTS_VERSION);
+		wp_enqueue_style('magnific-custom', SP_ASSETS_THEME . 'css/magnific-custom.css', false, SP_SCRIPTS_VERSION);
 		if ( strtolower(ICL_LANGUAGE_CODE) == 'kh') {
 			wp_enqueue_style('khmer-gfont', 'http://fonts.googleapis.com/css?family=Khmer', false, SP_SCRIPTS_VERSION);
 			wp_enqueue_style('kh', SP_ASSETS_THEME . 'css/kh.css', false, SP_SCRIPTS_VERSION);

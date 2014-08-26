@@ -33,7 +33,9 @@ get_header(); ?>
 
 				</article><!-- #post -->
 
-				<?php if ( ot_get_option( 'related-posts' ) != '1' ) { get_template_part('library/contents/related-posts'); } ?>
+				<?php if ( ot_get_option( 'related-posts' ) != '1' ) { 
+					echo sp_get_related_posts( $post->ID, array('posts_per_page' => 3) ); 
+				} ?>
 
 		<?php		
 				// If comments are open or we have at least one comment, load up the comment template.

@@ -16,6 +16,7 @@ function sp_shortcodes_register_mce_button( $buttons ) {
 	array_push( $buttons, 'soundcloud' );
 	array_push( $buttons, 'team' );
 	array_push( $buttons, 'photogallery' );
+	array_push( $buttons, 'post' );
 
     return $buttons;
 }
@@ -45,6 +46,7 @@ function sp_shortcodes_add_tinymce_plugin($plugin_array) {
 		$plugin_array['soundcloud']			= ED_JS_URL . 'ed-radio.js';
 		$plugin_array['team']				= ED_JS_URL . 'ed-team.js';
 		$plugin_array['photogallery']		= ED_JS_URL . 'ed-photogallery.js';
+		$plugin_array['post']				= ED_JS_URL . 'ed-post.js';
 	endif;
 	
     return $plugin_array;
@@ -64,5 +66,6 @@ load_template( SC_INC_DIR . 'popup/ajax-tv-shortcode.php' );
 load_template( SC_INC_DIR . 'popup/ajax-soundcloud-shortcode.php' );
 load_template( SC_INC_DIR . 'popup/ajax-team-shortcode.php' );
 load_template( SC_INC_DIR . 'popup/ajax-photogallery-shortcode.php' );
+load_template( SC_INC_DIR . 'popup/ajax-post-shortcode.php' );
 
 ?>
