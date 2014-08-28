@@ -80,9 +80,11 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_style('magnific-popup', SP_ASSETS_THEME . 'css/magnific-popup.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('magnific-custom', SP_ASSETS_THEME . 'css/magnific-custom.css', false, SP_SCRIPTS_VERSION);
-		if ( strtolower(ICL_LANGUAGE_CODE) == 'kh') {
-			wp_enqueue_style('khmer-gfont', 'http://fonts.googleapis.com/css?family=Khmer', false, SP_SCRIPTS_VERSION);
-			wp_enqueue_style('kh', SP_ASSETS_THEME . 'css/kh.css', false, SP_SCRIPTS_VERSION);
+		if (function_exists('icl_get_languages')) {
+			if ( strtolower(ICL_LANGUAGE_CODE) == 'kh') {
+				wp_enqueue_style('khmer-gfont', 'http://fonts.googleapis.com/css?family=Khmer', false, SP_SCRIPTS_VERSION);
+				wp_enqueue_style('kh', SP_ASSETS_THEME . 'css/kh.css', false, SP_SCRIPTS_VERSION);
+			}
 		}
 
 		//Register scripts
@@ -239,10 +241,11 @@ if ( !function_exists('sp_browser_body_class') ) {
 	           } elseif ( stristr( $_SERVER['HTTP_USER_AGENT'],"windows") ) {
 	                 $classes[] = 'windows';
 	           }
-
-	        if(strtolower(ICL_LANGUAGE_CODE) == 'kh'){
-			    $classes[] = 'kh';
-			  }
+	        if (function_exists('icl_get_languages')) {   
+	        	if(strtolower(ICL_LANGUAGE_CODE) == 'kh'){
+			    	$classes[] = 'kh';
+			  	}
+			}
 
 	        return $classes;
 	}

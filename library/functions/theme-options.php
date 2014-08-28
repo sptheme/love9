@@ -654,6 +654,14 @@ function custom_theme_options() {
 			'std'		=> '#',
 			'section'	=> 'social-links'
 		),
+		array(
+			'id'		=> 'soundcloud-url',
+			'label'		=> 'Soundcloud',
+			'desc'		=> 'Enter Soundcloud channel',
+			'type'		=> 'text',
+			'std'		=> '#',
+			'section'	=> 'social-links'
+		),
 		// Styling: Enable
 		array(
 			'id'		=> 'dynamic-styles',

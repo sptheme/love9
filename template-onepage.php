@@ -88,10 +88,10 @@ get_header(); ?>
 		</section> <!-- #intro -->
 		<section id="tv" class="tv bg-sections">
 			<div class="container clearfix">
-				<a class="popup-video" href="<?php echo $home_meta['sp_video_drama'][0]; ?>">
+				<a href="<?php echo get_permalink(icl_object_id($home_meta['sp_page_tv_drama'][0]); ?>">
 		    		<img class="tv-drama wow fadeInLeft" src="<?php echo $home_meta['sp_tv_drama'][0]; ?>">
 		    	</a>
-		    	<a class="popup-video" href="<?php echo $home_meta['sp_video_magazine'][0]; ?>">
+		    	<a href="<?php echo get_permalink(icl_object_id($home_meta['sp_page_tv_mag'][0]); ?>">
 		    		<img class="tv-magazine wow fadeInRight" src="<?php echo $home_meta['sp_tv_magazine'][0]; ?>">
 		    	</a>
 				<div class="love9 actor-tv">
