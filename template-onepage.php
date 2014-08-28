@@ -88,10 +88,10 @@ get_header(); ?>
 		</section> <!-- #intro -->
 		<section id="tv" class="tv bg-sections">
 			<div class="container clearfix">
-				<a href="<?php echo get_permalink(icl_object_id($home_meta['sp_page_tv_drama'][0]); ?>">
+				<a href="<?php echo get_permalink($home_meta['sp_page_tv_drama'][0]); ?>">
 		    		<img class="tv-drama wow fadeInLeft" src="<?php echo $home_meta['sp_tv_drama'][0]; ?>">
 		    	</a>
-		    	<a href="<?php echo get_permalink(icl_object_id($home_meta['sp_page_tv_mag'][0]); ?>">
+		    	<a href="<?php echo get_permalink($home_meta['sp_page_tv_mag'][0]); ?>">
 		    		<img class="tv-magazine wow fadeInRight" src="<?php echo $home_meta['sp_tv_magazine'][0]; ?>">
 		    	</a>
 				<div class="love9 actor-tv">
@@ -119,11 +119,11 @@ get_header(); ?>
 				<?php echo sp_weekly_topic($home_meta['sp_weekly_topic'][0]); ?>
 				</div>
 				<img class="radio-clock wow fadeInDown" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-clock.png">
-				<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<?php echo $home_meta['sp_track_drama_id'][0]; ?>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
+				<a href="<?php echo get_permalink($home_meta['sp_page_radio_drama'][0]); ?>">
 		    	<img class="radio-drama wow zoomIn" src="<?php echo $home_meta['sp_radio_drama'][0]; ?>">
 		    	</a>
 		    	<img class="fm-102 wow flash" src="<?php echo $home_meta['sp_radio_fm102'][0]; ?>">
-		    	<a class="popup-soundcloud" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<?php echo $home_meta['sp_track_weekly_id'][0]; ?>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
+		    	<a href="<?php echo get_permalink($home_meta['sp_page_radio_podcast'][0]); ?>">
 		    		<img class="listen-podcast wow swing" src="<?php echo $home_meta['sp_listen_podcast'][0]; ?>">
 		    	</a>
 		    	<img class="speaker wow zoomIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/speaker.png">

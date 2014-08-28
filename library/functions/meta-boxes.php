@@ -308,20 +308,30 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Select TV Drama page',
+			'id'		=> $prefix . 'page_tv_drama',
+			'type'		=> 'page_select',
+		),
+		/*array(
 			'label'		=> 'Video Drama URL/Link ',
 			'id'		=> $prefix . 'video_drama',
 			'type'		=> 'text',
-		),
+		),*/
 		array(
 			'label'		=> 'TV Magazine',
 			'id'		=> $prefix . 'tv_magazine',
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Select TV Magazine page',
+			'id'		=> $prefix . 'page_tv_mag',
+			'type'		=> 'page_select',
+		),
+		/*array(
 			'label'		=> 'Video Magazine URL/Link ',
 			'id'		=> $prefix . 'video_magazine',
 			'type'		=> 'text',
-		),
+		),*/
 		array(
 			'label'		=> 'TV Board',
 			'id'		=> $prefix . 'tv_board',
@@ -343,7 +353,7 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Weekly Topic',
+			'label'		=> 'Select section (Listen to podcast) for Weekly Topic',
 			'id'		=> $prefix . 'weekly_topic',
 			'type'		=> 'taxonomy-select',
 			'post_type' => 'radio',
@@ -365,20 +375,30 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Select Radio Drama page',
+			'id'		=> $prefix . 'page_radio_drama',
+			'type'		=> 'page_select',
+		),
+		/*array(
 			'label'		=> 'Radio Drama track ID',
 			'id'		=> $prefix . 'track_drama_id',
 			'type'		=> 'text',
-		),
+		),*/
 		array(
 			'label'		=> 'Listen to podcast',
 			'id'		=> $prefix . 'listen_podcast',
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Select Listen to podcast page',
+			'id'		=> $prefix . 'page_radio_podcast',
+			'type'		=> 'page_select',
+		),
+		/*array(
 			'label'		=> 'Listen to podcast track ID',
 			'id'		=> $prefix . 'track_weekly_id',
 			'type'		=> 'text',
-		),
+		),*/
 		array(
 			'label'		=> 'Love9 Village',
 			'id'		=> $prefix . 'village_options',
