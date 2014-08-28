@@ -557,7 +557,12 @@ if ( ! function_exists( 'sp_weekly_topic' ) ) {
 		if( $custom_query->have_posts() ) :
 			$out = '<ol>';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
-				$out .= '<li>' . get_the_title() . ' <small>' . esc_html( get_the_date('d M, Y') ) . '</small></li>';
+				$soundcloud = get_post_meta( get_the_ID(), 'sp_soundcloud_url', true );
+				if ( !empty($soundcloud) ) :
+					$out .= '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a> <small>' . esc_html( get_the_date('d M, Y') ) . '</small></li>';
+				else :
+					$out .= '<li>' . get_the_title() . ' <small>' . esc_html( get_the_date('d M, Y') ) . '</small></li>';
+				endif;
 			endwhile; wp_reset_postdata();
 			$out .= '</ol>';
 		else : 
@@ -836,7 +841,7 @@ if ( !function_exists('sp_render_sound_post') ) {
 	function sp_render_sound_post($post_id, $size = 'thumbnail') {
 
 		$sound_url = get_post_meta($post->ID, 'sp_soundcloud_url', true);
-		$sound_cover = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.gif';
+		$sound_cover = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
     	$out = '<article id="post-' . $post_id . '">';
     	$out .= '<div class="thumb-effect">';
@@ -862,7 +867,7 @@ if ( !function_exists('sp_render_sound_post') ) {
 if ( !function_exists('sp_render_blog_post') ) {
 	function sp_render_blog_post($post_id, $size = 'thumbnail') {
 
-		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.gif';
+		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
     	$out = '<article id="post-' . $post_id . '">';
     	$out .= '<div class="thumb-effect">';
@@ -889,7 +894,7 @@ if ( !function_exists('sp_render_team_post') ) {
 	function sp_render_team_post($post_id, $size = 'thumbnail') {
 
 		$team_position = get_post_meta($post_id, 'sp_team_position', true);
-		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.gif';
+		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 		
 		$out = '<article id="post-' . $post_id . '">';
     	$out .= '<div class="thumb-effect">';
@@ -917,7 +922,7 @@ if ( !function_exists('sp_render_photogallery_post') ) {
 	function sp_render_photogallery_post($post_id, $size = 'thumbnail') {
 
 		$album_location = get_post_meta($post_id, 'sp_album_location', true);
-		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.gif';
+		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
     	$out = '<article id="post-' . $post_id . '">';
     	$out .= '<div class="thumb-effect">';

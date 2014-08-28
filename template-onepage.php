@@ -7,6 +7,44 @@ get_header(); ?>
 	
 	<?php $home_meta = get_post_meta( $post->ID ); ?>
 
+	<style type="text/css">
+		a.presenter {
+			background: url(<?php echo $home_meta['sp_presenter'][0];?>) no-repeat;
+			width: 100px;
+			height: 121px;
+		}
+		a.presenter:hover {  background-position: 0 -121px; }
+
+		a.tv-drama {
+			background: url(<?php echo $home_meta['sp_tv_drama'][0];?>) no-repeat;
+			width: 298px;
+			height: 260px;
+		}
+		a.tv-drama:hover {  background-position: 0 -269px }
+
+		a.tv-magazine {
+			background: url(<?php echo $home_meta['sp_tv_magazine'][0];?>) no-repeat;
+			width: 210px;
+			height: 193px;
+		}
+		a.tv-magazine:hover {  background-position: 0 -193px }
+
+		a.radio-drama {
+			background: url(<?php echo $home_meta['sp_radio_drama'][0];?>) no-repeat;
+			width: 276px;
+			height: 240px;
+		}
+		a.radio-drama:hover {  background-position: 0 -240px }
+
+		a.listen-podcast {
+			background: url(<?php echo $home_meta['sp_listen_podcast'][0];?>) no-repeat;
+			width: 190px;
+			height: 68px;
+		}
+		a.listen-podcast:hover {  background-position: 0 -69px }
+
+	</style>
+
 	<nav id="primary" class="nav-tooltip">
 		<ul>
 	    <li><a data-scroll href="#intro"><?php _e('Home', SP_TEXT_DOMAIN); ?></a>
@@ -90,11 +128,11 @@ get_header(); ?>
 		</section> <!-- #intro -->
 		<section id="tv" class="tv bg-sections">
 			<div class="container clearfix">
-				<a href="<?php echo get_permalink($home_meta['sp_page_tv_drama'][0]); ?>">
-		    		<img class="tv-drama wow fadeInLeft" src="<?php echo $home_meta['sp_tv_drama'][0]; ?>">
+				<a class="tv-drama wow fadeInLeft" href="<?php echo get_permalink($home_meta['sp_page_tv_drama'][0]); ?>">
+		    		<!-- <img src="<?php echo $home_meta['sp_tv_drama'][0]; ?>"> -->
 		    	</a>
-		    	<a href="<?php echo get_permalink($home_meta['sp_page_tv_mag'][0]); ?>">
-		    		<img class="tv-magazine wow fadeInRight" src="<?php echo $home_meta['sp_tv_magazine'][0]; ?>">
+		    	<a class="tv-magazine wow fadeInRight" href="<?php echo get_permalink($home_meta['sp_page_tv_mag'][0]); ?>">
+		    		<!-- <img src="<?php echo $home_meta['sp_tv_magazine'][0]; ?>"> -->
 		    	</a>
 				<div class="love9 actor-tv">
 				<img class="wow zoomIn" data-wow-duration="0.4s" data-wow-delay="1s" src="<?php echo $home_meta['sp_tv_title'][0]; ?>">
@@ -117,16 +155,16 @@ get_header(); ?>
 					else :
 						echo date('F');
 					endif; ?>
-					</h4>
+					</h4>	
 				<?php echo sp_weekly_topic($home_meta['sp_weekly_topic'][0]); ?>
 				</div>
 				<img class="radio-clock wow fadeInDown" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-clock.png">
-				<a href="<?php echo get_permalink($home_meta['sp_page_radio_drama'][0]); ?>">
-		    	<img class="radio-drama wow zoomIn" src="<?php echo $home_meta['sp_radio_drama'][0]; ?>">
+				<a class="radio-drama wow zoomIn" href="<?php echo get_permalink($home_meta['sp_page_radio_drama'][0]); ?>">
+		    	<!-- <img src="<?php echo $home_meta['sp_radio_drama'][0]; ?>"> -->
 		    	</a>
 		    	<img class="fm-102 wow flash" src="<?php echo $home_meta['sp_radio_fm102'][0]; ?>">
-		    	<a href="<?php echo get_permalink($home_meta['sp_page_radio_podcast'][0]); ?>">
-		    		<img class="listen-podcast wow swing" src="<?php echo $home_meta['sp_listen_podcast'][0]; ?>">
+		    	<a class="listen-podcast wow swing" href="<?php echo get_permalink($home_meta['sp_page_radio_podcast'][0]); ?>">
+		    		<!-- <img src="<?php echo $home_meta['sp_listen_podcast'][0]; ?>"> -->
 		    	</a>
 		    	<img class="speaker wow zoomIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/speaker.png">
 				<div class="love9 actor-radio">
@@ -142,7 +180,9 @@ get_header(); ?>
 		<section id="village" class="village bg-sections">
 			<div class="container clearfix">
 				<img class="grass-3" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/grass-3.png">
-				<img class="presenter wow swing" src="<?php echo $home_meta['sp_presenter'][0]; ?>">
+				<a class="presenter wow swing" href="<?php echo get_permalink($home_meta['sp_page_presenter'][0]); ?>">
+				<!-- <img src="<?php echo $home_meta['sp_presenter'][0]; ?>"> -->
+				</a>
 				<img class="actor-frame wow swing" src="<?php echo $home_meta['sp_actor'][0]; ?>">
 				<img class="photo-gallery wow swing" src="<?php echo $home_meta['sp_photo_gallery'][0]; ?>">
 				<img class="behind-sence wow swing" src="<?php echo $home_meta['sp_behind_sence'][0]; ?>">

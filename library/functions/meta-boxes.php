@@ -426,6 +426,12 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Link to Presenter page',
+			'id'		=> $prefix . 'page_presenter',
+			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to presnter detail page',
+		),
+		array(
 			'label'		=> 'Actor',
 			'id'		=> $prefix . 'actor',
 			'type'		=> 'upload',
