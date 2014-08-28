@@ -557,7 +557,7 @@ if ( ! function_exists( 'sp_weekly_topic' ) ) {
 		if( $custom_query->have_posts() ) :
 			$out = '<ol>';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
-				$out .= '<li>' . get_the_title() . ' <small>' . esc_html( get_the_date() ) . '</small></li>';
+				$out .= '<li>' . get_the_title() . ' <small>' . esc_html( get_the_date('d M, Y') ) . '</small></li>';
 			endwhile; wp_reset_postdata();
 			$out .= '</ol>';
 		else : 

@@ -308,9 +308,10 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Select TV Drama page',
+			'label'		=> 'Link to TV Drama page',
 			'id'		=> $prefix . 'page_tv_drama',
 			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to TV drama detail page',
 		),
 		/*array(
 			'label'		=> 'Video Drama URL/Link ',
@@ -323,9 +324,10 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Select TV Magazine page',
+			'label'		=> 'Link to TV Magazine page',
 			'id'		=> $prefix . 'page_tv_mag',
 			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to TV magazine detail page',
 		),
 		/*array(
 			'label'		=> 'Video Magazine URL/Link ',
@@ -353,11 +355,18 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Select section (Listen to podcast) for Weekly Topic',
+			'label'		=> 'Show latest Weekly topic',
 			'id'		=> $prefix . 'weekly_topic',
 			'type'		=> 'taxonomy-select',
 			'post_type' => 'radio',
+			'desc'		=> 'Select section (Listen to podcast) for present latest Weekly Topic',
         	'taxonomy'  => 'radio-section',
+		),
+		array(
+			'label'		=> 'Link to Weekly topic page',
+			'id'		=> $prefix . 'page_weekly_topic',
+			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to weekly topic detail page',
 		),
 		array(
 			'label'		=> 'Radio actor',
@@ -375,9 +384,10 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Select Radio Drama page',
+			'label'		=> 'Link to Radio Drama page',
 			'id'		=> $prefix . 'page_radio_drama',
 			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to Radio drama detail page',
 		),
 		/*array(
 			'label'		=> 'Radio Drama track ID',
@@ -390,9 +400,10 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Select Listen to podcast page',
+			'label'		=> 'Link to Listen to podcast page',
 			'id'		=> $prefix . 'page_radio_podcast',
 			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to Listen to podcast detail page',
 		),
 		/*array(
 			'label'		=> 'Listen to podcast track ID',

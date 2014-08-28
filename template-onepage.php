@@ -52,7 +52,9 @@ get_header(); ?>
 	    <img class="radio-stage wow fadeInUp" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-stage.jpg">
 	    <img class="symbol-radio wow fadeInUp" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/symbol-radio.png">
 	    <img class="radio-sticky-photo wow swing" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/photo-sticky-radio.png">
+	    <a href="<?php echo get_permalink($home_meta['sp_page_weekly_topic'][0]); ?>">
 	    <img class="radio-board wow zoomIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-board.png">
+	    </a>
     	<!-- Village Sence -->
     	<img class="cow" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/cow.png">
     	<img class="grass" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/grass.png">
