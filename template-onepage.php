@@ -156,7 +156,9 @@ get_header(); ?>
 						echo date('F');
 					endif; ?>
 					</h4>	
-				<?php echo sp_weekly_topic($home_meta['sp_weekly_topic'][0]); ?>
+				<?php 
+					$today = getdate();
+					echo sp_weekly_topic($today['year'], $today['mon'], $home_meta['sp_weekly_topic'][0]); ?>
 				</div>
 				<img class="radio-clock wow fadeInDown" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-clock.png">
 				<a class="radio-drama wow zoomIn" href="<?php echo get_permalink($home_meta['sp_page_radio_drama'][0]); ?>">

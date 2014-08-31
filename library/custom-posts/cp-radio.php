@@ -102,7 +102,7 @@
 			$columns['radio_thumbnail']		= __( 'Thumbnail', 'sptheme_admin' );
 			$columns['title']              	= __( 'Title', 'sptheme_admin' );
 			$columns['radio_category']      = __( 'Radio Sections', 'sptheme_admin' );
-			$columns['radio_episode']       = __( 'Episode', 'sptheme_admin' );
+			$columns['radio_speaker']       = __( 'Guest Speaker', 'sptheme_admin' );
 			$columns['date']		 		= __( 'Date', 'sptheme_admin' );
 
 			return $columns;
@@ -151,24 +151,8 @@
 					echo join( ', ', $output );
 				break;
 
-				case "radio_episode":
-					$terms = get_the_terms( $post->ID, 'episode' );
-
-					if ( empty( $terms ) )
-					break;
-	
-					$output = array();
-	
-					foreach ( $terms as $term ) {
-						
-						$output[] = sprintf( '<a href="%s">%s</a>',
-							esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'episode' => $term->slug ), 'edit.php' ) ),
-							esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'episode', 'display' ) )
-						);
-	
-					}
-	
-					echo join( ', ', $output );
+				case "radio_speaker":
+					echo get_post_meta( $post->ID, 'sp_speaker_name', true );
 				break;
 				
 				default:

@@ -169,7 +169,6 @@ $post_format_video = array(
 $post_format_audio = array(
 	'id'          => 'format-audio',
 	'title'       => 'Audio meta',
-	'desc'        => 'These settings enable you to embed audio into your posts. You must provide both .mp3 and .ogg/.oga file formats in order for self hosted audio to function accross all browsers.',
 	'pages'       => array( 'post', 'document', 'radio' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
@@ -179,6 +178,37 @@ $post_format_audio = array(
 			'id'		=> $prefix . 'soundcloud_url',
 			'type'		=> 'text',
 			'desc'		=> 'Enter share URL of sound from Soundcloud'
+		)
+	)
+);
+
+/* ---------------------------------------------------------------------- */
+/*	Post type: Radio
+/* ---------------------------------------------------------------------- */
+$post_type_audio = array(
+	'id'          => 'post-radio',
+	'title'       => 'Guest Speaker',
+	'pages'       => array( 'radio' ),
+	'context'     => 'normal',
+	'priority'    => 'high',
+	'fields'      => array(
+		array(
+			'label'		=> 'Guest speaker name',
+			'id'		=> $prefix . 'speaker_name',
+			'type'		=> 'text',
+			'desc'		=> 'Enter name of guest speaker'
+		),
+		array(
+			'label'		=> 'Position',
+			'id'		=> $prefix . 'speaker_position',
+			'type'		=> 'text',
+			'desc'		=> 'Enter position of guest speaker. e.g: Project officer'
+		),
+		array(
+			'label'		=> 'Organization or Company Name',
+			'id'		=> $prefix . 'speaker_work_place',
+			'type'		=> 'text',
+			'desc'		=> 'Enter Organization/Company name where they working for. e.g: United Nations Population Fund  (UNFPA)'
 		)
 	)
 );
@@ -479,6 +509,27 @@ $page_template_home = array(
 	)
 );
 
+/* ---------------------------------------------------------------------- */
+/*	Weekly Topic template
+/* ---------------------------------------------------------------------- */
+$page_template_topic = array(
+	'id'          => 'weekly-topic',
+	'title'       => 'Topic settings',
+	'pages'       => array( 'page' ),
+	'context'     => 'normal',
+	'priority'    => 'high',
+	'fields'      => array(
+		array(
+			'label'		=> 'Show Weekly topic',
+			'id'		=> $prefix . 'weekly_topic',
+			'type'		=> 'taxonomy-select',
+			'post_type' => 'radio',
+			'desc'		=> 'Select section (Listen to podcast) for present Weekly Topic by month',
+        	'taxonomy'  => 'radio-section',
+		)
+	)
+);
+
 function rw_maybe_include() {
 	// Include in back-end only
 	if ( ! defined( 'WP_ADMIN' ) || ! WP_ADMIN ) {
@@ -517,9 +568,13 @@ function rw_maybe_include() {
 	ot_register_meta_box( $post_format_quote );*/
 	ot_register_meta_box( $post_type_team );
 	ot_register_meta_box( $post_type_gallery );
+	ot_register_meta_box( $post_type_audio );
 	
 	$template_file = rw_maybe_include();
 	if ( $template_file == 'template-onepage.php' ) {
 		ot_register_meta_box( $page_template_home );
+	}
+	if ( $template_file == 'template-topic.php' ) {
+		ot_register_meta_box( $page_template_topic );
 	}
 }

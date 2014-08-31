@@ -534,14 +534,13 @@ function sp_soundcloud($url , $autoplay = 'false' ) {
 /*	Weekly topic of Radio
 /* ---------------------------------------------------------------------- */
 if ( ! function_exists( 'sp_weekly_topic' ) ) {
-	function sp_weekly_topic($term_id) {
-		$today = getdate();
+	function sp_weekly_topic( $year, $month, $term_id) {
 		$args = array(
 			'post_type'	=> 'radio',
 			'date_query' => array(
 				array(
-					'year'  => $today['year'],
-					'month' => $today['mon'],
+					'year'  => $year,
+					'month' => $month,
 				),
 			),
 			'tax_query' => array(
@@ -558,13 +557,70 @@ if ( ! function_exists( 'sp_weekly_topic' ) ) {
 			$out = '<ol>';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				$soundcloud = get_post_meta( get_the_ID(), 'sp_soundcloud_url', true );
+				$out .= '<li>';
+				//$out .= '<small>Week ' . get_the_date('W') . '</small> ';
 				if ( !empty($soundcloud) ) :
-					$out .= '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a> <small>' . esc_html( get_the_date('d M, Y') ) . '</small></li>';
+					
+					$out .= '<a href="' . get_permalink() . '">' . get_the_title() . '</a> <small>' . esc_html( get_the_date('d M, Y') ) . '</small>';
 				else :
-					$out .= '<li>' . get_the_title() . ' <small>' . esc_html( get_the_date('d M, Y') ) . '</small></li>';
+					$out .= get_the_title() . ' <small>' . esc_html( get_the_date('d M, Y') ) . '</small>';
 				endif;
+				$out .= '</li>';
 			endwhile; wp_reset_postdata();
 			$out .= '</ol>';
+		else : 
+			$out = __('New topics are coming soon!', SP_TEXT_DOMAIN);	
+		endif;
+
+		return $out;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Yearly topic of Radio
+/* ---------------------------------------------------------------------- */
+if ( ! function_exists( 'sp_yearly_topic' ) ) {
+	function sp_yearly_topic( $year, $month, $term_id) {
+		$args = array(
+			'post_type'	=> 'radio',
+			'date_query' => array(
+				array(
+					'year'  => $year,
+					'month' => $month,
+				),
+			),
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'radio-section',
+					'field'    => 'term_id',
+					'terms'    => $term_id,
+					),
+			),
+			'post_status' => array('future','publish')
+		);
+		$custom_query = new WP_Query( $args );
+		if( $custom_query->have_posts() ) :
+			$out = '<ul>';
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
+				$soundcloud = get_post_meta( get_the_ID(), 'sp_soundcloud_url', true );
+				$out .= '<li>';
+				$out .= '<span class="week-num one-fourth">' . __('Week', SP_TEXT_DOMAIN) . ' ' . get_the_date('W') . '</span> ';
+				$out .= '<div class="topic-title two-fourth">';
+				if ( !empty($soundcloud) ) :
+					$out .= '<a href="' . get_permalink() . '">' . get_the_title() . '</a><span class="entry-meta"><i class="icon icon-calendar-1"></i>' . esc_html( get_the_date('d M, Y') ) . '</span>';
+				else :
+					$out .= get_the_title() . '<span class="entry-meta"><i class="icon icon-calendar-1"></i>' . esc_html( get_the_date('d M, Y') ) . '</span>';
+				endif;
+				$out .= '</div>';
+				$out .= '<div class="guest-speaker one-fourth last">';
+				$out .= '<span class="speaker-name">' . get_post_meta( get_the_ID(), 'sp_speaker_name', true ) . '</span>';
+				$out .= '<span class="speaker-position">' . get_post_meta( get_the_ID(), 'sp_speaker_position', true ) . '</span>';
+				$out .= '<span class="speaker-work-place">' . get_post_meta( get_the_ID(), 'sp_speaker_work_place', true ) . '</span>';
+				$out .= '</div>';
+				$out .= '</li>';
+			endwhile; wp_reset_postdata();
+			$out .= '</ul>';
 		else : 
 			$out = __('New topics are coming soon!', SP_TEXT_DOMAIN);	
 		endif;
