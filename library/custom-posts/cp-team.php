@@ -61,7 +61,7 @@
 
 			$role     = 'post'; // page
 			$slug     = 'team';
-			$supports = array('title', 'editor', 'thumbnail'); // 'title', 'editor', 'thumbnail'
+			$supports = array('title', 'editor', 'thumbnail', 'post-formats'); // 'title', 'editor', 'thumbnail'
 
 			$args = array(
 				'labels' 				=> $labels,

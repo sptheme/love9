@@ -32,6 +32,7 @@ if ( ! isset( $cp_menu_position ) )
 			'menu_tv'				=> 5,
 			'menu_radio'			=> 5,
 			'menu_team'				=> 5,
+			'menu_document'			=> 5,
 			'menu_gallery'			=> 5,
 		);
 

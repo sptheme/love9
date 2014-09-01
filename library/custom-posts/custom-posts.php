@@ -4,6 +4,7 @@
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-tv.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-radio.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-team.php' );
+load_template( SP_BASE_DIR . 'library/custom-posts/cp-document.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-gallery.php' );
 
 //Taxonomies

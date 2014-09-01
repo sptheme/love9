@@ -58,8 +58,8 @@ function sp_adjust_post_formats() {
     else
         return; // Page is going to fail anyway
  
-    if ( 'team' == $post_type )
-        add_theme_support( 'post-formats', array( 'gallery' ) );
+    if ( 'document' == $post_type )
+        add_theme_support( 'post-formats', array( 'audio', 'video' ) );
     /*elseif ( 'post' == $post_type )
         add_theme_support( 'post-formats', array( 'video' ) );*/
 }
@@ -69,7 +69,7 @@ add_action( 'load-post-new.php','sp_adjust_post_formats' );
 /* ---------------------------------------------------------------------- */
 /*	Quickly Rename a WordPress Post Format
 /* ---------------------------------------------------------------------- */
-if( !function_exists('rename_post_formats') ) {
+/*if( !function_exists('rename_post_formats') ) {
 	function rename_post_formats( $safe_text ) {
 	    if ( $safe_text == 'Aside' )
 	        return 'Document';
@@ -78,7 +78,7 @@ if( !function_exists('rename_post_formats') ) {
 	}
 	add_filter( 'esc_html', 'rename_post_formats' );
 }
-
+*/
 
 /* ---------------------------------------------------------------------- */
 /*	Register and add styles and scripts for fontend

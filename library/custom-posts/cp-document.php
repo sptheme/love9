@@ -53,7 +53,7 @@
 
 			$role     = 'post'; // page
 			$slug     = 'document';
-			$supports = array('title', 'editor'); // 'title', 'editor', 'thumbnail'
+			$supports = array('title', 'editor', 'thumbnail', 'post-formats'); // 'title', 'editor', 'thumbnail'
 
 			$args = array(
 				'labels' 				=> $labels,
@@ -67,10 +67,9 @@
 				'public'                => true,
 				'show_ui'               => true,
 				'show_in_nav_menus'	    => false,
-				'show_in_menu'			=> 'edit.php',
 				'publicly_queryable'	=> true,
 				'exclude_from_search'   => false,
-				'has_archive'			=> false,
+				'has_archive'			=> true,
 				'can_export'			=> true
 			);
 			register_post_type( 'document' , $args );
