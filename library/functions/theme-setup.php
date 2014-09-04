@@ -44,6 +44,29 @@ if( !function_exists('sp_theme_setup') )
 }
 
 /* ---------------------------------------------------------------------- */
+/*	Different Post Formats per Post Type
+/* ---------------------------------------------------------------------- */
+function sp_adjust_post_formats() {
+    if (isset($_GET['post'])) {
+		$post = get_post($_GET['post']);
+		if ($post)
+			$post_type = $post->post_type;
+    } elseif ( !isset($_GET['post_type']) )
+        $post_type = 'post';
+    elseif ( in_array( $_GET['post_type'], get_post_types( array('show_ui' => true ) ) ) )
+        $post_type = $_GET['post_type'];
+    else
+        return; // Page is going to fail anyway
+ 
+    if ( 'team' == $post_type )
+        add_theme_support( 'post-formats', array( 'gallery' ) );
+    /*elseif ( 'post' == $post_type )
+        add_theme_support( 'post-formats', array( 'video' ) );*/
+}
+add_action( 'load-post.php','sp_adjust_post_formats' );
+add_action( 'load-post-new.php','sp_adjust_post_formats' );
+
+/* ---------------------------------------------------------------------- */
 /*	Quickly Rename a WordPress Post Format
 /* ---------------------------------------------------------------------- */
 if( !function_exists('rename_post_formats') ) {
