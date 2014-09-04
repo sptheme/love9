@@ -332,7 +332,7 @@ function sp_photogallery_sc( $atts, $content = null ){
 	if ( $album_id == '-1' ) { // Show each cover album		
 		$out .= sp_get_posts_type( 'gallery', array('posts_per_page' => $post_num) );
 	} else { // show individual album
-		$out .= sp_get_album_gallery( $album_id, $postnum, 'thumb-medium' );
+		$out .= sp_get_album_gallery( $album_id, $postnum, 'thumb-medium', 'one-third' );
 	}
 
 	return $out;

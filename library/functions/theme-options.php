@@ -44,6 +44,10 @@ function custom_theme_options() {
 /* ------------------------------------ */	
 	'sections'        => array(
 		array(
+			'id'		=> 'general',
+			'title'		=> 'General'
+		),
+		array(
 			'id'		=> 'header',
 			'title'		=> 'Header'
 		),
@@ -76,6 +80,16 @@ function custom_theme_options() {
 /*  Theme options
 /* ------------------------------------ */
 	'settings'        => array(
+		
+		// General: Responsive Layout
+		array(
+			'id'		=> 'responsive',
+			'label'		=> 'Responsive Layout',
+			'desc'		=> 'Mobile and tablet optimizations [ <strong>responsive.css</strong> ]',
+			'std'		=> 'on',
+			'type'		=> 'on-off',
+			'section'	=> 'general'
+		),
 		
 		// Header: Custom Logo
 		array(

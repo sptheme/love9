@@ -17,12 +17,9 @@
 
 <body <?php body_class(); ?>>
 <div id="wrapper">
-    
     <header id="header">
     <div class="container clearfix">
         
-        <!-- <div id="menu-trigger" class="mobile-menu-trigger left icon-menu"></div> -->
-
         <div id="brand" role="banner">
             <?php if( !is_singular() ) echo '<h1>'; else echo '<h2>'; ?>
             

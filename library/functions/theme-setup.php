@@ -29,8 +29,8 @@ if( !function_exists('sp_theme_setup') )
 	
 		// Add suport for post thumbnails and set default sizes
 		add_theme_support( 'post-thumbnails' );
-		add_image_size('post-slider', 720, 432, true ); // base size 1280x768
-		add_image_size('thumb-medium', 320, 240, true ); // base size 1024x768
+		add_image_size('post-slider', 720, 540, true ); // base size 1024x768, other size: 1280x768
+		//add_image_size('thumb-medium', 320, 240, true ); // base size 1024x768
 
 		// Add navigation menus
 		register_nav_menus( array(
@@ -131,6 +131,7 @@ if( !function_exists('sp_frontend_scripts_styles') )
 
 		if ( is_front_page() || is_home() ) {
 			wp_enqueue_style('front-page', SP_ASSETS_THEME . 'css/front-page.css', false, SP_SCRIPTS_VERSION);
+			wp_enqueue_style('front-touch', SP_ASSETS_THEME . 'css/front-touch.css', false, SP_SCRIPTS_VERSION);
 			wp_enqueue_style('animate', SP_ASSETS_THEME . 'css/animate.css', false, SP_SCRIPTS_VERSION);	
 
 			wp_enqueue_script('smooth-scroll', SP_ASSETS_THEME . 'js/smooth-scroll.js', array('jquery'), SP_SCRIPTS_VERSION, true);
