@@ -102,9 +102,8 @@
 				'cb'                   	=> '<input type="checkbox" />',
 				'tv_thumbnail'			=> __( 'Thumbnail', 'sptheme_admin' ),
 				'title'                	=> __( 'Title', 'sptheme_admin' ),
-				'tv_season'           	=> __( 'Season', 'sptheme_admin' ),
 				'tv_category'           => __( 'TV Sections', 'sptheme_admin' ),
-				'tv_episode'        	=> __( 'Episode', 'sptheme_admin' ),
+				//'tv_episode'        	=> __( 'Episode', 'sptheme_admin' ),
 				'date'		 			=> __( 'Date', 'sptheme_admin' )
 			);
 
@@ -132,26 +131,6 @@
 					} else {
 						echo '<img src="' . $video_cover . '" width="90" height="68">';
 					}
-				break;
-
-				case "tv_season":
-					$terms = get_the_terms( $post->ID, 'season' );
-
-					if ( empty( $terms ) )
-					break;
-	
-					$output = array();
-	
-					foreach ( $terms as $term ) {
-						
-						$output[] = sprintf( '<a href="%s">%s</a>',
-							esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'season' => $term->slug ), 'edit.php' ) ),
-							esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'season', 'display' ) )
-						);
-	
-					}
-	
-					echo join( ', ', $output );
 				break;
 
 				case "tv_category":

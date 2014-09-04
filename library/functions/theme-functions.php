@@ -418,14 +418,15 @@ function ajaxify_comments($comment_ID, $comment_status){
 /* ---------------------------------------------------------------------- */
 if ( ! function_exists( 'sp_post_meta' ) ) {
 	function sp_post_meta() {
+		global $post;
 		
 		$post = get_post($post->ID);
 		$post_type = $post->post_type;
-		$taxonomy = get_object_taxonomies( $post_type );
+		$taxonomies = get_object_taxonomies( $post_type );
 		if ( $post_type == 'post') {
 			$post_meta = get_the_category_list( ', ' );
 		} else {
-			$post_meta = get_the_term_list( $post->ID, $taxonomy[0], '', ', ' );
+			$post_meta = get_the_term_list( $post->ID, $taxonomies[0], '', ', ' );
 		}
 
 		printf( __( '<i class="icon icon-calendar-1"></i><time class="entry-date" datetime="%1$s"> %2$s</time><span class="by-author"> by </span><span class="author vcard">%3$s</span><span class="posted-in"> in </span><i class="icon icon-tag"> </i> %4$s ', SP_TEXT_DOMAIN ),
