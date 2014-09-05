@@ -1,4 +1,5 @@
 /* Direction Nav */
+.flexslider { margin-bottom: 30px; }
 .flexslider .slides > li { position: relative; }
 .flexslider .slides li,
 .flex-direction-nav li { margin-bottom: 0; margin-top: 0;}
@@ -20,7 +21,7 @@
 	text-shadow:0 -1px 0 rgba(0,0,0,0.3);
 	font-size:14px;
 	line-height:18px; 
-	margin-bottom:0;
+	margin-bottom:0!important;
 }
 
 /* Single Post slider */

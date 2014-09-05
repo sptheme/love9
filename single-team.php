@@ -10,11 +10,7 @@ get_header(); ?>
 			// Start the Loop.
 			while ( have_posts() ) : the_post(); 
 		?>
-				<?php if ( has_post_thumbnail() ) : ?>
-				<div class="post-format">
-					<img class="attachment-medium wp-post-image" src="<?php echo sp_post_thumbnail( $size ); ?>" />
-				</div>	
-				<?php endif; ?>
+				<?php get_template_part('library/contents/post-formats'); ?>
 
 				<header class="entry-header">
 					<h1 class="entry-title">

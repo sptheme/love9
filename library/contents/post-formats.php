@@ -14,7 +14,7 @@
 <?php if ( has_post_format( 'gallery' ) ): // Gallery ?>
 	
 	<div class="post-format">
-		<?php $photos = explode( ',', get_post_meta( $post->ID, 'sp_gallery', true ) );  ?>
+		<?php $gallery = explode( ',', get_post_meta( $post->ID, 'sp_gallery', true ) ); if ( !empty($gallery) ): ?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
 			 	/* Single Post slider */
@@ -25,6 +25,7 @@
 					animationLoop: true,            //Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
 					pauseOnAction: true,            //Boolean: Pause the slideshow when interacting with control elements, highly recommended.
 					pauseOnHover: true,            //Boolean: Pause the slideshow when hovering over slider, then resume when no longer hovering
+					smoothHeight: "true",
 					before: function(slider) {
 					    $('.flex-caption').delay(100).fadeOut(100);
 					},
@@ -37,19 +38,21 @@
 		<div class="flex-container">
 			<div class="flexslider" id="post-slider-<?php the_ID(); ?>">
 				<ul class="slides">
-					<?php foreach ( $photos as $image ): ?>
+					<?php foreach ( $gallery as $image ): ?>
 						<li>
-							<?php $imageid = wp_get_attachment_image_src($image,'post-slider'); ?>
-							<img src="<?php echo $imageid[0]; ?>" alt="<?php echo $image->post_title; ?>">
-							
-							<?php if ( $image->post_excerpt ): ?>
-								<p class="flex-caption"><?php echo $image->post_excerpt; ?></p>
+							<?php 
+								$images = wp_get_attachment( $image );
+							?>
+							<img src="<?php echo $images['src']; ?>" alt="<?php echo $images['caption']; ?>">
+							<?php if ( $images['caption'] ): ?>
+								<p class="flex-caption"><?php echo $images['caption']; ?></p>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
 		</div>
+		<?php endif; ?>
 	</div>
 	
 <?php endif; ?>
