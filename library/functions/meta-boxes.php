@@ -547,6 +547,21 @@ $page_template_home = array(
 			'label'		=> 'About title',
 			'id'		=> $prefix . 'about_title',
 			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Facebook',
+			'id'		=> $prefix . 'facebook',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Youtube',
+			'id'		=> $prefix . 'youtube',
+			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Mail Box',
+			'id'		=> $prefix . 'mail_box',
+			'type'		=> 'upload',
 		)
 	)
 );

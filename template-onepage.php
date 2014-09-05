@@ -100,6 +100,28 @@ get_header(); ?>
 		}
 		a.listen-podcast:hover {  background-position: 0 -69px }
 
+		/* About */
+		a.facebook {
+			background: url(<?php echo $home_meta['sp_facebook'][0];?>) no-repeat;
+			width: 49px;
+			height: 45px;
+		}
+		a.facebook:hover {  background-position: 0 -45px; }
+
+		a.youtube {
+			background: url(<?php echo $home_meta['sp_youtube'][0];?>) no-repeat;
+			width: 146px;
+			height: 54px;
+		}
+		a.youtube:hover {  background-position: 0 -54px; }
+
+		a.mail-box {
+			background: url(<?php echo $home_meta['sp_mail_box'][0];?>) no-repeat;
+			width: 96px;
+			height: 259px;
+		}
+		a.mail-box:hover {  background-position: 0 -259px; }
+
 	</style>
 
 	<nav id="primary" class="nav-tooltip">
@@ -251,15 +273,9 @@ get_header(); ?>
 		<section id="about" class="about bg-sections">
 			<div class="container clearfix">
 				<img class="social-stand wow bounceInUp" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/social-stand.png">
-				<a href="<?php echo ot_get_option('facebook-url'); ?>" target="_blank">
-		    		<img class="facebook wow fadeInLeft" data-wow-delay="1s" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/facebook.gif">
-		    	</a>
-		    	<a href="<?php echo ot_get_option('youtube-url'); ?>" target="_blank">
-		    		<img class="youtube wow fadeInRight" data-wow-delay="1s"src="<?php echo SP_BASE_URL; ?>assets/images/front-page/youtube.gif">
-		    	</a>
-		    	<a class="popup-with-zoom-anim" href="#contact-dialog">
-		    	<img class="mail-box wow bounceInUp" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/mail-box.png">
-		    	</a>
+				<a class="facebook wow fadeInLeft" data-wow-delay="1s" href="<?php echo ot_get_option('facebook-url'); ?>" target="_blank"></a>
+		    	<a class="youtube wow fadeInRight" data-wow-delay="1s" href="<?php echo ot_get_option('youtube-url'); ?>" target="_blank"></a>
+		    	<a class="popup-with-zoom-anim mail-box wow bounceInUp" href="#contact-dialog"></a>
 				<img class="grass-4" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/grass-4.png">
 				<div class="love9 actor-about">
 				<img class="wow zoomIn" data-wow-duration="0.4s" data-wow-delay="1s" src="<?php echo $home_meta['sp_about_title'][0]; ?>">

@@ -266,6 +266,8 @@ if ( !function_exists('sp_browser_body_class') ) {
 	        if (function_exists('icl_get_languages')) {   
 	        	if(strtolower(ICL_LANGUAGE_CODE) == 'kh'){
 			    	$classes[] = 'kh';
+			  	} else {
+			  		$classes[] = 'en';
 			  	}
 			}
 
