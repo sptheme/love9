@@ -785,7 +785,15 @@ if ( ! function_exists( 'sp_show_social_icons' ) ) {
 /*  Get post type and render content style
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_posts_type') ) {
-	function sp_get_posts_type( $post_type = 'post', $args=array() ) {
+	function sp_get_posts_type( $post_type = 'post', $args=array(), $cols = '3', $style = 'modern' ) {
+
+		if ( $cols == 2 ) {
+			$cols = 'two-fourth';
+		} elseif ( $cols == 4 ) {
+			$cols = 'one-fourth';
+		} elseif ( $cols == 3 ) { // 3 cols
+			$cols = 'one-third';
+		} else { $cols = ''; }
 
 		$defaults = array(
 				'post_type' => $post_type,
@@ -797,9 +805,9 @@ if ( !function_exists('sp_get_posts_type') ) {
 		$custom_query = new WP_Query($args);
 
 		if ( $custom_query->have_posts() ):
-			$out = '<div class="sp-post-' . $post_type . ' col-3">';
+			$out = '<div class="sp-posts">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
-				$out .= sp_switch_posttype_content( get_the_ID(), $post_type );
+				$out .= sp_switch_posttype_content( get_the_ID(), $post_type, $cols, $style );
 			endwhile;
 			wp_reset_postdata();
 			$out .= '</div>';
@@ -813,7 +821,7 @@ if ( !function_exists('sp_get_posts_type') ) {
 /*  Get post related by post type
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_related_posts') ) {
-	function sp_get_related_posts( $post_id, $args=array() ) {
+	function sp_get_related_posts( $post_id, $args=array(), $cols = '3', $style = 'modern' ) {
 
 		$post = get_post($post_id);
 		$post_type = $post->post_type;
@@ -839,12 +847,12 @@ if ( !function_exists('sp_get_related_posts') ) {
 		$custom_query = new WP_Query($args);
 
 		if ( $custom_query->have_posts() ):
-			$out = '<section class="related-posts sp-post-' . $post_type . '">';
+			$out = '<section class="related-posts sp-posts">';
 			$out .= '<h4 class="heading">' . __('Related post...', SP_TEXT_DOMAIN) . '</h4>';
 			$out .= '<ul class="clearfix">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				$out .= '<li class="related">';
-				$out .= sp_switch_posttype_content( get_the_ID(), $post_type );
+				$out .= sp_switch_posttype_content( get_the_ID(), $post_type, $cols, $style );
 				$out .= '</li>';
 			endwhile;
 			$out .= '</ul>';
@@ -862,18 +870,22 @@ if ( !function_exists('sp_get_related_posts') ) {
 /*  Switch post type content
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_switch_posttype_content') ) {
-	function sp_switch_posttype_content( $post_id, $post_type ) {
+	function sp_switch_posttype_content( $post_id, $post_type, $cols = '3', $style = 'modern' ) {
 		
 		if ( $post_type == 'tv' ) {
-			$out = sp_render_video_post($post_id, 'thumb-medium');
+			$out = sp_render_video_post( $post_id, 'thumb-medium', $cols );
 		} elseif ( $post_type == 'radio' ) {
-			$out = sp_render_sound_post($post_id, 'thumb-medium');
+			$out = sp_render_sound_post( $post_id, 'thumb-medium', $cols );
 		} elseif ( $post_type == 'team' ) {
-			$out = sp_render_team_post( $post_id, 'thumb-medium' );
+			$out = sp_render_team_post( $post_id, 'thumb-medium', $cols );
 		}elseif ( $post_type == 'gallery' ) {
-			$out = sp_render_photogallery_post( $post_id, 'thumb-medium' );
-		} else { // for blog 
-			$out = sp_render_blog_post($post_id, 'thumb-medium');
+			$out = sp_render_photogallery_post( $post_id, 'thumb-medium', $cols );
+		} elseif ( $post_type == 'post' ) { // for blog 
+			if ( "modern" == $style ) { 
+				$out = sp_render_blog_post($post_id, 'thumb-medium', $cols );
+			} else {
+				$out = sp_render_doc_post( $post_id, $cols );	
+			}
 		}
 		return $out;
 		
@@ -884,12 +896,12 @@ if ( !function_exists('sp_switch_posttype_content') ) {
 /* Render HTML Video
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_render_video_post') ) {
-	function sp_render_video_post($post_id, $size = 'thumbnail') {
+	function sp_render_video_post( $post_id, $size = 'thumbnail', $cols = '3' ) {
 
 		$video_url = get_post_meta($post_id, 'sp_video_url', true);
 		$video_cover = sp_get_video_img( $video_url );
 
-    	$out = '<article id="post-' . $post_id . '">';
+    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -911,12 +923,12 @@ if ( !function_exists('sp_render_video_post') ) {
 /* Render HTML Radio
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_render_sound_post') ) {
-	function sp_render_sound_post($post_id, $size = 'thumbnail') {
+	function sp_render_sound_post( $post_id, $size = 'thumbnail', $cols = '3' ) {
 
 		$sound_url = get_post_meta($post->ID, 'sp_soundcloud_url', true);
 		$sound_cover = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article id="post-' . $post_id . '">';
+    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -935,14 +947,14 @@ if ( !function_exists('sp_render_sound_post') ) {
 }
 
 /* ---------------------------------------------------------------------- */               							
-/* Render HTML blog
+/* Render HTML Blog Post
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_render_blog_post') ) {
-	function sp_render_blog_post($post_id, $size = 'thumbnail') {
+	function sp_render_blog_post( $post_id, $size = 'thumbnail', $cols = '3' ) {
 
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article id="post-' . $post_id . '">';
+    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -961,15 +973,37 @@ if ( !function_exists('sp_render_blog_post') ) {
 }
 
 /* ---------------------------------------------------------------------- */               							
+/* Render HTML Documents Post
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_render_doc_post') ) {
+	function sp_render_doc_post( $post_id, $cols = '2' ) {
+
+		$post_format = get_post_format( $post_id );
+
+		if ( false === $post_format ) {
+			$post_format = 'standard';
+		}
+
+    	$out = '<article class="post-' . $post_id . ' sp-document format-' . $post_format . ' ' . $cols . '">';
+    	$out .= '<header>';
+		$out .= '<h5><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>';
+		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
+		$out .= '</header>';
+	    $out .= '</article>';
+		return $out;
+	}
+}
+
+/* ---------------------------------------------------------------------- */               							
 /* Render HTML Team (Presneter or Actor)
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_render_team_post') ) {
-	function sp_render_team_post($post_id, $size = 'thumbnail') {
+	function sp_render_team_post( $post_id, $size = 'thumbnail', $cols = '3' ) {
 
 		$team_position = get_post_meta($post_id, 'sp_team_position', true);
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 		
-		$out = '<article id="post-' . $post_id . '">';
+		$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -997,7 +1031,7 @@ if ( !function_exists('sp_render_photogallery_post') ) {
 		$album_location = get_post_meta($post_id, 'sp_album_location', true);
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article id="post-' . $post_id . '">';
+    	$out = '<article class="post-' . $post_id . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -1031,7 +1065,7 @@ if ( ! function_exists( 'sp_get_album_gallery' ) ) {
     		$out = '<div class="gallery clearfix">';
     		foreach ( $photos as $image ) :
 				$imageid = wp_get_attachment_image_src($image, $size);
-				$out .= '<article id="post-' . $post_id . '">';
+				$out .= '<article class="post-' . $post_id . '">';
     			$out .= '<div class="thumb-effect">';
 				$out .= '<img class="attachment-medium wp-post-image" src="' . $imageid[0] . '">';
 				$out .= '<div class="thumb-caption">';

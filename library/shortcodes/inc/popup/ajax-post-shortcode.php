@@ -30,6 +30,28 @@ function sp_post_shortcode_ajax(){
 					</td>
 				</tr>
 				<tr>
+					<?php $field = 'post_style'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Post style: ', 'sptheme_admin' ); ?></label></th>
+					<td>
+						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+							<option value="modern" selected>Modern</option>
+							<option value="classic">Classic</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<?php $field = 'cols'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Post column: ', 'sptheme_admin' ); ?></label></th>
+					<td>
+						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+							<option value="none" selected>None</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<?php $field = 'post_num'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Number post: ', 'sptheme_admin' ); ?></label></th>
 					<td>

@@ -348,6 +348,8 @@ function sp_post_sc( $atts, $content = null ){
 
 	extract( shortcode_atts( array(
 		'term_id' => null,
+		'post_style' => null,
+		'cols' => null,
 		'post_num' => null,
 	), $atts ) );
 
@@ -359,9 +361,9 @@ function sp_post_sc( $atts, $content = null ){
 						'terms'    => $term_id,
 					)
 				),
-				'posts_per_page' => $postnum
+				'posts_per_page' => $post_num
 			);
-	$out = sp_get_posts_type( 'post', $args );
+	$out = sp_get_posts_type( 'post', $args, $cols, $post_style );
 
 	return $out;
 

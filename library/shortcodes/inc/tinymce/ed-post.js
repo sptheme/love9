@@ -35,6 +35,8 @@
 		// but well, this gets the job done nonetheless
 		var options = { 
 			'term_id' : null,
+			'post_style' : null,
+			'cols' : null,
 			'post_num' : null
 			};
 		var shortcode = '[post';
