@@ -627,7 +627,7 @@ if ( !function_exists('sp_get_posts_type') ) {
 
 		if ( $custom_query->have_posts() ):
 			//$out = '<div class="sp-posts">';
-			$out = '<div class="container-msnry clearfix">';
+			$out = '<div class="sp-posts">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				$out .= sp_switch_posttype_content( get_the_ID(), $post_type, $cols, $style );
 			endwhile;
@@ -724,7 +724,7 @@ if ( !function_exists('sp_render_video_post') ) {
 		$video_url = get_post_meta($post_id, 'sp_video_url', true);
 		$video_cover = sp_get_video_img( $video_url );
 
-    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -753,7 +753,7 @@ if ( !function_exists('sp_render_sound_post') ) {
 		$sound_url = get_post_meta($post->ID, 'sp_soundcloud_url', true);
 		$sound_cover = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -781,7 +781,7 @@ if ( !function_exists('sp_render_blog_post') ) {
 
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -805,11 +805,11 @@ if ( !function_exists('sp_render_blog_post') ) {
 /* Render HTML Masonry Post
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_render_masonry_post') ) {
-	function sp_render_masonry_post( $post_id, $size, $cols ) {
+	function sp_render_masonry_post( $post_id, $size = 'thumbnail', $cols ) {
 
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	
     	// For mobile version 
     	/*$out .= '<div class="thumb-effect">';
@@ -854,7 +854,7 @@ if ( !function_exists('sp_render_doc_post') ) {
 			$post_format = 'standard';
 		}
 
-    	$out = '<article class="post-' . $post_id . ' post-masonry sp-document format-' . $post_format . ' ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' sp-document format-' . $post_format . ' ' . $cols . '">';
     	$out .= '<header>';
 		$out .= '<h5><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>';
 		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
@@ -873,7 +873,7 @@ if ( !function_exists('sp_render_team_post') ) {
 		$team_position = get_post_meta($post_id, 'sp_team_position', true);
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 		
-		$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
+		$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -903,7 +903,7 @@ if ( !function_exists('sp_render_photogallery_post') ) {
 		$album_location = get_post_meta($post_id, 'sp_album_location', true);
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -939,7 +939,7 @@ if ( ! function_exists( 'sp_get_album_gallery' ) ) {
     		$out = '<div class="gallery sp-posts clearfix">';
     		foreach ( $photos as $image ) :
 				$imageid = wp_get_attachment_image_src($image, $size);
-				$out .= '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
+				$out .= '<article class="post-' . $post_id . ' ' . $cols . '">';
     			$out .= '<div class="thumb-effect">';
 				$out .= '<img class="attachment-medium wp-post-image" src="' . $imageid[0] . '">';
 				$out .= '<div class="thumb-caption">';

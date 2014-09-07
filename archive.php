@@ -35,7 +35,7 @@ get_header(); ?>
 
             <?php /* Start the Loop */ ?>
         
-            <div class="container-msnry clearfix">
+            <div class="sp-posts">
             <?php   while ( have_posts() ) : the_post();
 
                         echo sp_render_masonry_post( $post->ID, 'post-sider', 'one-third' );

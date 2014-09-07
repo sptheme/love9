@@ -26,7 +26,7 @@ get_header(); ?>
             <div class="sp-posts">
             <?php   while ( have_posts() ) : the_post();
 
-                        echo sp_render_video_post( $post->ID, 'post-sider', 'one-third' );
+                        echo sp_render_sound_post( $post->ID, 'post-sider', 'one-third' );
 
                     endwhile; 
             ?>
