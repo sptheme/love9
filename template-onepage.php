@@ -8,6 +8,7 @@ get_header(); ?>
 	<?php $home_meta = get_post_meta( $post->ID ); ?>
 
 	<style type="text/css">
+		/* Village */
 		a.presenter {
 			background: url(<?php echo $home_meta['sp_presenter'][0];?>) no-repeat;
 			width: 100px;
@@ -15,6 +16,61 @@ get_header(); ?>
 		}
 		a.presenter:hover {  background-position: 0 -121px; }
 
+		a.actor-frame {
+			background: url(<?php echo $home_meta['sp_actor'][0];?>) no-repeat;
+			width: 116px;
+			height: 123px;
+		}
+		a.actor-frame:hover {  background-position: 0 -123px; }
+
+		a.photo-gallery {
+			background: url(<?php echo $home_meta['sp_photo_gallery'][0];?>) no-repeat;
+			width: 137px;
+			height: 123px;
+		}
+		a.photo-gallery:hover {  background-position: 0 -123px; }
+
+		a.behind-scene {
+			background: url(<?php echo $home_meta['sp_behind_scene'][0];?>) no-repeat;
+			width: 165px;
+			height: 127px;
+		}
+		.kh a.behind-scene {
+			background: url(<?php echo $home_meta['sp_behind_scene'][0];?>) no-repeat;
+			width: 102px;
+			height: 127px;
+		}
+		a.behind-scene:hover {  background-position: 0 -127px; }
+
+		a.video {
+			background: url(<?php echo $home_meta['sp_video_gallery'][0];?>) no-repeat;
+			width: 104px;
+			height: 137px;
+		}
+		a.video:hover {  background-position: 0 -137px; }
+
+		a.announcement {
+			background: url(<?php echo $home_meta['sp_announcement'][0];?>) no-repeat;
+			width: 175px;
+			height: 140px;
+		}
+		a.announcement:hover {  background-position: 0 -140px; }
+
+		a.blog {
+			background: url(<?php echo $home_meta['sp_blog'][0];?>) no-repeat;
+			width: 92px;
+			height: 109px;
+		}
+		a.blog:hover {  background-position: 0 -109px; }
+
+		a.document {
+			background: url(<?php echo $home_meta['sp_document'][0];?>) no-repeat;
+			width: 143px;
+			height: 87px;
+		}
+		a.document:hover {  background-position: 0 -87px; }
+
+		/* TV */
 		a.tv-drama {
 			background: url(<?php echo $home_meta['sp_tv_drama'][0];?>) no-repeat;
 			width: 298px;
@@ -29,6 +85,7 @@ get_header(); ?>
 		}
 		a.tv-magazine:hover {  background-position: 0 -193px }
 
+		/* Radio */
 		a.radio-drama {
 			background: url(<?php echo $home_meta['sp_radio_drama'][0];?>) no-repeat;
 			width: 276px;
@@ -99,9 +156,11 @@ get_header(); ?>
     	<img class="pig" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/pig.png">
     	<img class="village-board wow zoomIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/village-board.png">
     	<img class="village-symbol wow fadeIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/village-symbol.png">
-    	<img class="anouncement" src="<?php echo $home_meta['sp_announcement'][0]; ?>">
-    	<img class="blog" src="<?php echo $home_meta['sp_blog'][0]; ?>">
-    	<img class="document" src="<?php echo $home_meta['sp_document'][0]; ?>">
+
+    	<a class="announcement wow swing" href="<?php echo get_permalink($home_meta['sp_page_video_gallery'][0]); ?>"></a>
+    	<a class="blog wow swing" href="<?php echo get_permalink($home_meta['sp_page_video_gallery'][0]); ?>"></a>
+    	<a class="document wow swing" href="<?php echo get_permalink($home_meta['sp_page_video_gallery'][0]); ?>"></a>
+
     	<img class="grass-2" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/grass-2.png">
     	<!-- About Sence -->
     	<img class="cloud-6 wow fadeInLeft" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/cloud.png">
@@ -128,12 +187,8 @@ get_header(); ?>
 		</section> <!-- #intro -->
 		<section id="tv" class="tv bg-sections">
 			<div class="container clearfix">
-				<a class="tv-drama wow fadeInLeft" href="<?php echo get_permalink($home_meta['sp_page_tv_drama'][0]); ?>">
-		    		<!-- <img src="<?php echo $home_meta['sp_tv_drama'][0]; ?>"> -->
-		    	</a>
-		    	<a class="tv-magazine wow fadeInRight" href="<?php echo get_permalink($home_meta['sp_page_tv_mag'][0]); ?>">
-		    		<!-- <img src="<?php echo $home_meta['sp_tv_magazine'][0]; ?>"> -->
-		    	</a>
+				<a class="tv-drama wow fadeInLeft" href="<?php echo get_permalink($home_meta['sp_page_tv_drama'][0]); ?>"></a>
+		    	<a class="tv-magazine wow fadeInRight" href="<?php echo get_permalink($home_meta['sp_page_tv_mag'][0]); ?>"></a>
 				<div class="love9 actor-tv">
 				<img class="wow zoomIn" data-wow-duration="0.4s" data-wow-delay="1s" src="<?php echo $home_meta['sp_tv_title'][0]; ?>">
 				<nav class="next-prev wow fadeInDown" data-wow-duration="0.2s" data-wow-delay="1.2s">
@@ -161,13 +216,9 @@ get_header(); ?>
 					echo sp_weekly_topic($today['year'], $today['mon'], $home_meta['sp_weekly_topic'][0]); ?>
 				</div>
 				<img class="radio-clock wow fadeInDown" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/radio-clock.png">
-				<a class="radio-drama wow zoomIn" href="<?php echo get_permalink($home_meta['sp_page_radio_drama'][0]); ?>">
-		    	<!-- <img src="<?php echo $home_meta['sp_radio_drama'][0]; ?>"> -->
-		    	</a>
+				<a class="radio-drama wow zoomIn" href="<?php echo get_permalink($home_meta['sp_page_radio_drama'][0]); ?>"></a>
 		    	<img class="fm-102 wow flash" src="<?php echo $home_meta['sp_radio_fm102'][0]; ?>">
-		    	<a class="listen-podcast wow swing" href="<?php echo get_permalink($home_meta['sp_page_radio_podcast'][0]); ?>">
-		    		<!-- <img src="<?php echo $home_meta['sp_listen_podcast'][0]; ?>"> -->
-		    	</a>
+		    	<a class="listen-podcast wow swing" href="<?php echo get_permalink($home_meta['sp_page_radio_podcast'][0]); ?>"></a>
 		    	<img class="speaker wow zoomIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/speaker.png">
 				<div class="love9 actor-radio">
 				<img class="wow zoomIn" data-wow-duration="0.4s" data-wow-delay="1s" src="<?php echo $home_meta['sp_radio_title'][0]; ?>">
@@ -182,13 +233,11 @@ get_header(); ?>
 		<section id="village" class="village bg-sections">
 			<div class="container clearfix">
 				<img class="grass-3" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/grass-3.png">
-				<a class="presenter wow swing" href="<?php echo get_permalink($home_meta['sp_page_presenter'][0]); ?>">
-				<!-- <img src="<?php echo $home_meta['sp_presenter'][0]; ?>"> -->
-				</a>
-				<img class="actor-frame wow swing" src="<?php echo $home_meta['sp_actor'][0]; ?>">
-				<img class="photo-gallery wow swing" src="<?php echo $home_meta['sp_photo_gallery'][0]; ?>">
-				<img class="behind-sence wow swing" src="<?php echo $home_meta['sp_behind_sence'][0]; ?>">
-				<img class="video wow swing" src="<?php echo $home_meta['sp_video_gallery'][0]; ?>">
+				<a class="presenter wow swing" href="<?php echo get_permalink($home_meta['sp_page_presenter'][0]); ?>"></a>
+				<a class="actor-frame wow swing" href="<?php echo get_permalink($home_meta['sp_page_actor'][0]); ?>"></a>
+				<a class="photo-gallery wow swing" href="<?php echo get_permalink($home_meta['sp_page_photogallery'][0]); ?>"></a>
+				<a class="behind-scene wow swing" href="<?php echo get_permalink($home_meta['sp_page_behind_scene'][0]); ?>"></a>
+				<a class="video wow swing" href="<?php echo get_permalink($home_meta['sp_page_video_gallery'][0]); ?>"></a>
 				<div class="love9 actor-village">
 				<img class="wow zoomIn" data-wow-duration="0.4s" data-wow-delay="1s" src="<?php echo $home_meta['sp_village_title'][0]; ?>">
 				<nav class="next-prev wow fadeInDown" data-wow-duration="0.2s" data-wow-delay="1.2s">

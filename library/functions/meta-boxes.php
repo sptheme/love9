@@ -456,10 +456,10 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Link to Presenter page',
+			'label'		=> 'Link to presenter page',
 			'id'		=> $prefix . 'page_presenter',
 			'type'		=> 'page_select',
-			'desc'		=> 'Select page to link to presnter detail page',
+			'desc'		=> 'Select page to link to presenter detail page',
 		),
 		array(
 			'label'		=> 'Actor',
@@ -467,14 +467,32 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Link to actor page',
+			'id'		=> $prefix . 'page_actor',
+			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to actor detail page',
+		),
+		array(
 			'label'		=> 'Photo Gallery',
 			'id'		=> $prefix . 'photo_gallery',
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Behind the sences',
-			'id'		=> $prefix . 'behind_sence',
+			'label'		=> 'Link to photogallery page',
+			'id'		=> $prefix . 'page_photogallery',
+			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to photogallery detail page',
+		),
+		array(
+			'label'		=> 'Behind the scene',
+			'id'		=> $prefix . 'behind_scene',
 			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Link to behind the scene page',
+			'id'		=> $prefix . 'page_behind_scene',
+			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to behind the scene detail page',
 		),
 		array(
 			'label'		=> 'Videos Gallery',
@@ -482,9 +500,21 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Link to Youtube channel',
+			'id'		=> $prefix . 'page_video_gallery',
+			'type'		=> 'text',
+			'desc'		=> 'Enter link of love9 youtube channel',
+		),
+		array(
 			'label'		=> 'Announcement',
 			'id'		=> $prefix . 'announcement',
 			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Link to announcement page',
+			'id'		=> $prefix . 'page_announcement',
+			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to announcement detail page',
 		),
 		array(
 			'label'		=> 'Blog',
@@ -492,9 +522,21 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
+			'label'		=> 'Link to blog page',
+			'id'		=> $prefix . 'page_blog',
+			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to blog detail page',
+		),
+		array(
 			'label'		=> 'Documents',
 			'id'		=> $prefix . 'document',
 			'type'		=> 'upload',
+		),
+		array(
+			'label'		=> 'Link to documents page',
+			'id'		=> $prefix . 'page_documents',
+			'type'		=> 'page_select',
+			'desc'		=> 'Select page to link to documents detail page',
 		),
 		array(
 			'label'		=> 'About',
