@@ -153,7 +153,7 @@ if ( !function_exists('sp_print_ie_script') ){
 	
 	function sp_print_ie_script(){
 		echo '<!--[if lt IE 9]>'. "\n";
-		echo '<script src="' . esc_url( SP_ASSETS_THEME . 'js/ie/html5.js' ) . '"></script>'. "\n";
+		echo '<script src="' . esc_url( SP_ASSETS_THEME . 'js/ie/html5shiv.js' ) . '"></script>'. "\n";
 		echo '<![endif]-->'. "\n";
 	}
 }
