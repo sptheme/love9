@@ -445,11 +445,11 @@ if ( ! function_exists( 'sp_post_meta' ) ) {
 			$post_meta = get_the_term_list( $post->ID, $taxonomies[0], '', ', ' );
 		}
 
-		printf( __( '<i class="icon icon-calendar-1"></i><time class="entry-date" datetime="%1$s"> %2$s</time><span class="by-author"> by </span><span class="author vcard">%3$s</span><span class="posted-in"> in </span><i class="icon icon-tag"> </i> %4$s ', SP_TEXT_DOMAIN ),
+		printf( __( '<i class="icon icon-calendar-1"></i><time class="entry-date" datetime="%1$s"> %2$s</time><span class="by-author"> by </span><span class="author vcard">%3$s</span><span class="posted-in"> in </span>', SP_TEXT_DOMAIN ),
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),
-			get_the_author(),
-			$post_meta
+			get_the_author()
+			//$post_meta
 		);
 		if ( comments_open() ) : ?>
 				<span class="with-comments"><?php _e( ' with ', SP_TEXT_DOMAIN ); ?></span>
