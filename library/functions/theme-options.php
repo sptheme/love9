@@ -141,15 +141,6 @@ function custom_theme_options() {
 			'type'		=> 'upload',
 			'section'	=> 'header'
 		),
-		// Header: Header background image
-		array(
-			'id'		=> 'header-bg',
-			'label'		=> 'Header Background Image',
-			'desc'		=> 'Upload a background partern png image for header. Size 960px x 100px.',
-			'std'		=> SP_ASSETS_THEME . 'images/topbar.png',
-			'type'		=> 'upload',
-			'section'	=> 'header'
-		),
 		// Footer: Widget Columns
 		/*array(
 			'id'		=> 'footer-widgets',
@@ -237,57 +228,6 @@ function custom_theme_options() {
 			'type'		=> 'page_select',
 			'section'	=> 'footer'
 		),
-		// Blog: Excerpt Length
-		array(
-			'id'			=> 'excerpt-length',
-			'label'			=> 'Excerpt Length',
-			'desc'			=> 'Max number of words',
-			'std'			=> '34',
-			'type'			=> 'numeric-slider',
-			'section'		=> 'blog',
-			'min_max_step'	=> '0,100,1'
-		),
-		// Blog: Featured Posts
-		array(
-			'id'		=> 'featured-posts-include',
-			'label'		=> 'Featured Posts',
-			'desc'		=> 'To show featured posts in the slider AND the content below<br /><i>Usually not recommended</i>',
-			'type'		=> 'checkbox',
-			'section'	=> 'blog',
-			'choices'	=> array(
-				array( 
-					'value' => '1',
-					'label' => 'Include featured posts in content area'
-				)
-			)
-		),
-		// Blog: Featured Category
-		array(
-			'id'		=> 'featured-category',
-			'label'		=> 'Featured Category',
-			'desc'		=> 'By not selecting a category, it will show your latest post(s) from all categories',
-			'type'		=> 'category-select',
-			'section'	=> 'blog'
-		),
-		// Blog: Featured Category Count
-		array(
-			'id'			=> 'featured-posts-count',
-			'label'			=> 'Featured Post Count',
-			'desc'			=> 'Max number of featured posts to display. <br /><i>Set to 1 and it will show it without any slider script</i><br /><i>Set it to 0 to disable</i>',
-			'std'			=> '1',
-			'type'			=> 'numeric-slider',
-			'section'		=> 'blog',
-			'min_max_step'	=> '0,10,1'
-		),
-		// Blog: Thumbnail Placeholder
-		array(
-			'id'		=> 'placeholder',
-			'label'		=> 'Thumbnail Placeholder',
-			'desc'		=> 'Show featured image placeholders if no featured image is set',
-			'std'		=> 'on',
-			'type'		=> 'on-off',
-			'section'	=> 'blog'
-		),
 		// Blog: Single - Social Share
 		array(
 			'id'		=> 'social_share',
@@ -303,15 +243,6 @@ function custom_theme_options() {
 			'label'		=> 'Twitter Username',
 			'desc'		=> 'Your @username will be added to share-tweets of your posts (optional)',
 			'type'		=> 'text',
-			'section'	=> 'blog'
-		),
-		// Blog: Single - Authorbox
-		array(
-			'id'		=> 'author-bio',
-			'label'		=> 'Single &mdash; Author Bio',
-			'desc'		=> 'Shows post author description, if it exists',
-			'std'		=> 'on',
-			'type'		=> 'on-off',
 			'section'	=> 'blog'
 		),
 		// Blog: Single - Related Posts
@@ -334,33 +265,6 @@ function custom_theme_options() {
 				array( 
 					'value' => 'tags',
 					'label' => 'Related by tags'
-				)
-			)
-		),
-		// Blog: Single - Post Navigation Location
-		array(
-			'id'		=> 'post-nav',
-			'label'		=> 'Single &mdash; Post Navigation',
-			'desc'		=> 'Shows links to the next and previous article',
-			'std'		=> 's1',
-			'type'		=> 'radio',
-			'section'	=> 'blog',
-			'choices'	=> array(
-				array( 
-					'value' => '1',
-					'label' => 'Disable'
-				),
-				array( 
-					'value' => 's1',
-					'label' => 'Sidebar Primary'
-				),
-				array( 
-					'value' => 's2',
-					'label' => 'Sidebar Secondary'
-				),
-				array( 
-					'value' => 'content',
-					'label' => 'Below content'
 				)
 			)
 		),
@@ -685,15 +589,6 @@ function custom_theme_options() {
 			'type'		=> 'on-off',
 			'section'	=> 'styling'
 		),
-		// Styling: Boxed Layout
-		array(
-			'id'		=> 'boxed',
-			'label'		=> 'Boxed Layout',
-			'desc'		=> 'Use a boxed layout',
-			'std'		=> 'off',
-			'type'		=> 'on-off',
-			'section'	=> 'styling'
-		),
 		// Styling: Font
 		array(
 			'id'		=> 'font',
@@ -703,6 +598,10 @@ function custom_theme_options() {
 			'std'		=> '30',
 			'section'	=> 'styling',
 			'choices'	=> array(
+				array( 
+					'value' => 'open-sans-cyr',
+					'label' => 'Open Sans, Latin / Cyrillic-Ext (Google Fonts)'
+				),
 				array( 
 					'value' => 'titillium-web',
 					'label' => 'Titillium Web, Latin (Self-hosted)'
@@ -744,10 +643,6 @@ function custom_theme_options() {
 					'label' => 'Open Sans, Latin-Ext (Google Fonts)'
 				),
 				array( 
-					'value' => 'open-sans-cyr',
-					'label' => 'Open Sans, Latin / Cyrillic-Ext (Google Fonts)'
-				),
-				array( 
 					'value' => 'pt-serif',
 					'label' => 'PT Serif, Latin-Ext (Google Fonts)'
 				),
@@ -765,39 +660,11 @@ function custom_theme_options() {
 				)
 			)
 		),
-		// Styling: Container Width
-		array(
-			'id'			=> 'container-width',
-			'label'			=> 'Website Max-width',
-			'desc'			=> 'Max-width of the container. If you use 2 sidebars, your container should be at least 1200px.<br /><i>Note: For 720px content (default) use <strong>1380px</strong> for 2 sidebars and <strong>1120px</strong> for 1 sidebar. If you use a combination of both, try something inbetween.</i>',
-			'std'			=> '1380',
-			'type'			=> 'numeric-slider',
-			'section'		=> 'styling',
-			'min_max_step'	=> '1024,1600,1'
-		),
-		// Styling: Sidebar Padding
-		array(
-			'id'		=> 'sidebar-padding',
-			'label'		=> 'Sidebar Width',
-			'type'		=> 'radio',
-			'std'		=> '30',
-			'section'	=> 'styling',
-			'choices'	=> array(
-				array( 
-					'value' => '30',
-					'label' => '280px primary, 200px secondary (30px padding)'
-				),
-				array( 
-					'value' => '20',
-					'label' => '300px primary, 220px secondary (20px padding)'
-				)
-			)
-		),
 		// Styling: Primary Color
 		array(
 			'id'		=> 'color-1',
 			'label'		=> 'Primary Color',
-			'std'		=> '#3b8dbd',
+			'std'		=> '#3b5998',
 			'type'		=> 'colorpicker',
 			'section'	=> 'styling',
 			'class'		=> ''
@@ -806,75 +673,38 @@ function custom_theme_options() {
 		array(
 			'id'		=> 'color-2',
 			'label'		=> 'Secondary Color',
-			'std'		=> '#82b965',
+			'std'		=> '#f05950',
 			'type'		=> 'colorpicker',
 			'section'	=> 'styling',
 			'class'		=> ''
 		),
-		// Styling: Topbar Background
+		// Styling: Body Text Color
 		array(
-			'id'		=> 'color-topbar',
-			'label'		=> 'Topbar Background',
-			'std'		=> '#26272b',
+			'id'		=> 'body-txt-color',
+			'label'		=> 'Body text Color',
+			'std'		=> '#6B6B6B',
 			'type'		=> 'colorpicker',
 			'section'	=> 'styling',
 			'class'		=> ''
-		),
-		// Styling: Header Background
-		array(
-			'id'		=> 'color-header',
-			'label'		=> 'Header Background',
-			'std'		=> '#33363b',
-			'type'		=> 'colorpicker',
-			'section'	=> 'styling',
-			'class'		=> ''
-		),
-		// Styling: Header Menu Background
-		array(
-			'id'		=> 'color-header-menu',
-			'label'		=> 'Header Menu Background',
-			'std'		=> '',
-			'type'		=> 'colorpicker',
-			'section'	=> 'styling',
-			'class'		=> ''
-		),
-		// Styling: Footer Background
-		array(
-			'id'		=> 'color-footer',
-			'label'		=> 'Footer Background',
-			'std'		=> '#33363b',
-			'type'		=> 'colorpicker',
-			'section'	=> 'styling',
-			'class'		=> ''
-		),
-		// Styling: Header Logo Max-height
-		array(
-			'id'			=> 'logo-max-height',
-			'label'			=> 'Header Logo Image Max-height',
-			'desc'			=> 'Your logo image should have the double height of this to be high resolution',
-			'std'			=> '60',
-			'type'			=> 'numeric-slider',
-			'section'		=> 'styling',
-			'min_max_step'	=> '40,200,1'
-		),
-		// Styling: Image Border Radius
-		array(
-			'id'			=> 'image-border-radius',
-			'label'			=> 'Image Border Radius',
-			'desc'			=> 'Give your thumbnails and layout images rounded corners',
-			'std'			=> '0',
-			'type'			=> 'numeric-slider',
-			'section'		=> 'styling',
-			'min_max_step'	=> '0,15,1'
 		),
 		// Styling: Body Background
 		array(
 			'id'		=> 'body-background',
 			'label'		=> 'Body Background',
-			'desc'		=> 'Set background color and/or upload your own background image',
-			'type'		=> 'background',
+			'desc'		=> 'Set background color for body page',
+			'std'		=> '#ffffff',
+			'type'		=> 'colorpicker',
 			'section'	=> 'styling'
-		)
+		),
+		// Header: Header background image
+		array(
+			'id'		=> 'header-bg',
+			'label'		=> 'Header Background Image',
+			'desc'		=> 'Upload a background partern png image for header. Size 960px x 100px.',
+			'std'		=> SP_ASSETS_THEME . 'images/topbar.png',
+			'type'		=> 'upload',
+			'section'	=> 'styling'
+		),
 	)
 );
 

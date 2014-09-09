@@ -44,6 +44,7 @@ if ( ! isset( $cp_menu_position ) )
 load_template( SP_BASE_DIR . 'library/functions/theme-setup.php');
 load_template( SP_BASE_DIR . 'library/functions/aq_resizer.php');
 load_template( SP_BASE_DIR . 'library/functions/theme-functions.php');
+load_template( SP_BASE_DIR . 'library/functions/dynamic-styles.php' );
 
 //Theme Admin
 load_template( SP_BASE_DIR . 'library/functions/admin-functions.php' );
