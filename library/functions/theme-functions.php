@@ -117,7 +117,7 @@ if ( !function_exists('sp_end_content_wrap') ) {
 if ( !function_exists('sp_facebook_thumb') ) {
 
 	function sp_facebook_thumb() {
-		if ( is_singular( 'sp_work' ) ) {
+		if ( is_singular() || is_single() ) {
 			global $post;
 
 			$thumbnail_src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'thumbnail');

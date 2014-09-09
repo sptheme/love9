@@ -31,9 +31,7 @@ function sp_widgets_init() {
 add_action('widgets_init', 'sp_widgets_init');
 
 // Addon widgets		
-load_template ( SP_BASE_DIR . 'library/widgets/widget-post-category.php' );
-load_template ( SP_BASE_DIR . 'library/widgets/widget-fb-likebox.php' );
-load_template ( SP_BASE_DIR . 'library/widgets/widget-photogallery.php' );
+/*load_template ( SP_BASE_DIR . 'library/widgets/widget-fb-likebox.php' );*/
 
 /* ---------------------------------------------------------------------- */
 /*	Register custom sidebars
