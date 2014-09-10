@@ -29,7 +29,7 @@ if( !function_exists('sp_theme_setup') )
 	
 		// Add suport for post thumbnails and set default sizes
 		add_theme_support( 'post-thumbnails' );
-		add_image_size('post-slider', 720, 540, true ); // base size 1024x768, other size: 1280x768
+		add_image_size('post-slider', 620, 465, true ); // base size 1024x768, other size: 1280x768
 		//add_image_size('thumb-medium', 320, 240, true ); // base size 1024x768
 
 		// Add navigation menus
@@ -115,6 +115,7 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_script('flexslider', SP_ASSETS_THEME . 'js/jquery.flexslider.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('fitvideos', SP_ASSETS_THEME . 'js/jquery.fitvids.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('magnific-popup', SP_ASSETS_THEME . 'js/jquery.magnific-popup.min.js', array('jquery'), SP_SCRIPTS_VERSION, false);
+		wp_enqueue_script('masonry');
 		wp_enqueue_script('custom', SP_ASSETS_THEME . 'js/custom.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 
 		if ( is_singular() ) { wp_enqueue_script('sharrre', SP_ASSETS_THEME . 'js/jquery.sharrre.min.js', array('jquery'), SP_SCRIPTS_VERSION, true); }

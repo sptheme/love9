@@ -45,9 +45,9 @@ function sp_post_shortcode_ajax(){
 					<td>
 						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
 							<option value="none" selected>None</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
+							<option value="two-fourth">2</option>
+							<option value="one-third">3</option>
+							<option value="one-fourth">4</option>
 						</select>
 					</td>
 				</tr>

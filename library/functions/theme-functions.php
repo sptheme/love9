@@ -293,11 +293,11 @@ if ( ! function_exists( 'sp_post_meta' ) ) {
 			$post_meta = get_the_term_list( $post->ID, $taxonomies[0], '', ', ' );
 		}
 
-		printf( __( '<i class="icon icon-calendar-1"></i><time class="entry-date" datetime="%1$s"> %2$s</time><span class="by-author"> by </span><span class="author vcard">%3$s</span><span class="posted-in"> in </span>', SP_TEXT_DOMAIN ),
+		printf( __( '<i class="icon icon-calendar-1"></i><time class="entry-date" datetime="%1$s"> %2$s</time><span class="by-author"> by </span><span class="author vcard">%3$s</span><span class="posted-in"> in </span><i class="icon icon-tag"> </i>%4$s', SP_TEXT_DOMAIN ),
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),
-			get_the_author()
-			//$post_meta
+			get_the_author(),
+			$post_meta
 		);
 		if ( comments_open() ) : ?>
 				<span class="with-comments"><?php _e( ' with ', SP_TEXT_DOMAIN ); ?></span>
@@ -626,7 +626,8 @@ if ( !function_exists('sp_get_posts_type') ) {
 		$custom_query = new WP_Query($args);
 
 		if ( $custom_query->have_posts() ):
-			$out = '<div class="sp-posts">';
+			//$out = '<div class="sp-posts">';
+			$out = '<div class="container-msnry clearfix">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				$out .= sp_switch_posttype_content( get_the_ID(), $post_type, $cols, $style );
 			endwhile;
@@ -703,7 +704,8 @@ if ( !function_exists('sp_switch_posttype_content') ) {
 			$out = sp_render_photogallery_post( $post_id, 'post-slider', $cols );
 		} elseif ( $post_type == 'post' ) { // for blog 
 			if ( "modern" == $style ) { 
-				$out = sp_render_blog_post($post_id, 'post-slider', $cols );
+				$out = sp_render_masonry_post( $post_id, 'post-slider', $cols );
+				//$out = sp_render_blog_post( $post_id, 'post-slider', $cols );
 			} else {
 				$out = sp_render_doc_post( $post_id, $cols );	
 			}
@@ -722,7 +724,7 @@ if ( !function_exists('sp_render_video_post') ) {
 		$video_url = get_post_meta($post_id, 'sp_video_url', true);
 		$video_cover = sp_get_video_img( $video_url );
 
-    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -730,9 +732,11 @@ if ( !function_exists('sp_render_video_post') ) {
 			$out .= '<img class="attachment-medium wp-post-image" src="' . $video_cover . '" />';
 		endif; 
 		$out .= '<div class="thumb-caption">';
+		$out .= '<div class="inner-thumb">';
 		$out .= '<h5>' . get_the_title() . '</h5>';
 		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
 		$out .= '<a href="' . get_permalink() . '">' . __('Take a look', SP_TEXT_DOMAIN) . '</a>';
+		$out .= '</div>';
 		$out .= '</div>';
 		$out .= '</div>';
 	    $out .= '</article>';
@@ -749,7 +753,7 @@ if ( !function_exists('sp_render_sound_post') ) {
 		$sound_url = get_post_meta($post->ID, 'sp_soundcloud_url', true);
 		$sound_cover = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -757,9 +761,11 @@ if ( !function_exists('sp_render_sound_post') ) {
 			$out .= '<img class="attachment-medium wp-post-image" src="' . $sound_cover . '" />';
 		endif; 
 		$out .= '<div class="thumb-caption">';
+		$out .= '<div class="inner-thumb">';
 		$out .= '<h5>' . get_the_title() . '</h5>';
 		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
 		$out .= '<a href="' . get_permalink() . '">' . __('Listen', SP_TEXT_DOMAIN) . '</a>';
+		$out .= '</div>';
 		$out .= '</div>';
 		$out .= '</div>';
 	    $out .= '</article>';
@@ -775,7 +781,7 @@ if ( !function_exists('sp_render_blog_post') ) {
 
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -783,9 +789,11 @@ if ( !function_exists('sp_render_blog_post') ) {
 			$out .= '<img class="attachment-medium wp-post-image" src="' . $placeholder . '" />';
 		endif; 
 		$out .= '<div class="thumb-caption">';
+		$out .= '<div class="inner-thumb">';
 		$out .= '<h5>' . get_the_title() . '</h5>';
 		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
 		$out .= '<a href="' . get_permalink() . '">' . __('Take a look', SP_TEXT_DOMAIN) . '</a>';
+		$out .= '</div>';
 		$out .= '</div>';
 		$out .= '</div>';
 	    $out .= '</article>';
@@ -794,10 +802,51 @@ if ( !function_exists('sp_render_blog_post') ) {
 }
 
 /* ---------------------------------------------------------------------- */               							
+/* Render HTML Masonry Post
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_render_masonry_post') ) {
+	function sp_render_masonry_post( $post_id, $size, $cols ) {
+
+		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
+
+    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
+    	
+    	// For mobile version 
+    	/*$out .= '<div class="thumb-effect">';
+    	if ( has_post_thumbnail() ) :
+			$out .= '<img src="' . sp_post_thumbnail( $size ) . '" />';
+		else :
+			$out .= '<img src="' . $placeholder . '" />';
+		endif; 
+		$out .= '<h5><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>';
+		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
+		$out .= '</div>';*/
+
+		// For desktop version
+		$out .= '<div class="thumb-effect">';
+    	if ( has_post_thumbnail() ) :
+			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
+		else :
+			$out .= '<img class="attachment-medium wp-post-image" src="' . $placeholder . '" />';
+		endif; 
+		$out .= '<div class="thumb-caption">';
+		$out .= '<div class="inner-thumb">';
+		$out .= '<h5>' . get_the_title() . '</h5>';
+		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
+		$out .= '<a href="' . get_permalink() . '">' . __('Take a look', SP_TEXT_DOMAIN) . '</a>';
+		$out .= '</div>';
+		$out .= '</div>';
+		$out .= '</div>';
+		$out .= '</article>';
+		return $out;
+	}
+}
+
+/* ---------------------------------------------------------------------- */               							
 /* Render HTML Documents Post
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_render_doc_post') ) {
-	function sp_render_doc_post( $post_id, $cols = '2' ) {
+	function sp_render_doc_post( $post_id, $cols = 'two-fourth' ) {
 
 		$post_format = get_post_format( $post_id );
 
@@ -805,7 +854,7 @@ if ( !function_exists('sp_render_doc_post') ) {
 			$post_format = 'standard';
 		}
 
-    	$out = '<article class="post-' . $post_id . ' sp-document format-' . $post_format . ' ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' post-masonry sp-document format-' . $post_format . ' ' . $cols . '">';
     	$out .= '<header>';
 		$out .= '<h5><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>';
 		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
@@ -824,7 +873,7 @@ if ( !function_exists('sp_render_team_post') ) {
 		$team_position = get_post_meta($post_id, 'sp_team_position', true);
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 		
-		$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
+		$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -832,9 +881,11 @@ if ( !function_exists('sp_render_team_post') ) {
 			$out .= '<img class="attachment-medium wp-post-image" src="' . $placeholder . '" />';
 		endif; 
 		$out .= '<div class="thumb-caption">';
+		$out .= '<div class="inner-thumb">';
 		$out .= '<h5>' . get_the_title() . '</h5>';
 		$out .= '<span class="entry-meta">' . $team_position . '</span>';
 		$out .= '<a href="' . get_permalink() . '">' . __('Take a look', SP_TEXT_DOMAIN) . '</a>';
+		$out .= '</div>';
 		$out .= '</div>';
 		$out .= '</div>';
 	    $out .= '</article>';
@@ -852,7 +903,7 @@ if ( !function_exists('sp_render_photogallery_post') ) {
 		$album_location = get_post_meta($post_id, 'sp_album_location', true);
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-960x720.jpg';
 
-    	$out = '<article class="post-' . $post_id . ' ' . $cols . '">';
+    	$out = '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
     	$out .= '<div class="thumb-effect">';
     	if ( has_post_thumbnail() ) :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
@@ -860,9 +911,11 @@ if ( !function_exists('sp_render_photogallery_post') ) {
 			$out .= '<img class="attachment-medium wp-post-image" src="' . $placeholder . '" />';
 		endif; 
 		$out .= '<div class="thumb-caption">';
+		$out .= '<div class="inner-thumb">';
 		$out .= '<h5>' . get_the_title() . '</h5>';
 		$out .= '<span class="entry-meta">' . $album_location . ' - ' . get_the_date() . '</span>';
 		$out .= '<a href="' . get_permalink() . '">' . __('Take a look', SP_TEXT_DOMAIN) . '</a>';
+		$out .= '</div>';
 		$out .= '</div>';
 		$out .= '</div>';
 	    $out .= '</article>';
@@ -886,11 +939,13 @@ if ( ! function_exists( 'sp_get_album_gallery' ) ) {
     		$out = '<div class="gallery sp-posts clearfix">';
     		foreach ( $photos as $image ) :
 				$imageid = wp_get_attachment_image_src($image, $size);
-				$out .= '<article class="post-' . $post_id . ' ' . $cols . '">';
+				$out .= '<article class="post-' . $post_id . ' post-masonry ' . $cols . '">';
     			$out .= '<div class="thumb-effect">';
 				$out .= '<img class="attachment-medium wp-post-image" src="' . $imageid[0] . '">';
 				$out .= '<div class="thumb-caption">';
+				$out .= '<div class="inner-thumb">';
 				$out .= '<a href="' . wp_get_attachment_url($image) . '">' . __('View photo', SP_TEXT_DOMAIN) . '</a>';
+				$out .= '</div>';
 				$out .= '</div>';
 				$out .= '</div>';
 			    $out .= '</article>';

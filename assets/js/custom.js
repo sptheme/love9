@@ -107,6 +107,12 @@
    
   });
 
-
+  // Masonry
+  var $container = $('.container-msnry');
+  // initialize
+  $container.masonry({
+    gutter: 10,
+    itemSelector: '.post-masonry'
+  });
 
 }(jQuery));
