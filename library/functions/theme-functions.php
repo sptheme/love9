@@ -129,41 +129,6 @@ if ( !function_exists('sp_facebook_thumb') ) {
 }
 
 /* ---------------------------------------------------------------------- */               							
-/*  Get related post by Taxonomy
-/* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_posts_related_by_taxonomy') ) {
-
-	function sp_get_posts_related_by_taxonomy($post_id, $taxonomy, $args=array()) {
-
-		//$query = new WP_Query();
-		$terms = wp_get_object_terms($post_id, $taxonomy);
-		if (count($terms)) {
-		
-		// Assumes only one term for per post in this taxonomy
-		$post_ids = get_objects_in_term($terms[0]->term_id,$taxonomy);
-		$post = get_post($post_id);
-		$args = wp_parse_args($args,array(
-		  'post_type' => $post->post_type, // The assumes the post types match
-		  //'post__in' => $post_ids,
-		  'post__not_in' => array($post_id),
-		  'tax_query' => array(
-		  			array(
-						'taxonomy' => $taxonomy,
-						'field' => 'term_id',
-		  				'terms' => $terms[0]->term_id
-					)),
-		  'orderby' => 'rand',
-		  'posts_per_page' => -1
-		  
-		));
-		$query = new WP_Query($args);
-		}
-		return $query;
-	}
-
-}
-
-/* ---------------------------------------------------------------------- */               							
 /*  Retrieve the terms list and return array
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_terms_list') ) {
@@ -176,123 +141,6 @@ if ( !function_exists('sp_get_terms_list') ) {
 		return $taxonomies;
 	}
 
-}
-
-/* ---------------------------------------------------------------------- */               							
-/*  Taxonomy has children and has parent
-/* ---------------------------------------------------------------------- */
-function has_children($cat_id, $taxonomy) {
-    $children = get_terms(
-        $taxonomy,
-        array( 'parent' => $cat_id, 'hide_empty' => false )
-    );
-    if ($children){
-        return true;
-    }
-    return false;
-}
-
-function category_has_parent($catid){
-    $category = get_category($catid);
-    if ($category->category_parent > 0){
-        return true;
-    }
-    return false;
-}
-
-/* ---------------------------------------------------------------------- */
-/*  Get related pages
-/* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_related_pages') ) {
-
-	function sp_get_related_pages() {
-
-		$orig_post = $post;
-		global $post;
-		$tags = wp_get_post_tags($post->ID);
-		if ($tags) {
-			$tag_ids = array();
-			foreach($tags as $individual_tag)
-			$tag_ids[] = $individual_tag->term_id;
-			$args=array(
-			'post_type' => 'page',
-			'tag__in' => $tag_ids,
-			'post__not_in' => array($post->ID),
-			'posts_per_page'=>5
-			);
-			$pages_query = new WP_Query( $args );
-			if( $pages_query->have_posts() ) {
-				echo '<div id="relatedpages"><h3>Related Pages</h3><ul>';
-				while( $pages_query->have_posts() ) {
-				$pages_query->the_post(); ?>
-				<li><div class="relatedthumb"><a href="<?php the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumb'); ?></a></div>
-				<div class="relatedcontent">
-				<h3><a href="<?php the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
-				<?php the_time('M j, Y') ?>
-				</div>
-				</li>
-			<?php }
-				echo '</ul></div>';
-			} else { 
-				echo "No Related Pages Found:";
-			}
-		}
-		$post = $orig_post;
-		wp_reset_postdata(); 
-
-	}
-	
-}
-
-/* ---------------------------------------------------------------------- */
-/*  Get related post
-/* ---------------------------------------------------------------------- */ 
-if ( ! function_exists( 'sp_related_posts' ) ) {
-
-	function sp_related_posts() {
-		wp_reset_postdata();
-		global $post;
-
-		// Define shared post arguments
-		$args = array(
-			'no_found_rows'				=> true,
-			'update_post_meta_cache'	=> false,
-			'update_post_term_cache'	=> false,
-			'ignore_sticky_posts'		=> 1,
-			'orderby'					=> 'rand',
-			'post__not_in'				=> array($post->ID),
-			'posts_per_page'			=> 3
-		);
-		// Related by categories
-		if ( ot_get_option('related-posts') == 'categories' ) {
-			
-			$cats = get_post_meta($post->ID, 'related-cat', true);
-			
-			if ( !$cats ) {
-				$cats = wp_get_post_categories($post->ID, array('fields'=>'ids'));
-				$args['category__in'] = $cats;
-			} else {
-				$args['cat'] = $cats;
-			}
-		}
-		// Related by tags
-		if ( ot_get_option('related-posts') == 'tags' ) {
-		
-			$tags = get_post_meta($post->ID, 'related-tag', true);
-			
-			if ( !$tags ) {
-				$tags = wp_get_post_tags($post->ID, array('fields'=>'ids'));
-				$args['tag__in'] = $tags;
-			} else {
-				$args['tag_slug__in'] = explode(',', $tags);
-			}
-			if ( !$tags ) { $break = true; }
-		}
-		
-		$query = !isset($break) ? new WP_Query($args) : new WP_Query;
-		return $query;
-	}
-	
 }
 
 /* ---------------------------------------------------------------------- */
@@ -458,25 +306,6 @@ if ( ! function_exists( 'sp_post_meta' ) ) {
 		<?php edit_post_link( __( 'Edit', SP_TEXT_DOMAIN ), '<span class="sep"> | </span><span class="edit-link">', '</span>' );
 	}
 };
-
-/* ---------------------------------------------------------------------- */
-/*	Mini Meta post entry
-/* ---------------------------------------------------------------------- */
-if ( ! function_exists( 'sp_meta_mini' ) ) :
-	function sp_meta_mini() {
-		printf( __( '<a href="%1$s" title="%2$s"><time class="entry-date" datetime="%3$s">%4$s</time></a>', SP_TEXT_DOMAIN ),
-			esc_url( get_permalink() ),
-			esc_attr( get_the_time() ),
-			esc_attr( get_the_date( 'c' ) ),
-			esc_html( get_the_date() )
-			//get_the_category_list( ', ' )
-		);
-		if ( comments_open() ) : ?>
-				<span class="sep"><?php _e( ' | ', SP_TEXT_DOMAIN ); ?></span>
-				<span class="comments-link"><?php comments_popup_link( '<span class="leave-reply">' . __( '0 Comments', SP_TEXT_DOMAIN ) . '</span>', __( '1 Comment', SP_TEXT_DOMAIN ), __( '% Comments', SP_TEXT_DOMAIN ) ); ?></span>
-		<?php endif; // End if comments_open()
-	}
-endif;
 
 /* ---------------------------------------------------------------------- */
 /*	Embeded add video from youtube, vimeo and dailymotion
@@ -786,14 +615,6 @@ if ( ! function_exists( 'sp_show_social_icons' ) ) {
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_posts_type') ) {
 	function sp_get_posts_type( $post_type = 'post', $args=array(), $cols = 'one-third', $style = 'modern' ) {
-
-		/*if ( $cols == 2 ) {
-			$cols = 'two-fourth';
-		} elseif ( $cols == 4 ) {
-			$cols = 'one-fourth';
-		} elseif ( $cols == 3 ) { // 3 cols
-			$cols = 'one-third';
-		} else { $cols = ''; }*/
 
 		$defaults = array(
 				'post_type' => $post_type,
