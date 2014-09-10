@@ -57,17 +57,21 @@
 	
 <?php endif; ?>
 
-<?php if ( has_post_format( 'image' ) || !has_post_format() ): // Image ?>
+<?php if ( has_post_format( 'image' ) || ! has_post_format() ): // Image ?>
 
+	<?php if ( has_post_thumbnail() ) : ?>
 	<div class="post-format">
-		<div class="wp-caption">
-			<?php if ( has_post_thumbnail() ) {	
-				the_post_thumbnail('large'); 
-				$caption = get_post(get_post_thumbnail_id())->post_excerpt;
-				if ( isset($caption) && $caption && is_singular() ) echo '<p class="wp-caption-text">'.$caption.'</p>';
-			} ?>
-		</div>
+		<?php 
+		$caption = get_post(get_post_thumbnail_id())->post_excerpt;
+		if ( isset($caption) && $caption && is_singular() ) {
+			echo '<div class="wp-caption">';
+			the_post_thumbnail('large');
+			echo '<p class="wp-caption-text">'.$caption.'</p>';
+			echo '</div>';
+		} else { the_post_thumbnail('large'); }	
+		?>
 	</div>
+	<?php endif; ?>
 	
 <?php endif; ?>
 
@@ -89,13 +93,3 @@
 	
 <?php endif; ?>
 
-<?php if ( has_post_format( 'quote' ) ): // Quote ?>
-
-	<div class="post-format">
-		<div class="format-container">
-			<blockquote><?php echo isset($meta['sp_quote'][0])?wpautop($meta['sp_quote'][0]):''; ?></blockquote>
-			<p class="quote-author"><?php echo (isset($meta['sp_quote_author'][0])?'&mdash; '.$meta['sp_quote_author'][0]:''); ?></p>
-		</div>
-	</div>
-	
-<?php endif; ?>
