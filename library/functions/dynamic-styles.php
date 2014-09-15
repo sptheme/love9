@@ -61,6 +61,13 @@ body {
 				'."\n";
 			}
 
+			// header background
+			if ( ot_get_option('header-bg') != '' ) {
+				$styles .= '
+#header { background: url(' . ot_get_option('header-bg') . ') center top repeat-x; }				
+				'."\n";
+			}
+
 			// primary color
 			if ( ot_get_option('color-1') != '#3b5998' ) {
 				$styles .= '

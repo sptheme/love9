@@ -167,10 +167,7 @@ if ( !function_exists('sp_print_custom_css_script') ){
 	
 	function sp_print_custom_css_script(){
 ?>
-	<style type="text/css">
-		#header { background: url(<?php echo ot_get_option('header-bg'); ?>) center top repeat-x; }
-	</style>
-
+	
 	<?php if ( is_page() || is_singular() ) : ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
