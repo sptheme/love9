@@ -502,7 +502,7 @@ $page_template_home = array(
 		array(
 			'label'		=> 'Link to Youtube channel',
 			'id'		=> $prefix . 'page_video_gallery',
-			'type'		=> 'text',
+			'type'		=> 'page_select',
 			'desc'		=> 'Enter link of love9 youtube channel',
 		),
 		array(
