@@ -500,7 +500,7 @@ $page_template_home = array(
 			'type'		=> 'upload',
 		),
 		array(
-			'label'		=> 'Link to Youtube channel',
+			'label'		=> 'Link to video page',
 			'id'		=> $prefix . 'page_video_gallery',
 			'type'		=> 'page_select',
 			'desc'		=> 'Enter link of love9 youtube channel',
