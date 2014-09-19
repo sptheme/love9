@@ -18,6 +18,7 @@ function sp_post_shortcode_ajax(){
 						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
 							<?php
 							$args = array(
+							  'hide_empty'	=> 0,
 							  'orderby' => 'name',
 							  'parent' => 0
 							  );
