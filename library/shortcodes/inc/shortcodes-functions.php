@@ -248,7 +248,7 @@ function sp_tv_sc( $atts, $content = null ){
 					array(
 						'taxonomy' => 'tv-section',
 						'field'    => 'id',
-						'terms'    => $term_id,
+						'terms'    => array($term_id)
 					)
 				),
 				'posts_per_page' => $post_num
@@ -276,7 +276,7 @@ function sp_radio_sc( $atts, $content = null ){
 					array(
 						'taxonomy' => 'radio-section',
 						'field'    => 'id',
-						'terms'    => $term_id,
+						'terms'    => array($term_id)
 					)
 				),
 				'posts_per_page' => $post_num
@@ -292,8 +292,6 @@ function sp_radio_sc( $atts, $content = null ){
 /*--------------------------------------------------------------------------------------*/
 function sp_team_sc( $atts, $content = null ){
 
-	global $post;
-
 	extract( shortcode_atts( array(
 		'term_id' => null,
 		'post_num' => null,
@@ -304,7 +302,7 @@ function sp_team_sc( $atts, $content = null ){
 					array(
 						'taxonomy' => 'team-section',
 						'field'    => 'id',
-						'terms'    => $term_id,
+						'terms'    => array($term_id)
 					)
 				),
 				'posts_per_page' => $post_num
@@ -358,7 +356,7 @@ function sp_post_sc( $atts, $content = null ){
 					array(
 						'taxonomy' => 'category',
 						'field'    => 'id',
-						'terms'    => $term_id,
+						'terms'    => array($term_id)
 					)
 				),
 				'posts_per_page' => $post_num

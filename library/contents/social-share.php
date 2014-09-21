@@ -3,7 +3,7 @@
 	<div id="twitter" data-url="<?php echo the_permalink(); ?>" data-text="<?php echo the_title(); ?>" data-title="Tweet"></div>
 	<div id="facebook" data-url="<?php echo the_permalink(); ?>" data-text="<?php echo the_title(); ?>" data-title="Like"></div>
 	<div id="googleplus" data-url="<?php echo the_permalink(); ?>" data-text="<?php echo the_title(); ?>" data-title="+1"></div>
-	<div id="pinterest" data-url="<?php echo the_permalink(); ?>" data-text="<?php echo the_title(); ?>" data-title="Pin It"></div>
+	<!-- <div id="pinterest" data-url="<?php echo the_permalink(); ?>" data-text="<?php echo the_title(); ?>" data-title="Pin It"></div> -->
 </div><!--/.sharrre-container-->
 
 <script type="text/javascript">
@@ -47,7 +47,7 @@
 				api.openPopup('googlePlus');
 			}
 		});
-		jQuery('#pinterest').sharrre({
+		/*jQuery('#pinterest').sharrre({
 			share: {
 				pinterest: true
 			},
@@ -63,7 +63,7 @@
 				api.simulateClick();
 				api.openPopup('pinterest');
 			}
-		});
+		});*/
 		
 	});
 </script>

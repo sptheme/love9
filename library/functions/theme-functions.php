@@ -626,7 +626,6 @@ if ( !function_exists('sp_get_posts_type') ) {
 		$custom_query = new WP_Query($args);
 
 		if ( $custom_query->have_posts() ):
-			//$out = '<div class="sp-posts">';
 			$out = '<div class="sp-posts">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				$out .= sp_switch_posttype_content( get_the_ID(), $post_type, $cols, $style );
