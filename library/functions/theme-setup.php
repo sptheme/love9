@@ -296,7 +296,7 @@ if( !function_exists('sp_mobile_navigation')) {
 					) );
 			/* Adding "+" buttons for dropdown menus */
 			$search = '<ul class="sub-menu">';
-			$replace = '<span class="nav-child-container"><span class="nav-child-trigger">+</span></span>
+			$replace = '<span class="nav-child-container"><span class="nav-child-trigger icon-right-open-mini"></span></span>
 						<ul class="sub-menu" style="height: 0;">';
 			/*if ( wp_is_mobile() )						
 				return str_replace($search, $replace, $menu);
