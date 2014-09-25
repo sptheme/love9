@@ -8,7 +8,6 @@ var eventHover = 'mouseover mouseout';
 (function($){
   if ('ontouchstart' in document.documentElement) {
     $('html').addClass('touch');
-    $('body').addClass('touch-gesture');
     touchSupport = true;
     eventClick = 'touchon touchend';
     eventHover = 'touchstart touchend';
