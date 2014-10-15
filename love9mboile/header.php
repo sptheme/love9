@@ -16,7 +16,9 @@
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="wrapper">
+
 <?php if ( ot_get_option('responsive') != 'off' ) : ?>
     <aside id="sidemenu-container">
         <div id="side-logo">
@@ -27,9 +29,9 @@
         <?php endif; ?>
         </div>
         <div id="sidemenu">
-        <nav class="menu-mobile-container">
-        <?php echo sp_mobile_navigation(); ?>
-        </nav>
+            <nav class="menu-mobile-container">
+            <?php echo sp_mobile_navigation(); ?>
+            </nav>
         </div>              
     </aside>
 <?php endif; ?>    
@@ -60,12 +62,10 @@
         </nav><!-- .primary-nav .wrap -->
 
         <div class="header-right">
-        <div class="social-btn icons clearfix">
-            <ul>
-                <li class="i-square icon-facebook-squared"><a href="<?php echo ot_get_option('facebook-url'); ?>" target="_blank">Join us</a></li>
-                <li class="i-square icon-youtube"><a href="<?php echo ot_get_option('youtube-url'); ?>" target="_blank">Follow us</a></li>
-                <li class="i-square icon-soundcloud"><a href="<?php echo ot_get_option('soundcloud-url'); ?>" target="_blank">Follow us</a></li>
-            </ul>
+        <div class="social-love9">
+            <a href="<?php echo ot_get_option('facebook-url'); ?>" target="_blank" class="icon-facebook-squared"></a>
+            <a href="<?php echo ot_get_option('youtube-url'); ?>" target="_blank" class="icon-youtube"></a>
+            <a href="<?php echo ot_get_option('soundcloud-url'); ?>" target="_blank" class="icon-soundcloud"></a>
         </div>
         <?php 
         if (function_exists('icl_get_languages')) {
