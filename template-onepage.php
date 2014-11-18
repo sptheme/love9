@@ -179,9 +179,9 @@ get_header(); ?>
     	<img class="village-board wow zoomIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/village-board.png">
     	<img class="village-symbol wow fadeIn" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/village-symbol.png">
 
-    	<a class="announcement wow swing" href="<?php echo get_permalink($home_meta['sp_page_video_gallery'][0]); ?>"></a>
-    	<a class="blog wow swing" href="<?php echo get_permalink($home_meta['sp_page_video_gallery'][0]); ?>"></a>
-    	<a class="document wow swing" href="<?php echo get_permalink($home_meta['sp_page_video_gallery'][0]); ?>"></a>
+    	<a class="announcement wow swing" href="<?php echo get_permalink($home_meta['sp_page_announcement'][0]); ?>"></a>
+    	<a class="blog wow swing" href="<?php echo get_permalink($home_meta['sp_page_blog'][0]); ?>"></a>
+    	<a class="document wow swing" href="<?php echo get_permalink($home_meta['sp_page_documents'][0]); ?>"></a>
 
     	<img class="grass-2" src="<?php echo SP_BASE_URL; ?>assets/images/front-page/grass-2.png">
     	<!-- About Sence -->
