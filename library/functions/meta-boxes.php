@@ -577,6 +577,49 @@ $page_template_topic = array(
 	'priority'    => 'high',
 	'fields'      => array(
 		array(
+			'label'		=> 'Select year',
+			'id'		=> $prefix . 'yearly_topic',
+			'type'		=> 'select',
+			'desc'		=> 'Show weekly topic by year',
+			'choices'     => array( 
+			          array(
+			            'value'       => '2014',
+			            'label'       => '2014',
+			            'src'         => ''
+			          ),
+			          array(
+			            'value'       => '2015',
+			            'label'       => '2015',
+			            'src'         => ''
+			          ),
+			          array(
+			            'value'       => '2016',
+			            'label'       => '2016',
+			            'src'         => ''
+			          ),
+			          array(
+			            'value'       => '2017',
+			            'label'       => '2017',
+			            'src'         => ''
+			          ),
+			          array(
+			            'value'       => '2018',
+			            'label'       => '2018',
+			            'src'         => ''
+			          ),
+			          array(
+			            'value'       => '2019',
+			            'label'       => '2019',
+			            'src'         => ''
+			          ),
+			          array(
+			            'value'       => '2020',
+			            'label'       => '2020',
+			            'src'         => ''
+			          ),
+			)
+		),
+		array(
 			'label'		=> 'Show Weekly topic',
 			'id'		=> $prefix . 'weekly_topic',
 			'type'		=> 'taxonomy-select',
