@@ -285,27 +285,16 @@ if( !function_exists('sp_mobile_navigation')) {
 	function sp_mobile_navigation() {
 		
 		// set default main menu if wp_nav_menu not active
-		if ( function_exists ( 'wp_nav_menu' ) ):
+		if ( function_exists ( 'wp_nav_menu' ) )
 			$menu = wp_nav_menu( array(
 					'container'      => false,
 					'menu_id'		 => 'menu-mobile',
 					'menu_class'	 => 'mobile-nav',
 					'theme_location' => 'mobile',
 					'fallback_cb' 	 => 'sp_mobile_nav_fallback',
-					'echo'           => false,
 					) );
-			/* Adding "+" buttons for dropdown menus */
-			$search = '<ul class="sub-menu">';
-			$replace = '<span class="nav-child-container"><span class="nav-child-trigger icon-right-open-mini"></span></span>
-						<ul class="sub-menu" style="height: 0;">';
-			/*if ( wp_is_mobile() )						
-				return str_replace($search, $replace, $menu);
-			else
-				return $menu;*/
-			return str_replace($search, $replace, $menu);		
-		else:
-			sp_mobile_nav_fallback();	
-		endif;
+		else
+			sp_mobile_nav_fallback();
 	}
 }
 

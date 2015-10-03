@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
   });
 
   // multi-level menu 
-  $('.nav-child-container').bind( eventClick, function(event) {
+  /*$('.nav-child-container').bind( eventClick, function(event) {
     event.preventDefault();
     var $this = $(this);
     var ul = $this.next('ul');
@@ -50,7 +50,7 @@ jQuery(document).ready(function($) {
         $this.parent().parent('ul').height( $this.parent().parent('ul.active').children().length * 46 );
       }
     }
-  });
+  });*/
 
   /* Sidebar Functionality */
   
@@ -72,6 +72,9 @@ jQuery(document).ready(function($) {
   $('.mobile-nav a').bind('click', function(event) {
     event.preventDefault();
     var path = $(this).attr('href');
+    if ( path == '#' )
+      return;
+    
     $('#content-container').toggleClass('active');
     $('#sidemenu').toggleClass('active');
     setTimeout(function() {

@@ -10,6 +10,7 @@ if( !function_exists('sp_touch_scripts_styles') ) {
 	function sp_touch_scripts_styles() {
 
 		if ( ot_get_option('responsive') != 'off' ) {
+			wp_enqueue_style('font-awesome', SP_ASSETS_THEME . 'fonts/font-awesome/css/font-awesome.min.css', array('layout'), SP_SCRIPTS_VERSION);
 			wp_enqueue_style('menu-mobile', SP_ASSETS_THEME . 'css/menu-mobile.css', array('layout'), SP_SCRIPTS_VERSION);
 			wp_enqueue_style('responsive', SP_ASSETS_THEME . 'css/responsive.css', array('layout'), SP_SCRIPTS_VERSION);
 			wp_enqueue_script('mobile-menu', SP_ASSETS_THEME . 'js/mobile-menu.js', array('jquery'), SP_SCRIPTS_VERSION, true);
